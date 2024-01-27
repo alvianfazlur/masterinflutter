@@ -1,4 +1,7 @@
+import 'package:bwa_masteringflutter/ui/pages/bonus_page/bonus_binding.dart';
+import 'package:bwa_masteringflutter/ui/pages/bonus_page/bonus_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/get_started.dart';
+import 'package:bwa_masteringflutter/ui/pages/main_page/main_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/sign_up/sign_up_binding.dart';
 import 'package:bwa_masteringflutter/ui/pages/sign_up/sign_up_screen.dart';
 import 'package:bwa_masteringflutter/ui/pages/splash_screen.dart';
@@ -19,6 +22,22 @@ var appPages = [
     name: SignUpScreen.routeName,
     page: () => SignUpScreen(),
     binding: SignUpBinding(),
+    transition: Transition.cupertino,
+    curve: Curves.easeInOut,
+    transitionDuration: const Duration(milliseconds: 250),
+  ),
+  GetPage(
+    name: BonusPage.routeName,
+    page: () => BonusPage(),
+    binding: BonusPageBinding(),
+    transition: Transition.cupertino,
+    curve: Curves.easeInOut,
+    transitionDuration: const Duration(milliseconds: 250),
+  ),
+  GetPage(
+    name: MainPage.routeName,
+    page: () => MainPage(),
+    // binding: BonusPageBinding(),
     transition: Transition.cupertino,
     curve: Curves.easeInOut,
     transitionDuration: const Duration(milliseconds: 250),

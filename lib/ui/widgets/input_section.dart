@@ -1,5 +1,7 @@
 import 'package:bwa_masteringflutter/shared/theme.dart';
+import 'package:bwa_masteringflutter/ui/pages/bonus_page/bonus_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class InputSection extends StatelessWidget {
   @override
@@ -99,7 +101,9 @@ class InputSection extends StatelessWidget {
                         backgroundColor: primaryColor,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(defaultRadius))),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.offNamed(BonusPage.routeName);
+                    },
                     child: Text(
                       'Get Started',
                       style: whiteTextStyle.copyWith(
