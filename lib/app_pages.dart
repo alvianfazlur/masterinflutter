@@ -1,5 +1,6 @@
 import 'package:bwa_masteringflutter/ui/pages/bonus_page/bonus_binding.dart';
 import 'package:bwa_masteringflutter/ui/pages/bonus_page/bonus_page.dart';
+import 'package:bwa_masteringflutter/ui/pages/detail_page/detail_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/get_started.dart';
 import 'package:bwa_masteringflutter/ui/pages/main_page/main_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/sign_up/sign_up_binding.dart';
@@ -37,6 +38,14 @@ var appPages = [
   GetPage(
     name: MainPage.routeName,
     page: () => MainPage(),
+    // binding: BonusPageBinding(),
+    transition: Transition.cupertino,
+    curve: Curves.easeInOut,
+    transitionDuration: const Duration(milliseconds: 250),
+  ),
+  GetPage(
+    name: DetailPage.routeName,
+    page: () => DetailPage(),
     // binding: BonusPageBinding(),
     transition: Transition.cupertino,
     curve: Curves.easeInOut,
