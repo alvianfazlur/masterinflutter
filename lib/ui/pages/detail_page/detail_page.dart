@@ -1,7 +1,9 @@
 import 'package:bwa_masteringflutter/shared/theme.dart';
+import 'package:bwa_masteringflutter/ui/pages/choose_seat_page/seat_page.dart';
 import 'package:bwa_masteringflutter/ui/widgets/detail_photos.dart';
 import 'package:bwa_masteringflutter/ui/widgets/interests_item.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({Key? key}) : super(key: key);
@@ -131,6 +133,42 @@ class DetailPage extends StatelessWidget {
                     )
                   ]),
             ),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 30),
+              width: double.infinity,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("IDR 2.500.000", style: blackTextStyle.copyWith(fontWeight: medium, fontSize: 18),),
+                        SizedBox(height: 5,),
+                        Text("per orang", style: greyTextStyle.copyWith(fontWeight: light),)
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: 170,
+                    height: 55,
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                          backgroundColor: primaryColor,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(17))),
+                      onPressed: () {
+                        Get.offNamed(ChooseSeatPage.routeName);
+                      },
+                      child: Text(
+                        'Book Now',
+                        style: whiteTextStyle.copyWith(
+                            fontWeight: medium, fontSize: 18),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            )
           ],
         ),
       );
@@ -138,11 +176,13 @@ class DetailPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: Stack(
-        children: [
-          BackgroundImage(),
-          content(),
-        ],
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            BackgroundImage(),
+            content(),
+          ],
+        ),
       ),
     );
   }

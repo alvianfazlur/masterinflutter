@@ -49,7 +49,7 @@ class GetStartedPage extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(defaultRadius))),
                     onPressed: () {
-                      Get.offNamed(SignUpScreen.routeName);
+                      Get.toNamed(SignUpScreen.routeName);
                     },
                     child: Text(
                       'Get Started',
