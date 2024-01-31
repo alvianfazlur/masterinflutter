@@ -37,7 +37,7 @@ class BonusPage extends GetView<BonusPageController> {
                         style: whiteTextStyle.copyWith(fontWeight: light),
                       ),
                       Text(
-                        "Lorem Ipsum",
+                        controller.user.name,
                         style: whiteTextStyle.copyWith(
                             fontSize: 20, fontWeight: medium),
                         overflow: TextOverflow.ellipsis,
@@ -68,7 +68,7 @@ class BonusPage extends GetView<BonusPageController> {
               style: whiteTextStyle.copyWith(fontSize: 14, fontWeight: light),
             ),
             Text(
-              "IDR 280.000.000",
+              controller.user.balance.toString(),
               style: whiteTextStyle.copyWith(fontSize: 26, fontWeight: medium),
             ),
           ],
@@ -86,7 +86,7 @@ class BonusPage extends GetView<BonusPageController> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(defaultRadius))),
           onPressed: () {
-            Get.offNamed(MainPage.routeName);
+            Get.offAndToNamed(MainPage.routeName);
           },
           child: Text(
             'Start Fly Now',

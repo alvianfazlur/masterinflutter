@@ -1,6 +1,3 @@
-import 'package:equatable/equatable.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-
 class userData{
   final String id;
   final String email;

@@ -105,7 +105,7 @@ class InputSection extends StatelessWidget {
                             name: controller.nameController.text,
                             hobby: controller.hobbyController.text);
                         if (controller.status == AuthStatus.loading) {
-                          print("Loadinggg");
+                          print("Loading");
                         } else if (controller.status == AuthStatus.success) {
                           print("Success");
                           Get.offNamed(BonusPage.routeName);

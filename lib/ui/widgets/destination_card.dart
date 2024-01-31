@@ -22,7 +22,7 @@ class DestinationCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        Get.offNamed(DetailPage.routeName);
+        Get.toNamed(DetailPage.routeName);
       },
       child: Container(
         width: 200,

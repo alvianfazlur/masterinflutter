@@ -1,8 +1,13 @@
 import 'dart:async';
 
+import 'package:bwa_masteringflutter/models/user.dart';
 import 'package:bwa_masteringflutter/shared/theme.dart';
+import 'package:bwa_masteringflutter/ui/pages/bonus_page/bonus_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/get_started.dart';
+import 'package:bwa_masteringflutter/ui/pages/main_page/get_user.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
@@ -15,13 +20,25 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  final getUser = Get.put(GetUser());
+
   @override
   void initState() {
     Timer(Duration(seconds: 3), () {
-      Get.toNamed(GetStartedPage.routeName);
+      User? user = FirebaseAuth.instance.currentUser;
+
+      if (user == null) {
+        Get.offNamedUntil(GetStartedPage.routeName, (route) => false);
+      } else {
+        getUser.getCurrentUser(user.uid).then((userData user) {
+          Get.offNamedUntil(BonusPage.routeName, (route) => false,
+              arguments: user);
+        });
+      }
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +59,8 @@ class _SplashPageState extends State<SplashPage> {
             ),
             Text(
               "AIRPLANE",
-              style: whiteTextStyle.copyWith(fontWeight: medium, fontSize: 32,letterSpacing: 10),
+              style: whiteTextStyle.copyWith(
+                  fontWeight: medium, fontSize: 32, letterSpacing: 10),
             )
           ],
         ),

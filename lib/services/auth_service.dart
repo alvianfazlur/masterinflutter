@@ -24,4 +24,12 @@ class AuthService {
       return user;
     } catch (e) {throw e;}
   }
+
+  Future<void> signOut() async {
+    try{
+      await _auth.signOut();
+    }catch(e){
+      throw e;
+    }
+  }
 }
