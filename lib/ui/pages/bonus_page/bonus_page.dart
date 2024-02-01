@@ -86,7 +86,7 @@ class BonusPage extends GetView<BonusPageController> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(defaultRadius))),
           onPressed: () {
-            Get.offAndToNamed(MainPage.routeName);
+            Get.toNamed(MainPage.routeName);
           },
           child: Text(
             'Start Fly Now',
