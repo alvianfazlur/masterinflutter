@@ -1,4 +1,5 @@
 import 'package:bwa_masteringflutter/shared/theme.dart';
+import 'package:bwa_masteringflutter/ui/pages/login/login_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/sign_up/sign_up_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,6 +25,21 @@ class SignUpScreen extends GetView<SignUpController> {
             ),
           ),
           InputSection(),
+          Container(
+            child: TextButton(
+              style: TextButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(17))),
+              onPressed: () {
+                Get.toNamed(LoginPage.routeName);
+              },
+              child: Text(
+                'Have an Account? Sign In',
+                style: greyTextStyle.copyWith(
+                    fontWeight: light, fontSize: 16),
+              ),
+            ),
+          ),
           TextButton(
             onPressed: () {
               Get.dialog(

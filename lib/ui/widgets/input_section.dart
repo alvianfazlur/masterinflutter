@@ -5,14 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class InputSection extends StatelessWidget {
-  // var controller = Get.find<SignUpController>();
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<SignUpController>(
       builder: (controller) => Container(
         margin: EdgeInsets.only(top: 30),
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+        padding: EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
             Container(
