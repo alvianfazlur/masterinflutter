@@ -1,4 +1,3 @@
-
 import 'package:bwa_masteringflutter/models/user.dart';
 import 'package:bwa_masteringflutter/services/auth_service.dart';
 import 'package:flutter/cupertino.dart';

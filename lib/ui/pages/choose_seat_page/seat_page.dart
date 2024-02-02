@@ -123,9 +123,11 @@ class ChooseSeatPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 SeatItem(
+                  id: 'A1',
                   status: 2,
                 ),
                 SeatItem(
+                  id: 'B1',
                   status: 2,
                 ),
                 Container(
@@ -141,10 +143,10 @@ class ChooseSeatPage extends StatelessWidget {
                   )),
                 ),
                 SeatItem(
-                  status: 0,
+                  status: 0, id: 'C1',
                 ),
                 SeatItem(
-                  status: 2,
+                  status: 2, id: 'D1',
                 ),
               ],
             ),
@@ -152,10 +154,10 @@ class ChooseSeatPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 SeatItem(
-                  status: 0,
+                  status: 0, id: 'A2',
                 ),
                 SeatItem(
-                  status: 0,
+                  status: 0, id: 'B2',
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 16),
@@ -170,10 +172,10 @@ class ChooseSeatPage extends StatelessWidget {
                   )),
                 ),
                 SeatItem(
-                  status: 0,
+                  status: 0, id: 'C2',
                 ),
                 SeatItem(
-                  status: 2,
+                  status: 2, id: 'D2',
                 ),
               ],
             ),
@@ -181,10 +183,10 @@ class ChooseSeatPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 SeatItem(
-                  status: 1,
+                  status: 1, id: 'A3',
                 ),
                 SeatItem(
-                  status: 1,
+                  status: 1, id: 'B3',
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 16),
@@ -199,10 +201,10 @@ class ChooseSeatPage extends StatelessWidget {
                   )),
                 ),
                 SeatItem(
-                  status: 0,
+                  status: 0, id: 'C3',
                 ),
                 SeatItem(
-                  status: 0,
+                  status: 0, id: 'D3',
                 ),
               ],
             ),
@@ -210,10 +212,10 @@ class ChooseSeatPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 SeatItem(
-                  status: 0,
+                  status: 0, id: 'A4',
                 ),
                 SeatItem(
-                  status: 2,
+                  status: 2, id: 'B4',
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 16),
@@ -228,10 +230,10 @@ class ChooseSeatPage extends StatelessWidget {
                   )),
                 ),
                 SeatItem(
-                  status: 0,
+                  status: 0, id: 'C4',
                 ),
                 SeatItem(
-                  status: 0,
+                  status: 0, id: 'D4',
                 ),
               ],
             ),
@@ -239,10 +241,10 @@ class ChooseSeatPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 SeatItem(
-                  status: 0,
+                  status: 0, id: 'A5',
                 ),
                 SeatItem(
-                  status: 0,
+                  status: 0, id: 'B5',
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 16),
@@ -257,10 +259,10 @@ class ChooseSeatPage extends StatelessWidget {
                   )),
                 ),
                 SeatItem(
-                  status: 2,
+                  status: 2, id: 'C5',
                 ),
                 SeatItem(
-                  status: 0,
+                  status: 0, id: 'D5',
                 ),
               ],
             ),

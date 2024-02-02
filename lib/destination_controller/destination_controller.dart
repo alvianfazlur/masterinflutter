@@ -10,6 +10,13 @@ class DestinationController extends GetxController{
   List<DestinationModel> destinations = [];
   String? error;
 
+  @override
+  void onInit() {
+    fetchDestinations();
+    update();
+    super.onInit();
+  }
+
   Future<void> fetchDestinations() async {
     try{
       destinations = await DestinationService().fetchData();

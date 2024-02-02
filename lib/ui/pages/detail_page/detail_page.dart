@@ -1,11 +1,12 @@
 import 'package:bwa_masteringflutter/shared/theme.dart';
 import 'package:bwa_masteringflutter/ui/pages/choose_seat_page/seat_page.dart';
+import 'package:bwa_masteringflutter/ui/pages/detail_page/detail_page_controller.dart';
 import 'package:bwa_masteringflutter/ui/widgets/detail_photos.dart';
 import 'package:bwa_masteringflutter/ui/widgets/interests_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class DetailPage extends StatelessWidget {
+class DetailPage extends GetView<DetailPageController> {
   const DetailPage({Key? key}) : super(key: key);
   static const routeName = "/detail";
 
@@ -18,7 +19,7 @@ class DetailPage extends StatelessWidget {
         decoration: BoxDecoration(
             image: DecorationImage(
                 fit: BoxFit.cover,
-                image: AssetImage('assets/images/destination_image_1.png'))),
+                image: NetworkImage(controller.destination.imageurl))),
       );
     }
 
@@ -36,12 +37,12 @@ class DetailPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Lake Ciliwung",
+                        controller.destination.name,
                         style: whiteTextStyle.copyWith(
                             fontSize: 24, fontWeight: semiBold),
                       ),
                       Text(
-                        "Tangerang",
+                        controller.destination.city,
                         style: whiteTextStyle.copyWith(
                             fontSize: 16, fontWeight: light),
                       )
@@ -56,7 +57,7 @@ class DetailPage extends StatelessWidget {
                           image: AssetImage('assets/images/Star.png'))),
                 ),
                 Text(
-                  "4,8",
+                  controller.destination.rating.toString(),
                   style: whiteTextStyle.copyWith(fontWeight: medium),
                 )
               ],
@@ -142,7 +143,7 @@ class DetailPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("IDR 2.500.000", style: blackTextStyle.copyWith(fontWeight: medium, fontSize: 18),),
+                        Text("IDR ${controller.destination.price}", style: blackTextStyle.copyWith(fontWeight: medium, fontSize: 18),),
                         SizedBox(height: 5,),
                         Text("per orang", style: greyTextStyle.copyWith(fontWeight: light),)
                       ],
@@ -157,7 +158,7 @@ class DetailPage extends StatelessWidget {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(17))),
                       onPressed: () {
-                        Get.offNamed(ChooseSeatPage.routeName);
+                        Get.toNamed(ChooseSeatPage.routeName);
                       },
                       child: Text(
                         'Book Now',
@@ -174,14 +175,16 @@ class DetailPage extends StatelessWidget {
       );
     }
 
-    return Scaffold(
-      backgroundColor: backgroundColor,
-      body: SingleChildScrollView(
-        child: Stack(
-          children: [
-            BackgroundImage(),
-            content(),
-          ],
+    return GetBuilder<DetailPageController>(
+      builder: (controller) => Scaffold(
+        backgroundColor: backgroundColor,
+        body: SingleChildScrollView(
+          child: Stack(
+            children: [
+              BackgroundImage(),
+              content(),
+            ],
+          ),
         ),
       ),
     );

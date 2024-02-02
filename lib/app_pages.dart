@@ -2,6 +2,8 @@ import 'package:bwa_masteringflutter/ui/pages/bonus_page/bonus_binding.dart';
 import 'package:bwa_masteringflutter/ui/pages/bonus_page/bonus_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/checkout_page/checkout_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/checkout_page/success_checkout.dart';
+import 'package:bwa_masteringflutter/ui/pages/choose_seat_page/seat_binding.dart';
+import 'package:bwa_masteringflutter/ui/pages/detail_page/detail_binding.dart';
 import 'package:bwa_masteringflutter/ui/pages/detail_page/detail_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/get_started.dart';
 import 'package:bwa_masteringflutter/ui/pages/login/login_binding.dart';
@@ -54,7 +56,7 @@ var appPages = [
   GetPage(
     name: DetailPage.routeName,
     page: () => DetailPage(),
-    // binding: BonusPageBinding(),
+    binding: DetailPageBinding(),
     transition: Transition.cupertino,
     curve: Curves.easeInOut,
     transitionDuration: const Duration(milliseconds: 250),
@@ -62,7 +64,7 @@ var appPages = [
   GetPage(
     name: ChooseSeatPage.routeName,
     page: () => ChooseSeatPage(),
-    // binding: BonusPageBinding(),
+    binding: SeatBinding(),
     transition: Transition.cupertino,
     curve: Curves.easeInOut,
     transitionDuration: const Duration(milliseconds: 250),

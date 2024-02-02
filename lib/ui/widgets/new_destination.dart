@@ -1,3 +1,4 @@
+import 'package:bwa_masteringflutter/models/destination.dart';
 import 'package:bwa_masteringflutter/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,17 +7,16 @@ import 'package:get/get_core/src/get_main.dart';
 import '../pages/detail_page/detail_page.dart';
 
 class NewDestination extends StatelessWidget {
-  const NewDestination({Key? key, required this.name, required this.city, required this.rating, required this.url}) : super(key: key);
-  final String name;
-  final String city;
-  final double rating;
-  final String url;
-
+  const NewDestination(this.destinations,
+      {Key? key,
+      })
+      : super(key: key);
+  final DestinationModel destinations;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         Get.toNamed(DetailPage.routeName);
       },
       child: Container(
@@ -34,8 +34,7 @@ class NewDestination extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(18),
                   image: DecorationImage(
-                    fit: BoxFit.cover,
-                      image: AssetImage(url))),
+                      fit: BoxFit.cover, image: NetworkImage(destinations.imageurl))),
             ),
             Expanded(
               child: Container(
@@ -46,11 +45,12 @@ class NewDestination extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      name,
-                      style: blackTextStyle.copyWith(fontSize: 18, fontWeight: medium),
+                      destinations.name,
+                      style: blackTextStyle.copyWith(
+                          fontSize: 18, fontWeight: medium),
                     ),
                     Text(
-                      city,
+                      destinations.city,
                       style: greyTextStyle.copyWith(fontWeight: light),
                     )
                   ],
@@ -66,10 +66,13 @@ class NewDestination extends StatelessWidget {
                     width: 24,
                     height: 24,
                     decoration: BoxDecoration(
-                      image: DecorationImage(image: AssetImage('assets/images/Star.png'))
-                    ),
+                        image: DecorationImage(
+                            image: AssetImage('assets/images/Star.png'))),
                   ),
-                  Text(rating.toString(), style: blackTextStyle.copyWith(fontWeight: medium),)
+                  Text(
+                    destinations.rating.toString(),
+                    style: blackTextStyle.copyWith(fontWeight: medium),
+                  )
                 ],
               ),
             ),
