@@ -5,6 +5,7 @@ import 'package:bwa_masteringflutter/ui/widgets/detail_photos.dart';
 import 'package:bwa_masteringflutter/ui/widgets/interests_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class DetailPage extends GetView<DetailPageController> {
   const DetailPage({Key? key}) : super(key: key);
@@ -143,7 +144,12 @@ class DetailPage extends GetView<DetailPageController> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("IDR ${controller.destination.price}", style: blackTextStyle.copyWith(fontWeight: medium, fontSize: 18),),
+                        Text(
+                          NumberFormat.currency(
+                            locale: 'id',
+                            symbol: 'IDR ',
+                            decimalDigits: 0,
+                          ).format(controller.destination.price), style: blackTextStyle.copyWith(fontWeight: medium, fontSize: 18),),
                         SizedBox(height: 5,),
                         Text("per orang", style: greyTextStyle.copyWith(fontWeight: light),)
                       ],

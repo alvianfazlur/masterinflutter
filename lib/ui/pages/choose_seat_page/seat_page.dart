@@ -1,16 +1,20 @@
 import 'package:bwa_masteringflutter/shared/theme.dart';
 import 'package:bwa_masteringflutter/ui/pages/checkout_page/checkout_page.dart';
+import 'package:bwa_masteringflutter/ui/pages/choose_seat_page/seat_controller.dart';
+import 'package:bwa_masteringflutter/ui/pages/detail_page/detail_page_controller.dart';
 import 'package:bwa_masteringflutter/ui/widgets/seat_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
-class ChooseSeatPage extends StatelessWidget {
+class ChooseSeatPage extends GetView<SeatController> {
   const ChooseSeatPage({Key? key}) : super(key: key);
   static const routeName = "/seat";
 
   @override
   Widget build(BuildContext context) {
+    var detailController = Get.find<DetailPageController>();
     Widget title() {
       return Container(
         margin: EdgeInsets.only(top: 50),
@@ -57,7 +61,6 @@ class ChooseSeatPage extends StatelessWidget {
         ),
       );
     }
-
     Widget selectedSeat() {
       return Container(
         margin: EdgeInsets.only(
@@ -124,11 +127,9 @@ class ChooseSeatPage extends StatelessWidget {
               children: [
                 SeatItem(
                   id: 'A1',
-                  status: 2,
                 ),
                 SeatItem(
                   id: 'B1',
-                  status: 2,
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 16),
@@ -143,10 +144,10 @@ class ChooseSeatPage extends StatelessWidget {
                   )),
                 ),
                 SeatItem(
-                  status: 0, id: 'C1',
+                 id: 'C1',
                 ),
                 SeatItem(
-                  status: 2, id: 'D1',
+                 id: 'D1',
                 ),
               ],
             ),
@@ -154,10 +155,10 @@ class ChooseSeatPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 SeatItem(
-                  status: 0, id: 'A2',
+                 id: 'A2',
                 ),
                 SeatItem(
-                  status: 0, id: 'B2',
+                  id: 'B2',
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 16),
@@ -172,10 +173,10 @@ class ChooseSeatPage extends StatelessWidget {
                   )),
                 ),
                 SeatItem(
-                  status: 0, id: 'C2',
+                  id: 'C2',
                 ),
                 SeatItem(
-                  status: 2, id: 'D2',
+                  id: 'D2',
                 ),
               ],
             ),
@@ -183,10 +184,10 @@ class ChooseSeatPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 SeatItem(
-                  status: 1, id: 'A3',
+                  id: 'A3',
                 ),
                 SeatItem(
-                  status: 1, id: 'B3',
+                  id: 'B3',
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 16),
@@ -201,10 +202,10 @@ class ChooseSeatPage extends StatelessWidget {
                   )),
                 ),
                 SeatItem(
-                  status: 0, id: 'C3',
+                  id: 'C3',
                 ),
                 SeatItem(
-                  status: 0, id: 'D3',
+                  id: 'D3',
                 ),
               ],
             ),
@@ -212,10 +213,10 @@ class ChooseSeatPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 SeatItem(
-                  status: 0, id: 'A4',
+                  id: 'A4',
                 ),
                 SeatItem(
-                  status: 2, id: 'B4',
+                  id: 'B4',
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 16),
@@ -230,10 +231,11 @@ class ChooseSeatPage extends StatelessWidget {
                   )),
                 ),
                 SeatItem(
-                  status: 0, id: 'C4',
+                  id: 'C4',
                 ),
                 SeatItem(
-                  status: 0, id: 'D4',
+                  id: 'D4',
+                  isAvailable: false,
                 ),
               ],
             ),
@@ -241,10 +243,10 @@ class ChooseSeatPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 SeatItem(
-                  status: 0, id: 'A5',
+                   id: 'A5',
                 ),
                 SeatItem(
-                  status: 0, id: 'B5',
+                  id: 'B5',
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 16),
@@ -259,10 +261,10 @@ class ChooseSeatPage extends StatelessWidget {
                   )),
                 ),
                 SeatItem(
-                  status: 2, id: 'C5',
+                 id: 'C5',
                 ),
                 SeatItem(
-                  status: 0, id: 'D5',
+                 id: 'D5',
                 ),
               ],
             ),
@@ -272,7 +274,7 @@ class ChooseSeatPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text("Your Seat", style: greyTextStyle.copyWith(fontWeight: light),),
-                  Text("A3,B3", style: blackTextStyle.copyWith(fontWeight: medium, fontSize: 16),),
+                  Text(controller.seatOccupied.join(', '), style: blackTextStyle.copyWith(fontWeight: medium, fontSize: 16),),
                 ],
               ),
             ),
@@ -282,7 +284,12 @@ class ChooseSeatPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text("Total", style: greyTextStyle.copyWith(fontWeight: light),),
-                  Text("IDR 540.000.000", style: purpleTextStyle.copyWith(fontWeight: semiBold, fontSize: 16),),
+              Text(
+                  NumberFormat.currency(
+                    locale: 'id',
+                    symbol: 'IDR ',
+                    decimalDigits: 0,
+                  ).format(controller.seatOccupied.length * detailController.destination.price), style: purpleTextStyle.copyWith(fontWeight: semiBold, fontSize: 16),),
                 ],
               ),
             )
@@ -301,7 +308,7 @@ class ChooseSeatPage extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(17))),
           onPressed: () {
-            Get.toNamed(CheckoutPage.routeName);
+            Get.toNamed(CheckoutPage.routeName, arguments: detailController.destination);
           },
           child: Text(
             'Continue to Checkout',
@@ -312,11 +319,13 @@ class ChooseSeatPage extends StatelessWidget {
       );
     }
 
-    return Scaffold(
-      backgroundColor: backgroundColor,
-      body: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 24),
-        children: [title(), seatStatus(), selectedSeat(), checkoutButton()],
+    return GetBuilder(
+      builder: (SeatController controller) => Scaffold(
+        backgroundColor: backgroundColor,
+        body: ListView(
+          padding: EdgeInsets.symmetric(horizontal: 24),
+          children: [title(), seatStatus(), selectedSeat(), checkoutButton()],
+        ),
       ),
     );
   }

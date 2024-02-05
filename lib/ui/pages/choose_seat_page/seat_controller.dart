@@ -7,13 +7,18 @@ class SeatController extends GetxController{
   Future<void> selectSeat(String id) async {
     if(!isSelected(id)){
       seatOccupied.add(id);
+      update();
+    }else{
+      seatOccupied.remove(id);
+      update();
     }
+    print(seatOccupied);
+    var list = List.from(seatOccupied);
     update();
   }
 
   bool isSelected(String id){
     int index = seatOccupied.indexOf(id);
-    print(index);
     if(index == -1){
       return false;
     }
