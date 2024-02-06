@@ -13,7 +13,6 @@ class SeatController extends GetxController{
       update();
     }
     print(seatOccupied);
-    var list = List.from(seatOccupied);
     update();
   }
 

@@ -8,17 +8,12 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:intl/intl.dart';
 
-import '../choose_seat_page/seat_controller.dart';
-
 class CheckoutPage extends GetView<CheckOutPageController> {
   CheckoutPage({Key? key}) : super(key: key);
   static const routeName = '/checkout';
-  var state = Get.find<SeatController>();
-  int price = 0;
 
   @override
   Widget build(BuildContext context) {
-    price = state.seatOccupied.length * controller.destination.price;
     Widget route() {
       return Container(
         margin: EdgeInsets.only(top: 50),
@@ -89,7 +84,7 @@ class CheckoutPage extends GetView<CheckOutPageController> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(18),
                       image: DecorationImage(
-                          image: NetworkImage(controller.destination.imageurl),
+                          image: NetworkImage(controller.transactions.destination.imageurl),
                           fit: BoxFit.cover)),
                 ),
                 Expanded(
@@ -97,12 +92,12 @@ class CheckoutPage extends GetView<CheckOutPageController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        controller.destination.name,
+                        controller.transactions.destination.name,
                         style: blackTextStyle.copyWith(
                             fontWeight: medium, fontSize: 18),
                       ),
                       Text(
-                        controller.destination.city,
+                        controller.transactions.destination.city,
                         style: greyTextStyle.copyWith(fontWeight: light),
                       )
                     ],
@@ -118,7 +113,7 @@ class CheckoutPage extends GetView<CheckOutPageController> {
                               image: AssetImage('assets/images/Star.png'))),
                     ),
                     Text(
-                      controller.destination.rating.toString(),
+                      controller.transactions.destination.rating.toString(),
                       style: blackTextStyle.copyWith(fontWeight: medium),
                     )
                   ],
@@ -138,12 +133,12 @@ class CheckoutPage extends GetView<CheckOutPageController> {
             ),
             BookingItem(
               title: "Traveler",
-              text: '${state.seatOccupied.length.toString()} Person',
+              text: '${controller.transactions.amountOfTraveler} Person',
               valueColor: blackColor,
             ),
             BookingItem(
               title: "Seat",
-              text: state.seatOccupied.join(', '),
+              text: controller.transactions.selectedSeats,
               valueColor: blackColor,
             ),
             BookingItem(
@@ -153,7 +148,7 @@ class CheckoutPage extends GetView<CheckOutPageController> {
             ),
             BookingItem(
               title: "Refundable",
-              text: '${state.seatOccupied.length.toString()} Person',
+              text: '${controller.transactions.amountOfTraveler} Person',
               valueColor: redColor,
             ),
             BookingItem(
@@ -167,7 +162,7 @@ class CheckoutPage extends GetView<CheckOutPageController> {
                 locale: 'id',
                 symbol: 'IDR ',
                 decimalDigits: 0,
-              ).format(price),
+              ).format(controller.transactions.price),
               valueColor: blackColor,
             ),
             BookingItem(
@@ -176,7 +171,7 @@ class CheckoutPage extends GetView<CheckOutPageController> {
                 locale: 'id',
                 symbol: 'IDR ',
                 decimalDigits: 0,
-              ).format(price + (price * 0.45)),
+              ).format(controller.transactions.grandTotal),
               valueColor: primaryColor,
             ),
           ],
@@ -264,8 +259,19 @@ class CheckoutPage extends GetView<CheckOutPageController> {
               backgroundColor: primaryColor,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(17))),
-          onPressed: () {
-            Get.toNamed(SuccessCheckout.routeName);
+          onPressed: () async {
+             await controller.createTransaction(controller.transactions);
+            if (controller.status == TransactionStatus.loading) {
+              print("Loading");
+            } else if (controller.status == TransactionStatus.success) {
+              print("Success");
+              Get.offNamedUntil(SuccessCheckout.routeName, (route) => false);
+            } else if (controller.status == TransactionStatus.failed) {
+              print("Failed");
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content:
+                  Text(controller.error ?? 'Unknown error')));
+            }
           },
           child: Text(
             'Pay Now',
