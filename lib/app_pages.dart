@@ -17,6 +17,8 @@ import 'package:bwa_masteringflutter/ui/pages/setting_page/setting_page_binding.
 import 'package:bwa_masteringflutter/ui/pages/sign_up/sign_up_binding.dart';
 import 'package:bwa_masteringflutter/ui/pages/sign_up/sign_up_screen.dart';
 import 'package:bwa_masteringflutter/ui/pages/splash_screen.dart';
+import 'package:bwa_masteringflutter/ui/pages/transaction_page/trannsaction_page.dart';
+import 'package:bwa_masteringflutter/ui/pages/transaction_page/transaction_binding.dart';
 import 'package:flutter/animation.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
@@ -98,6 +100,14 @@ var appPages = [
     name: LoginPage.routeName,
     page: () => LoginPage(),
     binding: LoginPageBinding(),
+    transition: Transition.cupertino,
+    curve: Curves.easeInOut,
+    transitionDuration: const Duration(milliseconds: 250),
+  ),
+  GetPage(
+    name: TransactionPage.routeName,
+    page: () => TransactionPage(),
+    binding: TransactionBinding(),
     transition: Transition.cupertino,
     curve: Curves.easeInOut,
     transitionDuration: const Duration(milliseconds: 250),

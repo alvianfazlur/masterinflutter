@@ -17,7 +17,7 @@ class NewDestination extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(DetailPage.routeName);
+        Get.toNamed(DetailPage.routeName, arguments: destinations);
       },
       child: Container(
         margin: EdgeInsets.only(top: 16),
