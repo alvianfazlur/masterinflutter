@@ -1,4 +1,3 @@
-import 'package:bwa_masteringflutter/models/transaction.dart';
 import 'package:bwa_masteringflutter/shared/theme.dart';
 import 'package:bwa_masteringflutter/ui/pages/checkout_page/checkout_page_controller.dart';
 import 'package:bwa_masteringflutter/ui/pages/checkout_page/success_checkout.dart';
@@ -265,7 +264,7 @@ class CheckoutPage extends GetView<CheckOutPageController> {
               print("Loading");
             } else if (controller.status == TransactionStatus.success) {
               print("Success");
-              Get.offNamedUntil(SuccessCheckout.routeName, (route) => false);
+              Get.offNamed(SuccessCheckout.routeName);
             } else if (controller.status == TransactionStatus.failed) {
               print("Failed");
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(

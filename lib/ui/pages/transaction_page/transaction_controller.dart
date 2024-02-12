@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 enum TransactionStatus { loading, success, failed }
 class TransactionController extends GetxController{
 
-  late final List<TransactionModel> transactions;
+  List<TransactionModel> transactions = [];
   Rx<TransactionStatus> status = TransactionStatus.loading.obs;
   String? error;
   @override

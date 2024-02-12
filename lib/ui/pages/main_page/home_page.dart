@@ -1,7 +1,6 @@
 import 'package:bwa_masteringflutter/destination_controller/destination_controller.dart';
 import 'package:bwa_masteringflutter/shared/theme.dart';
 import 'package:bwa_masteringflutter/ui/pages/bonus_page/bonus_controller.dart';
-import 'package:bwa_masteringflutter/ui/pages/main_page/get_user.dart';
 import 'package:bwa_masteringflutter/ui/widgets/destination_card.dart';
 import 'package:bwa_masteringflutter/ui/widgets/new_destination.dart';
 import 'package:flutter/material.dart';

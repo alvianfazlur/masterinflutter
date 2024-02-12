@@ -1,5 +1,9 @@
 import 'package:bwa_masteringflutter/shared/theme.dart';
+import 'package:bwa_masteringflutter/ui/pages/transaction_page/trannsaction_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../main_page/main_page.dart';
 
 class SuccessCheckout extends StatelessWidget {
   const SuccessCheckout({Key? key}) : super(key: key);
@@ -43,7 +47,9 @@ class SuccessCheckout extends StatelessWidget {
                     backgroundColor: primaryColor,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(17))),
-                onPressed: () {},
+                onPressed: () {
+                  Get.offNamedUntil(TransactionPage.routeName, ModalRoute.withName(MainPage.routeName));
+                },
                 child: Text(
                   'My Bookings',
                   style: whiteTextStyle.copyWith(

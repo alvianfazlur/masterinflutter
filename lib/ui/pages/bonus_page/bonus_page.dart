@@ -3,6 +3,7 @@ import 'package:bwa_masteringflutter/ui/pages/bonus_page/bonus_controller.dart';
 import 'package:bwa_masteringflutter/ui/pages/main_page/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class BonusPage extends GetView<BonusPageController> {
   static const routeName = "/bonus";
@@ -68,13 +69,18 @@ class BonusPage extends GetView<BonusPageController> {
               style: whiteTextStyle.copyWith(fontSize: 14, fontWeight: light),
             ),
             Text(
-              controller.user.balance.toString(),
+              NumberFormat.currency(
+                locale: 'id',
+                symbol: 'IDR ',
+                decimalDigits: 0,
+              ).format(controller.user.balance),
               style: whiteTextStyle.copyWith(fontSize: 26, fontWeight: medium),
             ),
           ],
         ),
       );
     }
+
     Widget FlyButton() {
       return Container(
         margin: EdgeInsets.only(top: 50),
