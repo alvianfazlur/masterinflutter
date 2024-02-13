@@ -38,7 +38,7 @@ class BonusPage extends GetView<BonusPageController> {
                         style: whiteTextStyle.copyWith(fontWeight: light),
                       ),
                       Text(
-                        controller.user.name,
+                        controller.user.name.toUpperCase(),
                         style: whiteTextStyle.copyWith(
                             fontSize: 20, fontWeight: medium),
                         overflow: TextOverflow.ellipsis,

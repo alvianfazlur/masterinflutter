@@ -31,4 +31,15 @@ class userService {
       throw e;
     }
   }
+
+  Future<void> updateBalance (String id, int newBalance) async {
+    try{
+      await _userReference.doc(id).update({
+        'balance': newBalance,
+      });
+    }catch(e){
+      throw e;
+    }
+  }
+
 }

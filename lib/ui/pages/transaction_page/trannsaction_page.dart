@@ -1,8 +1,7 @@
-import 'package:bwa_masteringflutter/ui/pages/bonus_page/bonus_page.dart';
-import 'package:bwa_masteringflutter/ui/pages/main_page/home_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/main_page/main_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/transaction_page/transaction_card.dart';
 import 'package:bwa_masteringflutter/ui/pages/transaction_page/transaction_controller.dart';
+import 'package:bwa_masteringflutter/ui/widgets/bottom_navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,38 +15,6 @@ class TransactionPage extends GetView<TransactionController> {
 
   @override
   Widget build(BuildContext context) {
-    Widget ButtonNavbar() {
-      return Align(
-        alignment: Alignment.bottomCenter,
-        child: Container(
-          margin: EdgeInsets.only(bottom: 30, left: 24, right: 24),
-          width: double.infinity,
-          height: 60,
-          decoration: BoxDecoration(
-              color: whiteColor,
-              borderRadius: BorderRadius.circular(defaultRadius)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              CustomBottomNavbar(
-                  image: 'assets/images/fi_globe.png',
-                  onTap: () => Get.offNamed(MainPage.routeName)),
-              CustomBottomNavbar(
-                  image: 'assets/images/fi_book.png',
-                  isSelected: true,
-                  onTap: () => Get.toNamed(TransactionPage.routeName)),
-              CustomBottomNavbar(
-                  image: 'assets/images/fi_credit-card.png',
-                  onTap: () => Get.toNamed(SettingPage.routeName)),
-              CustomBottomNavbar(
-                image: 'assets/images/fi_settings.png',
-                onTap: () => Get.toNamed(SettingPage.routeName),
-              ),
-            ],
-          ),
-        ),
-      );
-    }
 
     Widget allTransaction(List<TransactionModel> transactions) {
       if (transactions.isEmpty) {
@@ -101,7 +68,7 @@ class TransactionPage extends GetView<TransactionController> {
                         allTransaction(controller.transactions),
                       ],
                     ),
-                    ButtonNavbar(),
+                    BottomNavbar(isSelectedTransaction: true),
                   ],
                 ),
               ),

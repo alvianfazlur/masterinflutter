@@ -17,6 +17,7 @@ class TransactionCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: whiteColor,
           borderRadius: BorderRadius.circular(18),
+          border: Border.all(color: blackColor.withOpacity(0.2))
         ),
         child: Column(
           children: [
@@ -91,7 +92,7 @@ class TransactionCard extends StatelessWidget {
                               ],
                             ),
                             Text(
-                              '${transaction.amountOfTraveler} Person',
+                              '${transaction.amountOfTraveler} Penumpang',
                               style: greyTextStyle.copyWith(fontWeight: light),
                             ),
                           ],

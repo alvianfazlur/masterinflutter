@@ -3,7 +3,7 @@ class userData{
   final String email;
   final String name;
   final String hobby;
-  final int balance;
+  int balance;
 
   userData(
       {required this.id, required this.email, required this.name, required this.hobby, this.balance = 0});
