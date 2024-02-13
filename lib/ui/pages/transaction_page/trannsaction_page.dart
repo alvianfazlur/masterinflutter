@@ -74,10 +74,15 @@ class TransactionPage extends GetView<TransactionController> {
         return Container(
           margin: EdgeInsets.only(bottom: 120),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: transactions.map((TransactionModel transaction) {
-              return TransactionCard(transaction);
-            }).toList(),
+            children: [
+              Text("Riwayat Booking", style: blackTextStyle.copyWith(fontWeight: semiBold, fontSize: 28),),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: transactions.map((TransactionModel transaction) {
+                  return TransactionCard(transaction);
+                }).toList(),
+              ),
+            ],
           ),
         );
       }
