@@ -4,7 +4,7 @@ import 'package:bwa_masteringflutter/ui/pages/sign_up/sign_up_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../widgets/input_section.dart';
+import 'widgets/input_section.dart';
 
 class SignUpScreen extends GetView<SignUpController> {
   static const routeName = "/signup";

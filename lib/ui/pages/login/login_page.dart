@@ -63,13 +63,10 @@ class LoginPage extends GetView<LoginController> {
                             email: controller.emailController.text,
                             password: controller.passwordController.text);
                         if (controller.status == AuthStatus.loading) {
-                          print("Loading");
                         } else if (controller.status == AuthStatus.success) {
-                          print("Success");
                           Get.offNamedUntil(BonusPage.routeName, (route) => false,
                               arguments: controller.user);
                         } else if (controller.status == AuthStatus.failed) {
-                          print("Failed");
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content:
                               Text(controller.error ?? 'Unknown error')));

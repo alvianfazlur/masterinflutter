@@ -2,7 +2,7 @@ import 'package:bwa_masteringflutter/models/transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../../shared/theme.dart';
+import '../../../../shared/theme.dart';
 
 class TransactionCard extends StatelessWidget {
   const TransactionCard(this.transaction, {Key? key}) : super(key: key);

@@ -104,12 +104,9 @@ class InputSection extends StatelessWidget {
                             name: controller.nameController.text,
                             hobby: controller.hobbyController.text);
                         if (controller.status == AuthStatus.loading) {
-                          print("Loading");
                         } else if (controller.status == AuthStatus.success) {
-                          print("Success");
-                          Get.offNamed(BonusPage.routeName);
+                          Get.offNamed(BonusPage.routeName, arguments: controller.user);
                         } else if (controller.status == AuthStatus.failed) {
-                          print("Failed");
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content:
                                   Text(controller.error ?? 'Unknown error')));
