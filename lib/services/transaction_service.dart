@@ -29,7 +29,6 @@ class TransactionService {
         return TransactionModel.fromJson(
             e.id, e.data() as Map<String, dynamic>);
       }).toList();
-
       return transactions;
     } catch (e) {
       throw e;

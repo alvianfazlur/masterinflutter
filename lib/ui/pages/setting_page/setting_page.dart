@@ -1,7 +1,10 @@
 import 'package:bwa_masteringflutter/ui/pages/setting_page/setting_page_controller.dart';
+import 'package:bwa_masteringflutter/ui/pages/setting_page/widget/background.dart';
+import 'package:bwa_masteringflutter/ui/pages/setting_page/widget/header_content.dart';
+import 'package:bwa_masteringflutter/ui/widgets/bottom_navbar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../shared/theme.dart';
 
 class SettingPage extends GetView<SettingPageController> {
@@ -10,26 +13,16 @@ class SettingPage extends GetView<SettingPageController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(child: Container(
-        margin: EdgeInsets.only(top: 50),
-        width: 220,
-        height: 55,
-        child: TextButton(
-          style: TextButton.styleFrom(
-              backgroundColor: primaryColor,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(17))),
-          onPressed: () {
-            controller.signOut();
-          },
-          child: Text(
-            'Peace Out',
-            style: whiteTextStyle.copyWith(
-                fontWeight: medium, fontSize: 18),
-          ),
+    return GetBuilder(
+      builder: (SettingPageController controller) => Scaffold(
+        body: Stack(
+          children: [
+            Background(),
+            HeaderContent(controller: controller),
+            BottomNavbar(isSelectedSetting: true),
+          ],
         ),
-      )),
+      ),
     );
   }
 }
