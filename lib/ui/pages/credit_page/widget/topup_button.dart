@@ -16,7 +16,8 @@ class TopUpButton extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: (){
-              controller.topUp(id: controller.user!.id, balance: 10000);
+              controller.setVisibleMenu(true);
+              print(controller.isVisibleMenu);
             },
             child: Column(
               children: [

@@ -1,5 +1,7 @@
 import 'package:bwa_masteringflutter/shared/theme.dart';
 import 'package:bwa_masteringflutter/ui/pages/credit_page/credit_controller.dart';
+import 'package:bwa_masteringflutter/ui/pages/credit_page/widget/display_topup.dart';
+import 'package:bwa_masteringflutter/ui/pages/credit_page/widget/header.dart';
 import 'package:bwa_masteringflutter/ui/pages/credit_page/widget/topup_button.dart';
 import 'package:bwa_masteringflutter/ui/widgets/bottom_navbar.dart';
 import 'package:flutter/material.dart';
@@ -12,66 +14,6 @@ class CreditPage extends GetView<CreditController> {
 
   @override
   Widget build(BuildContext context) {
-    Widget Header() {
-      return Padding(
-        padding: const EdgeInsets.all(10),
-        child: Row(
-          children: [
-            Container(
-              height: 50,
-              width: 80,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('assets/images/logo_punggawa.ico'))),
-            ),
-            SizedBox(
-              width: 6,
-            ),
-            Expanded(
-              child: Container(
-                height: 50,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Hai,",
-                      style: blackTextStyle.copyWith(fontWeight: light),
-                    ),
-                    Text(
-                      "${controller.user!.name.toUpperCase()}",
-                      style: blackTextStyle.copyWith(fontWeight: bold),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.all(10),
-              height: 50,
-              decoration: BoxDecoration(
-                  color: whiteColor, borderRadius: BorderRadius.circular(10)),
-              child: Row(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(right: 6),
-                    width: 24,
-                    height: 24,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage('assets/images/headphone.png'))),
-                  ),
-                  Text(
-                    "Pusat\nBantuan",
-                    style: blackTextStyle.copyWith(
-                        fontWeight: medium, fontSize: 10),
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
-      );
-    }
 
     Widget Content() {
       return Container(
@@ -113,8 +55,13 @@ class CreditPage extends GetView<CreditController> {
             body: SafeArea(
                 child: Stack(
                   children: [
+                    ListView(
+                      children: [
+                        Content(),
+                        DisplayTopUp()
+                      ],
+                    ),
                     Header(),
-                    Content(),
                     BottomNavbar(
                       isSelectedSaldo: true,
                     )
