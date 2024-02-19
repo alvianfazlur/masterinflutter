@@ -1,12 +1,15 @@
 import 'package:bwa_masteringflutter/shared/theme.dart';
 import 'package:bwa_masteringflutter/ui/pages/credit_page/credit_controller.dart';
 import 'package:bwa_masteringflutter/ui/pages/credit_page/widget/button_nominal.dart';
+import 'package:bwa_masteringflutter/ui/pages/payment_page/payment_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class DisplayTopUp extends StatelessWidget {
-  const DisplayTopUp({Key? key}) : super(key: key);
+  DisplayTopUp({Key? key}) : super(key: key);
+  WebViewController webViewController = WebViewController();
 
   @override
   Widget build(BuildContext context) {
@@ -65,9 +68,21 @@ class DisplayTopUp extends StatelessWidget {
                                 backgroundColor: primaryColor,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10))),
-                            onPressed: () {
-                              controller.topUp(id: controller.user!.id, balance: controller.selectedNominal[0]);
-                            },
+                              onPressed: () async {
+                                Get.dialog(
+                                  Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                  barrierDismissible: false,
+                                );
+                                await controller.topUp(
+                                  id: controller.user!.id,
+                                  balance: controller.selectedNominal[0],
+                                  name: controller.user!.name,
+                                );
+                                Get.back();
+                                Get.toNamed(MidtransPaymentPage.routeName, arguments: controller.snapToken);
+                              },
                             child: Text(
                               'Bayar',
                               style: whiteTextStyle.copyWith(

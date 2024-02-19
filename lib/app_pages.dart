@@ -14,6 +14,8 @@ import 'package:bwa_masteringflutter/ui/pages/login/login_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/main_page/main_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/choose_seat_page/seat_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/main_page/main_page_binding.dart';
+import 'package:bwa_masteringflutter/ui/pages/payment_page/payment_binding.dart';
+import 'package:bwa_masteringflutter/ui/pages/payment_page/payment_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/setting_page/setting_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/setting_page/setting_page_binding.dart';
 import 'package:bwa_masteringflutter/ui/pages/sign_up/sign_up_binding.dart';
@@ -118,6 +120,14 @@ var appPages = [
     name: CreditPage.routeName,
     page: () => CreditPage(),
     binding: CreditBinding(),
+    transition: Transition.cupertino,
+    curve: Curves.easeInOut,
+    transitionDuration: const Duration(milliseconds: 250),
+  ),
+  GetPage(
+    name: MidtransPaymentPage.routeName,
+    page: () => MidtransPaymentPage(),
+    binding: PaymentBinding(),
     transition: Transition.cupertino,
     curve: Curves.easeInOut,
     transitionDuration: const Duration(milliseconds: 250),

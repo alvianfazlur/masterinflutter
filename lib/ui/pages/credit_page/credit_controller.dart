@@ -1,12 +1,13 @@
 import 'package:bwa_masteringflutter/models/user.dart';
+import 'package:bwa_masteringflutter/services/midtrans_service.dart';
 import 'package:bwa_masteringflutter/services/user_service.dart';
 import 'package:bwa_masteringflutter/ui/pages/bonus_page/bonus_controller.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CreditController extends GetxController{
   var userController = Get.find<BonusPageController>();
   userData? user;
+  String? snapToken;
   final List<int> selectedNominal = [];
   bool isVisibleMenu = false;
 
@@ -22,12 +23,13 @@ class CreditController extends GetxController{
   }
 
 
-  Future<void> topUp({required String id, required int balance}) async {
+  Future<void> topUp({required String id, required int balance, required String name}) async {
     user = userController.user;
     int newBalance = user!.balance + balance;
     try {
-      await userService().updateBalance(id, newBalance);
-      user!.balance = newBalance;
+      snapToken = await MidtransService().createTopUpOrder(id, balance, name);
+      // await userService().updateBalance(id, newBalance);
+      // user!.balance = newBalance;
       update();
     } catch (e) {
       throw e;
