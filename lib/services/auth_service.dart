@@ -1,4 +1,6 @@
+import 'package:bwa_masteringflutter/services/data_user_service.dart';
 import 'package:bwa_masteringflutter/services/user_service.dart';
+import 'package:bwa_masteringflutter/shared/api_url.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../models/user.dart';
@@ -18,8 +20,7 @@ class AuthService {
           id: userCredential.user!.uid,
           email: email,
           name: name,
-          hobby: hobby,
-          balance: 280000000);
+          hobby: hobby);
       await userService().setUser(user);
       return user;
     } catch (e) {

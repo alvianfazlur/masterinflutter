@@ -25,11 +25,8 @@ class CreditController extends GetxController{
 
   Future<void> topUp({required String id, required int balance, required String name}) async {
     user = userController.user;
-    int newBalance = user!.balance + balance;
     try {
       snapToken = await MidtransService().createTopUpOrder(id, balance, name);
-      // await userService().updateBalance(id, newBalance);
-      // user!.balance = newBalance;
       update();
     } catch (e) {
       throw e;
@@ -50,7 +47,6 @@ class CreditController extends GetxController{
       selectedNominal.removeAt(0);
     }
     selectedNominal.add(nominal);
-    print(selectedNominal);
     update();
   }
 

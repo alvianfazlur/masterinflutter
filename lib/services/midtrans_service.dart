@@ -1,7 +1,5 @@
 import 'dart:convert';
-import 'package:bwa_masteringflutter/services/api_url.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:bwa_masteringflutter/shared/api_url.dart';
 import 'package:http/http.dart' as http;
 
 class MidtransService{
@@ -15,7 +13,7 @@ class MidtransService{
       };
 
       var response = await http.post(
-        topUpAPi,
+        Uri.parse(topUpAPi),
         body: jsonEncode(requestData),
         headers: {'Content-Type': 'application/json'},
       );

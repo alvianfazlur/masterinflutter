@@ -1,3 +1,5 @@
+import 'package:bwa_masteringflutter/ui/order_history/order_history_binding.dart';
+import 'package:bwa_masteringflutter/ui/order_history/order_history_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/bonus_page/bonus_binding.dart';
 import 'package:bwa_masteringflutter/ui/pages/bonus_page/bonus_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/checkout_page/checkout_page.dart';
@@ -23,6 +25,7 @@ import 'package:bwa_masteringflutter/ui/pages/sign_up/sign_up_screen.dart';
 import 'package:bwa_masteringflutter/ui/pages/splash_screen.dart';
 import 'package:bwa_masteringflutter/ui/pages/transaction_page/trannsaction_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/transaction_page/transaction_binding.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/animation.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
@@ -128,6 +131,14 @@ var appPages = [
     name: MidtransPaymentPage.routeName,
     page: () => MidtransPaymentPage(),
     binding: PaymentBinding(),
+    transition: Transition.cupertino,
+    curve: Curves.easeInOut,
+    transitionDuration: const Duration(milliseconds: 250),
+  ),
+  GetPage(
+    name: OrderHistoryPage.routeName,
+    page: () => OrderHistoryPage(),
+    binding: OrderHistoryBinding(),
     transition: Transition.cupertino,
     curve: Curves.easeInOut,
     transitionDuration: const Duration(milliseconds: 250),
