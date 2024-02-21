@@ -14,6 +14,7 @@ class userService {
         'email': user.email,
         'name': user.name,
         'hobby': user.hobby,
+        'balance': user.balance
       });
     } catch (e) {
       throw e;
@@ -27,7 +28,8 @@ class userService {
           id: id,
           email: snapshot['email'],
           name: snapshot['name'],
-          hobby: snapshot['hobby'],);
+          hobby: snapshot['hobby'],
+      balance: snapshot['balance']);
     } catch (e){
       throw e;
     }

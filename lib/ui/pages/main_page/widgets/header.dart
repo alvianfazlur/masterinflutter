@@ -16,7 +16,7 @@ class HomePageHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Howdy,\n${userController.user.name.toUpperCase()}",
+                "Howdy,\n${userController.user!.name.toUpperCase()}",
                 style: blackTextStyle.copyWith(
                     fontSize: 24, fontWeight: semiBold),
                 overflow: TextOverflow.ellipsis,

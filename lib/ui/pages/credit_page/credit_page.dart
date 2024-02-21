@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
+import '../../../services/balance_service.dart';
+
 class CreditPage extends GetView<CreditController> {
   const CreditPage({Key? key}) : super(key: key);
   static const routeName = '/credit';
@@ -53,19 +55,24 @@ class CreditPage extends GetView<CreditController> {
           Scaffold(
             backgroundColor: backgroundColor,
             body: SafeArea(
-                child: Stack(
-                  children: [
-                    ListView(
-                      children: [
-                        Content(),
-                        DisplayTopUp()
-                      ],
-                    ),
-                    Header(),
-                    BottomNavbar(
-                      isSelectedSaldo: true,
-                    )
-                  ],
+                child: RefreshIndicator(
+                  onRefresh: () async {
+                   await controller.fetchBalance();
+                  },
+                  child: Stack(
+                    children: [
+                      ListView(
+                        children: [
+                          Content(),
+                          DisplayTopUp()
+                        ],
+                      ),
+                      Header(),
+                      BottomNavbar(
+                        isSelectedSaldo: true,
+                      )
+                    ],
+                  ),
                 )),
           ),
     );

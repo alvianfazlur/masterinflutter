@@ -22,7 +22,7 @@ class OrderHistoryPage extends GetView<OrderHistoryController> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  ShowOrder(order: controller.orderData),
+                  ShowOrder(orders: controller.orderData),
                 ],
               ),
             ),

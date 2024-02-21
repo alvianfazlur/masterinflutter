@@ -38,7 +38,7 @@ class BonusPage extends GetView<BonusPageController> {
                         style: whiteTextStyle.copyWith(fontWeight: light),
                       ),
                       Text(
-                        controller.user.name.toUpperCase(),
+                        controller.user!.name.toUpperCase(),
                         style: whiteTextStyle.copyWith(
                             fontSize: 20, fontWeight: medium),
                         overflow: TextOverflow.ellipsis,
@@ -73,7 +73,7 @@ class BonusPage extends GetView<BonusPageController> {
                 locale: 'id',
                 symbol: 'IDR ',
                 decimalDigits: 0,
-              ).format(controller.user.balance),
+              ).format(controller.user!.balance),
               style: whiteTextStyle.copyWith(fontSize: 26, fontWeight: medium),
             ),
           ],

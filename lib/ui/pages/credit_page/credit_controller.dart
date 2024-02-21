@@ -4,6 +4,8 @@ import 'package:bwa_masteringflutter/services/user_service.dart';
 import 'package:bwa_masteringflutter/ui/pages/bonus_page/bonus_controller.dart';
 import 'package:get/get.dart';
 
+import '../../../services/balance_service.dart';
+
 class CreditController extends GetxController{
   var userController = Get.find<BonusPageController>();
   userData? user;
@@ -14,6 +16,7 @@ class CreditController extends GetxController{
   @override
   void onInit() {
     user = userController.user;
+    fetchBalance();
     super.onInit();
   }
 
@@ -47,6 +50,14 @@ class CreditController extends GetxController{
       selectedNominal.removeAt(0);
     }
     selectedNominal.add(nominal);
+    update();
+  }
+
+  Future<void> fetchBalance()async {
+    user = userController.user;
+    var newBalance = await BalanceService().fetchBalance(userController.user!.id);
+    print(newBalance);
+    user!.balance = newBalance;
     update();
   }
 

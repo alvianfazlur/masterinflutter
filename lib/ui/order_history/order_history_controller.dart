@@ -1,7 +1,9 @@
 import 'dart:convert';
 
+import 'package:bwa_masteringflutter/services/balance_service.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../models/order.dart';
 import '../../shared/api_url.dart';
 import '../pages/bonus_page/bonus_controller.dart';
@@ -11,11 +13,23 @@ class OrderHistoryController extends GetxController{
   List<OrderModel> orderData = [];
   var userController = Get.find<BonusPageController>();
   var isFetch = false.obs;
+  late SharedPreferences prefs;
 
   @override
-  void onInit() {
-    fetchOrders(userController.user.id);
+  void onInit() async {
+    prefs = await SharedPreferences.getInstance();
+    loadOrders();
+    fetchOrders(userController.user!.id);
     super.onInit();
+  }
+
+  Future<void> loadOrders() async {
+    final orderJsonList = prefs.getStringList('order_data${userController.user!.id}');
+    if (orderJsonList != null) {
+      orderData.clear();
+      orderData.addAll(orderJsonList.map((userJson) => OrderModel.fromJson(jsonDecode(userJson))));
+    }
+    update();
   }
 
   Future<void> fetchOrders(String uid) async {
@@ -33,11 +47,26 @@ class OrderHistoryController extends GetxController{
 
   }
   void getDataFromDb(List<dynamic> orders) async {
-    orderData.clear();
     for (var element in orders) {
-      orderData.add(OrderModel.fromJson(element));
+      OrderModel order = OrderModel.fromJson(element);
+      print('${order.id.toString()} ${order.status}');
+      if (orderData.any((existingOrder) => existingOrder.id == order.id)) {
+        print('Order dengan id ${order.id} sudah pernah ditambahkan sebelumnya');
+      } else {
+        orderData.add(order);
+        if(order.status == 'Paid'){
+          await BalanceService().updateBalance(userController.user!.id, order.total_topup + userController.user!.balance);
+        }
+      }
+      await saveOrders();
     }
 
     update();
   }
+
+  Future<void> saveOrders() async {
+    final orderJsonList = orderData.map((order) => jsonEncode(order.toJson())).toList();
+    await prefs.setStringList('order_data${userController.user!.id}', orderJsonList);
+  }
+
 }

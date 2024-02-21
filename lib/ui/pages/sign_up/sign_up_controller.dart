@@ -28,6 +28,7 @@ class SignUpController extends GetxController with EquatableMixin {
         password: password,
         name: name,
         hobby: hobby,
+        balance: 280000000,
       );
 
       status = AuthStatus.success.obs;

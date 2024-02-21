@@ -8,12 +8,12 @@ import '../../../../models/transaction.dart';
 import '../../../../shared/theme.dart';
 
 class ShowOrder extends StatelessWidget {
-  const ShowOrder({Key? key, required this.order}) : super(key: key);
+  const ShowOrder({Key? key, required this.orders}) : super(key: key);
 
-  final List<OrderModel> order;
+  final List<OrderModel> orders;
   @override
   Widget build(BuildContext context) {
-    if (order.isEmpty) {
+    if (orders.isEmpty) {
       return Center(
         child: Column(
           children: [
@@ -43,8 +43,8 @@ class ShowOrder extends StatelessWidget {
               Text("Riwayat TopUp", style: blackTextStyle.copyWith(fontWeight: semiBold, fontSize: 28),),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: order.map((OrderModel orders) {
-                  return OrderCard(orders);
+                children: orders.map((OrderModel order) {
+                  return OrderCard(order);
                 }).toList(),
               ),
             ],

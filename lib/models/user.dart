@@ -6,6 +6,6 @@ class userData{
   int balance;
 
   userData(
-      {required this.id, required this.email, required this.name, required this.hobby, this.balance = 0});
+      {required this.id, required this.email, required this.name, required this.hobby, this.balance = 280000000});
 
 }
