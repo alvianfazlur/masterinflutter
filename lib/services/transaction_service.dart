@@ -15,16 +15,17 @@ class TransactionService {
         'refundable': transaction.refundable,
         'vat': transaction.vat,
         'price':transaction.price,
-        'grandTotal':transaction.grandTotal
+        'grandTotal':transaction.grandTotal,
+        'uid':transaction.uid
       });
     } catch (e) {
       throw e;
     }
   }
 
-  Future<List<TransactionModel>> fetchTransaction() async {
+  Future<List<TransactionModel>> fetchTransaction(String uid) async {
     try {
-      QuerySnapshot result = await _transactionReference.get();
+      QuerySnapshot result = await _transactionReference.where('uid', isEqualTo: uid).get();
       List<TransactionModel> transactions = result.docs.map((e) {
         return TransactionModel.fromJson(
             e.id, e.data() as Map<String, dynamic>);

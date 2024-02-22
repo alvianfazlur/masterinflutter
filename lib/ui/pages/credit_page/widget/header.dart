@@ -69,12 +69,7 @@ class Header extends StatelessWidget {
                     height: 24,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage('assets/images/headphone.png'))),
-                  ),
-                  Text(
-                    "Pusat\nBantuan",
-                    style: blackTextStyle.copyWith(
-                        fontWeight: medium, fontSize: 10),
+                            image: AssetImage('assets/images/history.png'))),
                   ),
                 ],
               ),

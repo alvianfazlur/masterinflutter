@@ -228,12 +228,12 @@ class CheckoutPage extends GetView<CheckOutPageController> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "IDR 80.400.000",
-                        style: blackTextStyle.copyWith(
-                            fontSize: 18, fontWeight: medium),
-                        overflow: TextOverflow.ellipsis,
-                      ),
+                      Text(NumberFormat.currency(
+                        locale: 'id',
+                        symbol: 'Rp ',
+                        decimalDigits: 0,
+                      ).format(controller.userController.user!.balance),
+                        style: blackTextStyle.copyWith(fontWeight: medium, fontSize: 18),),
                       Text(
                         "Current Balance",
                         style: greyTextStyle.copyWith(fontWeight: light),
@@ -259,17 +259,28 @@ class CheckoutPage extends GetView<CheckOutPageController> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(17))),
           onPressed: () async {
-             await controller.createTransaction(controller.transactions);
-            if (controller.status == TransactionStatus.loading) {
-              print("Loading");
-            } else if (controller.status == TransactionStatus.success) {
-              print("Success");
-              Get.offNamed(SuccessCheckout.routeName);
-            } else if (controller.status == TransactionStatus.failed) {
-              print("Failed");
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content:
-                  Text(controller.error ?? 'Unknown error')));
+            if(controller.isSufficient()){
+              await controller.createTransaction(controller.transactions);
+              if (controller.status == TransactionStatus.loading) {
+                print("Loading");
+              } else if (controller.status == TransactionStatus.success) {
+                print("Success");
+                Get.offNamed(SuccessCheckout.routeName);
+              } else if (controller.status == TransactionStatus.failed) {
+                print("Failed");
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content:
+                    Text(controller.error ?? 'Unknown error')));
+              }
+            }else{
+              Get.snackbar(
+                'Saldo Tidak Cukup',
+                'Silahkan Mengisi Saldo Terlebih Dahulu!',
+                backgroundColor: Colors.red,
+                colorText: Colors.white,
+                snackPosition: SnackPosition.TOP,
+                duration: const Duration(seconds: 3),
+              );
             }
           },
           child: Text(

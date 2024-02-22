@@ -5,6 +5,8 @@ import 'package:bwa_masteringflutter/shared/theme.dart';
 import 'package:bwa_masteringflutter/ui/pages/bonus_page/bonus_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/get_started.dart';
 import 'package:bwa_masteringflutter/ui/pages/main_page/get_user.dart';
+import 'package:bwa_masteringflutter/ui/pages/main_page/home_page.dart';
+import 'package:bwa_masteringflutter/ui/pages/main_page/main_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -31,7 +33,7 @@ class _SplashPageState extends State<SplashPage> {
         Get.offNamedUntil(GetStartedPage.routeName, (route) => false);
       } else {
         getUser.getCurrentUser(user.uid).then((userData user) {
-          Get.offNamedUntil(BonusPage.routeName, (route) => false,
+          Get.offNamedUntil(MainPage.routeName, (route) => false,
               arguments: user);
         });
       }

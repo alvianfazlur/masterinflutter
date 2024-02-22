@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:bwa_masteringflutter/services/balance_service.dart';
+import 'package:bwa_masteringflutter/ui/pages/main_page/destination_controller/homepage_controller.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,7 +12,7 @@ import '../pages/bonus_page/bonus_controller.dart';
 class OrderHistoryController extends GetxController{
 
   List<OrderModel> orderData = [];
-  var userController = Get.find<BonusPageController>();
+  var userController = Get.find<HomePageController>();
   var isFetch = false.obs;
   late SharedPreferences prefs;
 
@@ -49,7 +50,6 @@ class OrderHistoryController extends GetxController{
   void getDataFromDb(List<dynamic> orders) async {
     for (var element in orders) {
       OrderModel order = OrderModel.fromJson(element);
-      print('${order.id.toString()} ${order.status}');
       if (orderData.any((existingOrder) => existingOrder.id == order.id)) {
         print('Order dengan id ${order.id} sudah pernah ditambahkan sebelumnya');
       } else {

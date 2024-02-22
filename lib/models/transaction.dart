@@ -2,6 +2,7 @@ import 'package:bwa_masteringflutter/models/destination.dart';
 
 class TransactionModel {
   String? id;
+  final String uid;
   DestinationModel destination;
   int amountOfTraveler;
   String selectedSeats;
@@ -13,6 +14,7 @@ class TransactionModel {
 
   TransactionModel(
       {required this.destination,
+        required this.uid,
       this.amountOfTraveler = 0,
       this.selectedSeats = '',
       this.insurance = true,
@@ -25,6 +27,7 @@ class TransactionModel {
   factory TransactionModel.fromJson(String id, Map<String, dynamic> json) =>
       TransactionModel(
           id: id,
+          uid: json['uid'],
           destination: DestinationModel.fromJson(json['destination']['id'], json['destination']),
           amountOfTraveler: json['amountOfTraveler'],
           selectedSeats: json['selectedSeats'],

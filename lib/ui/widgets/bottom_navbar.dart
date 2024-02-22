@@ -39,19 +39,19 @@ class BottomNavbar extends StatelessWidget {
             CustomBottomNavbar(
                 image: 'assets/images/fi_globe.png',
                 isSelected: isSelectedHome,
-                onTap: () => Get.offNamed(MainPage.routeName)),
+                onTap: () => Get.offNamedUntil(MainPage.routeName, ModalRoute.withName(MainPage.routeName))),
             CustomBottomNavbar(
                 image: 'assets/images/fi_book.png',
                 isSelected: isSelectedTransaction,
-                onTap: () => Get.offNamed(TransactionPage.routeName)),
+                onTap: () => Get.offNamedUntil(TransactionPage.routeName, ModalRoute.withName(MainPage.routeName))),
             CustomBottomNavbar(
                 image: 'assets/images/fi_credit-card.png',
                 isSelected: isSelectedSaldo,
-                onTap: () => Get.offNamed(CreditPage.routeName)),
+                onTap: () => Get.offNamedUntil(CreditPage.routeName, ModalRoute.withName(MainPage.routeName))),
             CustomBottomNavbar(
               image: 'assets/images/fi_settings.png',
               isSelected: isSelectedSetting,
-              onTap: () => Get.offNamed(SettingPage.routeName),
+              onTap: () => Get.offNamedUntil(SettingPage.routeName, ModalRoute.withName(MainPage.routeName)),
             ),
           ],
         ),

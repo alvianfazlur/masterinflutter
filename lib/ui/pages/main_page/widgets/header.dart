@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import '../../../../shared/theme.dart';
 
 class HomePageHeader extends StatelessWidget {
-  const HomePageHeader({Key? key, required this.userController}) : super(key: key);
+  const HomePageHeader({Key? key, required this.name}) : super(key: key);
 
-  final BonusPageController userController;
+  final String name;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -16,7 +16,7 @@ class HomePageHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Howdy,\n${userController.user!.name.toUpperCase()}",
+                "Howdy,\n${name.toUpperCase()}",
                 style: blackTextStyle.copyWith(
                     fontSize: 24, fontWeight: semiBold),
                 overflow: TextOverflow.ellipsis,

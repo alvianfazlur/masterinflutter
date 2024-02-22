@@ -1,5 +1,7 @@
 import 'package:bwa_masteringflutter/shared/theme.dart';
 import 'package:bwa_masteringflutter/ui/pages/login/login_controller.dart';
+import 'package:bwa_masteringflutter/ui/pages/main_page/home_page.dart';
+import 'package:bwa_masteringflutter/ui/pages/main_page/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -64,7 +66,7 @@ class LoginPage extends GetView<LoginController> {
                             password: controller.passwordController.text);
                         if (controller.status == AuthStatus.loading) {
                         } else if (controller.status == AuthStatus.success) {
-                          Get.offNamedUntil(BonusPage.routeName, (route) => false,
+                          Get.offNamedUntil(MainPage.routeName, (route) => false,
                               arguments: controller.user);
                         } else if (controller.status == AuthStatus.failed) {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(

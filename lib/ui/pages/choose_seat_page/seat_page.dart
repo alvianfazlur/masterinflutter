@@ -61,6 +61,7 @@ class ChooseSeatPage extends GetView<SeatController> {
         ),
       );
     }
+
     Widget selectedSeat() {
       return Container(
         margin: EdgeInsets.only(
@@ -144,10 +145,10 @@ class ChooseSeatPage extends GetView<SeatController> {
                   )),
                 ),
                 SeatItem(
-                 id: 'C1',
+                  id: 'C1',
                 ),
                 SeatItem(
-                 id: 'D1',
+                  id: 'D1',
                 ),
               ],
             ),
@@ -155,7 +156,7 @@ class ChooseSeatPage extends GetView<SeatController> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 SeatItem(
-                 id: 'A2',
+                  id: 'A2',
                 ),
                 SeatItem(
                   id: 'B2',
@@ -243,7 +244,7 @@ class ChooseSeatPage extends GetView<SeatController> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 SeatItem(
-                   id: 'A5',
+                  id: 'A5',
                 ),
                 SeatItem(
                   id: 'B5',
@@ -261,10 +262,10 @@ class ChooseSeatPage extends GetView<SeatController> {
                   )),
                 ),
                 SeatItem(
-                 id: 'C5',
+                  id: 'C5',
                 ),
                 SeatItem(
-                 id: 'D5',
+                  id: 'D5',
                 ),
               ],
             ),
@@ -273,8 +274,16 @@ class ChooseSeatPage extends GetView<SeatController> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Your Seat", style: greyTextStyle.copyWith(fontWeight: light),),
-                  Text(controller.seatOccupied.join(', '), style: blackTextStyle.copyWith(fontWeight: medium, fontSize: 16),),
+                  Text(
+                    "Your Seat",
+                    style: greyTextStyle.copyWith(fontWeight: light),
+                  ),
+                  Text(
+                    controller.seatOccupied.join(', '),
+                    style: blackTextStyle.copyWith(
+                        fontWeight: medium, fontSize: 16),
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ],
               ),
             ),
@@ -283,13 +292,20 @@ class ChooseSeatPage extends GetView<SeatController> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Total", style: greyTextStyle.copyWith(fontWeight: light),),
-              Text(
-                  NumberFormat.currency(
-                    locale: 'id',
-                    symbol: 'IDR ',
-                    decimalDigits: 0,
-                  ).format(controller.seatOccupied.length * detailController.destination.price), style: purpleTextStyle.copyWith(fontWeight: semiBold, fontSize: 16),),
+                  Text(
+                    "Total",
+                    style: greyTextStyle.copyWith(fontWeight: light),
+                  ),
+                  Text(
+                    NumberFormat.currency(
+                      locale: 'id',
+                      symbol: 'IDR ',
+                      decimalDigits: 0,
+                    ).format(controller.seatOccupied.length *
+                        detailController.destination.price),
+                    style: purpleTextStyle.copyWith(
+                        fontWeight: semiBold, fontSize: 16),
+                  ),
                 ],
               ),
             )
@@ -297,7 +313,8 @@ class ChooseSeatPage extends GetView<SeatController> {
         ),
       );
     }
-    Widget checkoutButton(){
+
+    Widget checkoutButton() {
       return Container(
         margin: EdgeInsets.only(bottom: 46, top: 30),
         width: 327,
@@ -308,12 +325,22 @@ class ChooseSeatPage extends GetView<SeatController> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(17))),
           onPressed: () {
-            Get.toNamed(CheckoutPage.routeName, arguments: detailController.destination);
+            if (controller.seatOccupied.isEmpty) {
+              Get.snackbar(
+                'Empty Seat',
+                'Please Select your Seat',
+                backgroundColor: Colors.red,
+                colorText: Colors.white,
+                snackPosition: SnackPosition.TOP,
+                duration: const Duration(seconds: 3),
+              );
+            } else {
+              Get.toNamed(CheckoutPage.routeName, arguments: detailController.destination);
+            }
           },
           child: Text(
             'Continue to Checkout',
-            style: whiteTextStyle.copyWith(
-                fontWeight: medium, fontSize: 18),
+            style: whiteTextStyle.copyWith(fontWeight: medium, fontSize: 18),
           ),
         ),
       );
