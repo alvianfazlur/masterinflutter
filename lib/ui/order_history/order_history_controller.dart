@@ -7,7 +7,6 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../models/order.dart';
 import '../../shared/api_url.dart';
-import '../pages/bonus_page/bonus_controller.dart';
 
 class OrderHistoryController extends GetxController{
 
@@ -54,11 +53,12 @@ class OrderHistoryController extends GetxController{
         print('Order dengan id ${order.id} sudah pernah ditambahkan sebelumnya');
       } else {
         orderData.add(order);
+        print('Order dengan id ${order.id} akan ditambahkan');
         if(order.status == 'Paid'){
+          await saveOrders();
           await BalanceService().updateBalance(userController.user!.id, order.total_topup + userController.user!.balance);
         }
       }
-      await saveOrders();
     }
 
     update();

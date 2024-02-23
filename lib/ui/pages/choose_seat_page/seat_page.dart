@@ -278,11 +278,15 @@ class ChooseSeatPage extends GetView<SeatController> {
                     "Your Seat",
                     style: greyTextStyle.copyWith(fontWeight: light),
                   ),
-                  Text(
-                    controller.seatOccupied.join(', '),
-                    style: blackTextStyle.copyWith(
-                        fontWeight: medium, fontSize: 16),
-                    overflow: TextOverflow.ellipsis,
+                  Container(
+                    width: 200,
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      controller.seatOccupied.join(', '),
+                      style: blackTextStyle.copyWith(
+                          fontWeight: medium, fontSize: 16),
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                 ],
               ),
