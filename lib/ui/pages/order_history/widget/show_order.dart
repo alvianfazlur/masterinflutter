@@ -1,11 +1,9 @@
 import 'package:bwa_masteringflutter/models/order.dart';
-import 'package:bwa_masteringflutter/ui/order_history/order_history_controller.dart';
-import 'package:bwa_masteringflutter/ui/order_history/widget/order_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../../models/transaction.dart';
 import '../../../../shared/theme.dart';
+import '../order_history_controller.dart';
+import 'order_card.dart';
 
 class ShowOrder extends StatelessWidget {
   const ShowOrder({Key? key, required this.orders}) : super(key: key);
@@ -26,7 +24,7 @@ class ShowOrder extends StatelessWidget {
               margin: EdgeInsets.only(top: 50),
               width: 300,
               height: 300,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   image: DecorationImage(
                       opacity: 0.5,
                       image: AssetImage('assets/images/calendar.png'))),
@@ -36,7 +34,7 @@ class ShowOrder extends StatelessWidget {
       );
     } else {
       return Container(
-        margin: EdgeInsets.only(bottom: 120),
+        margin: const EdgeInsets.only(bottom: 120),
         child: GetBuilder(
           builder: (OrderHistoryController controller) => Column(
             children: [

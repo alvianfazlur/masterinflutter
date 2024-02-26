@@ -14,7 +14,6 @@ class ChooseSeatPage extends GetView<SeatController> {
 
   @override
   Widget build(BuildContext context) {
-    var detailController = Get.find<DetailPageController>();
     Widget title() {
       return Container(
         margin: EdgeInsets.only(top: 50),
@@ -306,7 +305,7 @@ class ChooseSeatPage extends GetView<SeatController> {
                       symbol: 'IDR ',
                       decimalDigits: 0,
                     ).format(controller.seatOccupied.length *
-                        detailController.destination.price),
+                        controller.destination.price),
                     style: purpleTextStyle.copyWith(
                         fontWeight: semiBold, fontSize: 16),
                   ),
@@ -339,7 +338,7 @@ class ChooseSeatPage extends GetView<SeatController> {
                 duration: const Duration(seconds: 3),
               );
             } else {
-              Get.toNamed(CheckoutPage.routeName, arguments: detailController.destination);
+              Get.toNamed(CheckoutPage.routeName, arguments: controller.destination);
             }
           },
           child: Text(

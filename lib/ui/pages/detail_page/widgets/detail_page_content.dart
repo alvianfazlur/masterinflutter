@@ -154,7 +154,7 @@ class DetailPageContent extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(17))),
                     onPressed: () {
-                      Get.toNamed(ChooseSeatPage.routeName);
+                      Get.toNamed(ChooseSeatPage.routeName, arguments: controller.destination);
                     },
                     child: Text(
                       'Book Now',

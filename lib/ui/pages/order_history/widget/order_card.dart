@@ -62,7 +62,7 @@ class OrderCard extends StatelessWidget {
                               child: Text(
                             "+ Saldo",
                             style: blackTextStyle.copyWith(
-                                color: Colors.greenAccent,
+                                color: order.status == "Paid" ? Colors.greenAccent : redColor,
                                 fontWeight: extraBold),
                           )),
                           Text(
@@ -72,7 +72,7 @@ class OrderCard extends StatelessWidget {
                                 decimalDigits: 0,
                               ).format(order.total_topup),
                               style: blackTextStyle.copyWith(
-                                  color: Colors.greenAccent,
+                                  color: order.status == "Paid" ? Colors.greenAccent : redColor,
                                   fontWeight: semiBold)),
                         ],
                       ),

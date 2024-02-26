@@ -1,5 +1,3 @@
-import 'package:bwa_masteringflutter/ui/order_history/order_history_binding.dart';
-import 'package:bwa_masteringflutter/ui/order_history/order_history_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/bonus_page/bonus_binding.dart';
 import 'package:bwa_masteringflutter/ui/pages/bonus_page/bonus_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/checkout_page/checkout_page.dart';
@@ -16,6 +14,8 @@ import 'package:bwa_masteringflutter/ui/pages/login/login_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/main_page/main_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/choose_seat_page/seat_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/main_page/main_page_binding.dart';
+import 'package:bwa_masteringflutter/ui/pages/order_history/order_history_binding.dart';
+import 'package:bwa_masteringflutter/ui/pages/order_history/order_history_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/payment_page/payment_binding.dart';
 import 'package:bwa_masteringflutter/ui/pages/payment_page/payment_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/setting_page/setting_page.dart';

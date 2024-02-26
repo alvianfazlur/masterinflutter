@@ -39,19 +39,41 @@ class BottomNavbar extends StatelessWidget {
             CustomBottomNavbar(
                 image: 'assets/images/fi_globe.png',
                 isSelected: isSelectedHome,
-                onTap: () => Get.offNamedUntil(MainPage.routeName, ModalRoute.withName(MainPage.routeName))),
+                onTap: () => Get.offNamedUntil(MainPage.routeName,
+                    ModalRoute.withName(MainPage.routeName))),
             CustomBottomNavbar(
                 image: 'assets/images/fi_book.png',
                 isSelected: isSelectedTransaction,
-                onTap: () => Get.offNamedUntil(TransactionPage.routeName, ModalRoute.withName(MainPage.routeName))),
+                onTap: () {
+                  if (isSelectedTransaction == true) {
+                    print("active");
+                  } else {
+                    Get.offNamedUntil(TransactionPage.routeName,
+                        ModalRoute.withName(MainPage.routeName));
+                  }
+                }),
             CustomBottomNavbar(
                 image: 'assets/images/fi_credit-card.png',
                 isSelected: isSelectedSaldo,
-                onTap: () => Get.offNamedUntil(CreditPage.routeName, ModalRoute.withName(MainPage.routeName))),
+                onTap: () {
+                  if (isSelectedSaldo == true) {
+                    print("active");
+                  } else {
+                    Get.offNamedUntil(CreditPage.routeName,
+                        ModalRoute.withName(MainPage.routeName));
+                  }
+                }),
             CustomBottomNavbar(
               image: 'assets/images/fi_settings.png',
               isSelected: isSelectedSetting,
-              onTap: () => Get.offNamedUntil(SettingPage.routeName, ModalRoute.withName(MainPage.routeName)),
+                onTap: () {
+                  if (isSelectedSetting == true) {
+                    print("active");
+                  } else {
+                    Get.offNamedUntil(SettingPage.routeName,
+                        ModalRoute.withName(MainPage.routeName));
+                  }
+                }
             ),
           ],
         ),

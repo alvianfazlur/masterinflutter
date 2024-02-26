@@ -55,7 +55,6 @@ class CreditController extends GetxController{
   Future<void> fetchBalance()async {
     user = userController.user;
     var newBalance = await BalanceService().fetchBalance(userController.user!.id);
-    print(newBalance);
     user!.balance = newBalance;
     update();
   }
