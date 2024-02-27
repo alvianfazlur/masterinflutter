@@ -1,4 +1,6 @@
 import 'package:bwa_masteringflutter/ui/pages/credit_page/credit_page.dart';
+import 'package:bwa_masteringflutter/ui/pages/main_page/home_page.dart';
+import 'package:bwa_masteringflutter/ui/pages/news_page/news_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -14,13 +16,15 @@ class BottomNavbar extends StatelessWidget {
       this.isSelectedHome = false,
       this.isSelectedSaldo = false,
       this.isSelectedSetting = false,
-      this.isSelectedTransaction = false})
+      this.isSelectedNews = false,
+      this.isSelectedTransaction = false,})
       : super(key: key);
 
   final bool isSelectedHome;
   final bool isSelectedTransaction;
   final bool isSelectedSaldo;
   final bool isSelectedSetting;
+  final bool isSelectedNews;
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +41,18 @@ class BottomNavbar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             CustomBottomNavbar(
-                image: 'assets/images/fi_globe.png',
+                image: isSelectedHome ? 'assets/images/fi_globe_active.png' : 'assets/images/fi_globe.png',
                 isSelected: isSelectedHome,
-                onTap: () => Get.offNamedUntil(MainPage.routeName,
-                    ModalRoute.withName(MainPage.routeName))),
+                onTap: () {
+                  if (isSelectedHome == true) {
+                    print("active");
+                  } else {
+                    Get.offNamedUntil(MainPage.routeName,
+                        ModalRoute.withName(MainPage.routeName));
+                  }
+                }),
             CustomBottomNavbar(
-                image: 'assets/images/fi_book.png',
+                image: isSelectedTransaction? 'assets/images/fi_book_active.png' : 'assets/images/fi_book.png',
                 isSelected: isSelectedTransaction,
                 onTap: () {
                   if (isSelectedTransaction == true) {
@@ -53,7 +63,19 @@ class BottomNavbar extends StatelessWidget {
                   }
                 }),
             CustomBottomNavbar(
-                image: 'assets/images/fi_credit-card.png',
+                image: isSelectedNews? 'assets/images/fi_news_active.png' : 'assets/images/fi_news.png',
+                isSelected: isSelectedNews,
+                onTap: () {
+                  if (isSelectedNews == true) {
+                    print("active");
+                  } else {
+                    Get.offNamedUntil(NewsPage.routeName,
+                        ModalRoute.withName(MainPage.routeName));
+                  }
+                }
+            ),
+            CustomBottomNavbar(
+                image: isSelectedSaldo? 'assets/images/fi_credit-card-active.png' :'assets/images/fi_credit-card.png',
                 isSelected: isSelectedSaldo,
                 onTap: () {
                   if (isSelectedSaldo == true) {
@@ -64,7 +86,7 @@ class BottomNavbar extends StatelessWidget {
                   }
                 }),
             CustomBottomNavbar(
-              image: 'assets/images/fi_settings.png',
+              image: isSelectedSetting? 'assets/images/fi_settings_active.png' :'assets/images/fi_settings.png',
               isSelected: isSelectedSetting,
                 onTap: () {
                   if (isSelectedSetting == true) {

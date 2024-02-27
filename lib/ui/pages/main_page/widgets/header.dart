@@ -24,11 +24,7 @@ class HomePageHeader extends StatelessWidget {
               const SizedBox(
                 height: 6,
               ),
-              Text(
-                "Where to fly today?",
-                style:
-                greyTextStyle.copyWith(fontSize: 16, fontWeight: light),
-              )
+          SizedBox(height: 10,)
             ],
           ),
         ),

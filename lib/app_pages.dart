@@ -14,6 +14,10 @@ import 'package:bwa_masteringflutter/ui/pages/login/login_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/main_page/main_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/choose_seat_page/seat_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/main_page/main_page_binding.dart';
+import 'package:bwa_masteringflutter/ui/pages/news_page/news_page.dart';
+import 'package:bwa_masteringflutter/ui/pages/news_page/news_page_binding.dart';
+import 'package:bwa_masteringflutter/ui/pages/news_page_detail/detail_news.dart';
+import 'package:bwa_masteringflutter/ui/pages/news_page_detail/detail_news_binding.dart';
 import 'package:bwa_masteringflutter/ui/pages/order_history/order_history_binding.dart';
 import 'package:bwa_masteringflutter/ui/pages/order_history/order_history_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/payment_page/payment_binding.dart';
@@ -139,6 +143,22 @@ var appPages = [
     name: OrderHistoryPage.routeName,
     page: () => OrderHistoryPage(),
     binding: OrderHistoryBinding(),
+    transition: Transition.cupertino,
+    curve: Curves.easeInOut,
+    transitionDuration: const Duration(milliseconds: 250),
+  ),
+  GetPage(
+    name: NewsPage.routeName,
+    page: () => NewsPage(),
+    binding: NewsPageBinding(),
+    transition: Transition.cupertino,
+    curve: Curves.easeInOut,
+    transitionDuration: const Duration(milliseconds: 250),
+  ),
+  GetPage(
+    name: DetailNewsPage.routeName,
+    page: () => DetailNewsPage(),
+    binding: DetailNewsBinding(),
     transition: Transition.cupertino,
     curve: Curves.easeInOut,
     transitionDuration: const Duration(milliseconds: 250),

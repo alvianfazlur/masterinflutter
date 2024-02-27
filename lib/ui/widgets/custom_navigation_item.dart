@@ -30,7 +30,7 @@ class CustomBottomNavbar extends StatelessWidget {
             width: 30,
             height: 2,
             decoration: BoxDecoration(
-                color: isSelected ? primaryColor : Colors.transparent,
+                color: isSelected ? Colors.blueAccent : Colors.transparent,
                 borderRadius: BorderRadius.circular(defaultRadius)
             ),
           )
