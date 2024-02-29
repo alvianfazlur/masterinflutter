@@ -1,5 +1,6 @@
 import 'package:bwa_masteringflutter/models/transaction.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
 
 class TransactionService {
   CollectionReference _transactionReference =
@@ -10,7 +11,6 @@ class TransactionService {
       _transactionReference.add({
         'destination': transaction.destination.toJson(),
         'amountOfTraveler': transaction.amountOfTraveler,
-        'selectedSeats': transaction.selectedSeats,
         'insurance': transaction.insurance,
         'refundable': transaction.refundable,
         'vat': transaction.vat,

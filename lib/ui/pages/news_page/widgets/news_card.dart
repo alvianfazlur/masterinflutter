@@ -63,7 +63,7 @@ class NewsCard extends StatelessWidget {
               Align(
                   alignment: Alignment.bottomRight,
                   child: Text(
-                    news.date,
+                    news.date.toString(),
                     style: greyTextStyle,
                   )),
               SizedBox(height: 10,)

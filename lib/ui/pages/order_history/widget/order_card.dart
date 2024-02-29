@@ -24,7 +24,7 @@ class OrderCard extends StatelessWidget {
               children: [
                 Expanded(
                     child: Text(
-                  '#${order.id.toString()}',
+                  '#${order.order_id.toString()}',
                   style: greyTextStyle,
                 )),
                 Container(

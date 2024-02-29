@@ -95,7 +95,6 @@ class TransactionCard extends StatelessWidget {
                               '${transaction.amountOfTraveler} Penumpang',
                               style: greyTextStyle.copyWith(fontWeight: light),
                             ),
-                            Text(transaction.selectedSeats, style: greyTextStyle.copyWith(fontWeight: light),)
                           ],
                         ),
                       ),

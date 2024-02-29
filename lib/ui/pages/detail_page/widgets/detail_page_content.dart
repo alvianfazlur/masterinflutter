@@ -1,3 +1,4 @@
+import 'package:bwa_masteringflutter/ui/pages/checkout_page/checkout_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/detail_page/detail_page_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -154,7 +155,7 @@ class DetailPageContent extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(17))),
                     onPressed: () {
-                      Get.toNamed(ChooseSeatPage.routeName, arguments: controller.destination);
+                      Get.toNamed(CheckoutPage.routeName, arguments: controller.destination);
                     },
                     child: Text(
                       'Book Now',

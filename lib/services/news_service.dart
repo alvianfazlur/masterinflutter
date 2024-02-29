@@ -7,7 +7,7 @@ class NewsService{
 
   Future<List<NewsModel>> fetchNews() async {
     try {
-      QuerySnapshot result = await _newsReference.orderBy('date').get();
+      QuerySnapshot result = await _newsReference.orderBy('date', descending: true).get();
       List<NewsModel> news = result.docs.map((e) {
         return NewsModel.fromJson(e.data() as Map<String, dynamic>);
       }).toList();

@@ -1,26 +1,25 @@
 class OrderModel {
-  final int id;
-  final String name;
+  final int order_id;
   final int total_topup;
   final String status;
+  final String user_id;
 
-  OrderModel(
-      {required this.id,
-      required this.name,
-      required this.total_topup,
-      required this.status,});
+  OrderModel({
+    required this.order_id,
+    required this.user_id,
+    required this.total_topup,
+    required this.status,
+  });
 
   factory OrderModel.fromJson(Map<String, dynamic> json) => OrderModel(
-        id: json['id'],
-        name: json['name'],
-        total_topup: json['total_topup'],
-        status: json['status'],
-      );
+      order_id: json['id'],
+      total_topup: json['total_topup'],
+      status: json['status'],
+      user_id: json['user_id']);
 
-  Map<String, dynamic> toJson() => {
-    'id': id,
-    'name': name,
-    'total_topup': total_topup,
-    'status': status,
-  };
+  factory OrderModel.fromJsonFb(Map<String, dynamic> json) => OrderModel(
+      order_id: json['order_id'],
+      total_topup: json['total_topup'],
+      status: json['status'],
+      user_id: json['user_id']);
 }

@@ -1,6 +1,7 @@
 import 'package:bwa_masteringflutter/shared/theme.dart';
 import 'package:bwa_masteringflutter/ui/pages/checkout_page/checkout_page_controller.dart';
 import 'package:bwa_masteringflutter/ui/pages/checkout_page/success_checkout.dart';
+import 'package:bwa_masteringflutter/ui/pages/checkout_page/widget/add_traveler.dart';
 import 'package:bwa_masteringflutter/ui/widgets/booking_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -130,16 +131,7 @@ class CheckoutPage extends GetView<CheckOutPageController> {
             SizedBox(
               height: 10,
             ),
-            BookingItem(
-              title: "Traveler",
-              text: '${controller.transactions.amountOfTraveler} Person',
-              valueColor: blackColor,
-            ),
-            BookingItem(
-              title: "Seat",
-              text: controller.transactions.selectedSeats,
-              valueColor: blackColor,
-            ),
+            AddTraveller(),
             BookingItem(
               title: "Insurance",
               text: "YES",
@@ -147,7 +139,7 @@ class CheckoutPage extends GetView<CheckOutPageController> {
             ),
             BookingItem(
               title: "Refundable",
-              text: '${controller.transactions.amountOfTraveler} Person',
+              text: controller.personController.text.isEmpty? "0 Person" : '${controller.personController.text} Person',
               valueColor: redColor,
             ),
             BookingItem(
@@ -259,7 +251,7 @@ class CheckoutPage extends GetView<CheckOutPageController> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(17))),
           onPressed: () async {
-            if(controller.isSufficient()){
+            if(controller.isSufficient() == "Gas"){
               await controller.createTransaction(controller.transactions);
               if (controller.status == TransactionStatus.loading) {
                 print("Loading");
@@ -272,7 +264,17 @@ class CheckoutPage extends GetView<CheckOutPageController> {
                     content:
                     Text(controller.error ?? 'Unknown error')));
               }
-            }else{
+            }
+            else if(controller.isSufficient() == "Kosong"){
+              Get.snackbar(
+                'Penumpang Kosong',
+                'Pilih Jumlah Penumpang Terlebih Dahulu!',
+                backgroundColor: Colors.red,
+                colorText: Colors.white,
+                snackPosition: SnackPosition.TOP,
+                duration: const Duration(seconds: 3),
+              );
+            } else{
               Get.snackbar(
                 'Saldo Tidak Cukup',
                 'Silahkan Mengisi Saldo Terlebih Dahulu!',
@@ -325,11 +327,13 @@ class CheckoutPage extends GetView<CheckOutPageController> {
         ),
       );
     }
-    return Scaffold(
-      backgroundColor: backgroundColor,
-      body: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 24),
-        children: [route(), checkoutTile(), paymentDetails(), buttonPay(),terms()],
+    return GetBuilder<CheckOutPageController>(
+      builder: (CheckOutPageController controller) => Scaffold(
+        backgroundColor: backgroundColor,
+        body: ListView(
+          padding: EdgeInsets.symmetric(horizontal: 24),
+          children: [route(), checkoutTile(), paymentDetails(), buttonPay(),terms()],
+        ),
       ),
     );
   }

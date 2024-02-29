@@ -2,6 +2,7 @@ import 'package:bwa_masteringflutter/models/destination.dart';
 import 'package:bwa_masteringflutter/models/transaction.dart';
 import 'package:bwa_masteringflutter/services/balance_service.dart';
 import 'package:bwa_masteringflutter/services/transaction_service.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../choose_seat_page/seat_controller.dart';
@@ -13,27 +14,27 @@ class CheckOutPageController extends GetxController{
   late final DestinationModel destination;
   Rx<TransactionStatus> status = TransactionStatus.loading.obs;
   late TransactionModel transactions = TransactionModel(destination: destination, uid: userController.user!.id);
-  var seatController = Get.find<SeatController>();
+  TextEditingController personController = TextEditingController();
   var userController = Get.find<HomePageController>();
   String? error;
 
   @override
   void onInit() {
     destination = Get.arguments as DestinationModel;
-    transactions.amountOfTraveler = seatController.seatOccupied.length;
-    transactions.selectedSeats = seatController.seatOccupied.join(', ');
-    transactions.price = seatController.seatOccupied.length * destination.price;
-    transactions.grandTotal = transactions.price + (transactions.price * 0.45).toInt();
     super.onInit();
   }
 
-  bool isSufficient(){
-    if(userController.user!.balance - transactions.grandTotal >= 0){
+  String isSufficient(){
+    if(transactions.price == 0){
+      print("Kosong");
+      return "Kosong";
+    }
+    else if(userController.user!.balance - transactions.grandTotal >= 0){
       print("Sufficient");
-      return true;
+      return "Gas";
     }else{
-      print("Tidak CUkup");
-      return false;
+      print("Tidak Cukup");
+      return "Kurang";
     }
   }
 
@@ -52,5 +53,13 @@ class CheckOutPageController extends GetxController{
     int newBalance;
     newBalance = userController.user!.balance - transactions.grandTotal;
     BalanceService().updateBalance(userController.user!.id, newBalance);
+  }
+
+  void updatePrice(String amount){
+    int totalPerson = int.tryParse(amount) ?? 0;
+    transactions.amountOfTraveler = totalPerson;
+    transactions.price = totalPerson * destination.price;
+    transactions.grandTotal = transactions.price + (transactions.price * 0.45).toInt();
+    update();
   }
 }

@@ -1,4 +1,6 @@
 
+import 'package:intl/intl.dart';
+
 class NewsModel{
   final String title;
   final String Content;
@@ -18,6 +20,6 @@ class NewsModel{
     Content: json['Content'],
    imageUrl: json['imageUrl'],
     source: json['source'],
-    date: json['date']
+    date: json['date'].toDate().toString()
   );
 }
