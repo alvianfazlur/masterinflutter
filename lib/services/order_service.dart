@@ -18,9 +18,9 @@ class OrderService{
       throw e;
     }
   }
-  Future<List<OrderModel>> fetchOrder() async {
+  Future<List<OrderModel>> fetchOrder(String uid) async {
     try {
-      QuerySnapshot result = await _orderReference.get();
+      QuerySnapshot result =  await _orderReference.where('user_id', isEqualTo: uid).get();
       List<OrderModel> orders = result.docs.map((e) {
         return OrderModel.fromJsonFb(e.data() as Map<String, dynamic>);
       }).toList();

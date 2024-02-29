@@ -10,7 +10,7 @@ class PopularDestination extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 30, bottom: 20),
+      margin: EdgeInsets.only(bottom: 20),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(

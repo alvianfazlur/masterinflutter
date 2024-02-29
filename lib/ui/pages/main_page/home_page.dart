@@ -1,4 +1,5 @@
 import 'package:bwa_masteringflutter/shared/theme.dart';
+import 'package:bwa_masteringflutter/ui/pages/main_page/widgets/filter_item.dart';
 import 'package:bwa_masteringflutter/ui/pages/main_page/widgets/header.dart';
 import 'package:bwa_masteringflutter/ui/pages/main_page/widgets/new_destination.dart';
 import 'package:bwa_masteringflutter/ui/pages/main_page/widgets/popular_destination.dart';
@@ -19,6 +20,16 @@ class HomePage extends GetView<HomePageController> {
           children: [
             HomePageHeader(name: controller.user!.name,),
             SearchBarWidget(),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  FilterItem(controller: controller, category: "town",),
+                  FilterItem(controller: controller, category: "nature",),
+                  FilterItem(controller: controller, category: "historic",),
+                ],
+              ),
+            ),
             PopularDestination(destinations: controller.displayDestinations),
             controller.displayDestinations.isNotEmpty ?
             Text(

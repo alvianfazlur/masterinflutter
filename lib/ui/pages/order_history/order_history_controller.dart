@@ -14,14 +14,14 @@ class OrderHistoryController extends GetxController{
 
   @override
   void onInit() async {
-    await getOrderFromFirebase();
+    await getOrderFromFirebase(userController.user!.id);
     fetchOrders(userController.user!.id);
     super.onInit();
   }
 
-  Future<void> getOrderFromFirebase() async {
+  Future<void> getOrderFromFirebase(String uid) async {
     try{
-      orderData = await OrderService().fetchOrder();
+      orderData = await OrderService().fetchOrder(uid);
       update();
     }catch(e){
       update();
