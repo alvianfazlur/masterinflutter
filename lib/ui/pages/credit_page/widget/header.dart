@@ -28,7 +28,7 @@ class Header extends StatelessWidget {
             width: 80,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/images/logo_punggawa.ico'))),
+                    image: AssetImage('assets/images/logo_punggawa_travel.png'))),
           ),
           SizedBox(
             width: 6,

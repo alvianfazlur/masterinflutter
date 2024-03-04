@@ -1,6 +1,7 @@
 import 'package:bwa_masteringflutter/models/user.dart';
 import 'package:bwa_masteringflutter/services/midtrans_service.dart';
 import 'package:bwa_masteringflutter/ui/pages/main_page/destination_controller/homepage_controller.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../../services/balance_service.dart';
@@ -11,6 +12,7 @@ class CreditController extends GetxController{
   String? snapToken;
   final List<int> selectedNominal = [];
   bool isVisibleMenu = false;
+  TextEditingController search = TextEditingController();
 
   @override
   void onInit() {
@@ -46,7 +48,7 @@ class CreditController extends GetxController{
 
   Future<void> selectNominal(int nominal) async {
     if (selectedNominal.isNotEmpty) {
-      selectedNominal.removeAt(0);
+      selectedNominal.clear();
     }
     selectedNominal.add(nominal);
     update();
@@ -56,6 +58,11 @@ class CreditController extends GetxController{
     user = userController.user;
     var newBalance = await BalanceService().fetchBalance(userController.user!.id);
     user!.balance = newBalance;
+    update();
+  }
+
+  void clearSearch() {
+    search.clear();
     update();
   }
 

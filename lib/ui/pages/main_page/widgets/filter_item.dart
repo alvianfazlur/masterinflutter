@@ -46,7 +46,7 @@ class FilterItem extends StatelessWidget {
                         ),
                         borderRadius: BorderRadius.circular(7)),
                     child: Text(
-                      category.isEmpty ? "SEMUA" : category.toUpperCase(),
+                      category.toUpperCase(),
                       style: blackTextStyle,
                     )),
               )

@@ -112,10 +112,6 @@ class CheckoutPage extends GetView<CheckOutPageController> {
                           image: DecorationImage(
                               image: AssetImage('assets/images/Star.png'))),
                     ),
-                    Text(
-                      controller.transactions.destination.rating.toString(),
-                      style: blackTextStyle.copyWith(fontWeight: medium),
-                    )
                   ],
                 )
               ],

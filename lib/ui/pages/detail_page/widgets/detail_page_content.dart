@@ -41,17 +41,6 @@ class DetailPageContent extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                width: 24,
-                height: 24,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/Star.png'))),
-              ),
-              Text(
-                controller.destination.rating.toString(),
-                style: whiteTextStyle.copyWith(fontWeight: medium),
-              )
             ],
           ),
           Container(

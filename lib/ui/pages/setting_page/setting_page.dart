@@ -1,6 +1,7 @@
 import 'package:bwa_masteringflutter/ui/pages/setting_page/setting_page_controller.dart';
 import 'package:bwa_masteringflutter/ui/pages/setting_page/widget/background.dart';
 import 'package:bwa_masteringflutter/ui/pages/setting_page/widget/header_content.dart';
+import 'package:bwa_masteringflutter/ui/pages/setting_page/widget/setting_account.dart';
 import 'package:bwa_masteringflutter/ui/widgets/bottom_navbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class SettingPage extends GetView<SettingPageController> {
         body: Stack(
           children: [
             Background(),
-            HeaderContent(controller: controller),
+            SettingAccount(),
             BottomNavbar(isSelectedSetting: true),
           ],
         ),

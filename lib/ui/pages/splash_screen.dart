@@ -44,17 +44,16 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: primaryColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: 100,
-              height: 100,
+              width: 200,
+              height: 150,
               decoration: const BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage('assets/images/logo.png'))),
+                      image: AssetImage('assets/images/logo_punggawa_travel.png'))),
             ),
             const SizedBox(
               height: 50,

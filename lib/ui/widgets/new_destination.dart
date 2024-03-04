@@ -57,25 +57,6 @@ class NewDestination extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              width: 46,
-              height: 24,
-              child: Row(
-                children: [
-                  Container(
-                    width: 24,
-                    height: 24,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage('assets/images/Star.png'))),
-                  ),
-                  Text(
-                    destinations.rating.toString(),
-                    style: blackTextStyle.copyWith(fontWeight: medium),
-                  )
-                ],
-              ),
-            ),
           ],
         ),
       ),

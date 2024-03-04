@@ -35,33 +35,6 @@ class DestinationCard extends StatelessWidget {
                   image: DecorationImage(
                       image:
                           NetworkImage(destination.imageurl))),
-              child: Align(
-                alignment: Alignment.topRight,
-                child: Container(
-                  width: 55,
-                  height: 30,
-                  decoration: BoxDecoration(
-                      color: whiteColor,
-                      borderRadius:
-                          BorderRadius.only(bottomLeft: Radius.circular(18))),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                          width: 20,
-                          height: 24,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage('assets/images/Star.png')))),
-                      Text(
-                        destination.rating.toString(),
-                        style: blackTextStyle.copyWith(fontWeight: medium),
-                      )
-                    ],
-                  ),
-                ),
-              ),
             ),
             SizedBox(
               height: 20,

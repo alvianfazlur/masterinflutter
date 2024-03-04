@@ -16,10 +16,19 @@ class ButtonNominal extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder(
       builder: (CreditController controller) {
-        bool isSelected = controller.isSelected(nominal);
-       return GestureDetector(
+        RxBool isSelected = controller.isSelected(nominal).obs;
+       return Obx(() => GestureDetector(
           onTap: () {
-            controller.selectNominal(nominal);
+            if(isSelected.value == false){
+              controller.clearSearch();
+              controller.selectNominal(nominal);
+              print(controller.selectedNominal);
+            }else{
+              controller.clearSearch();
+              isSelected.value = false;
+              controller.selectNominal(0);
+              print(controller.selectedNominal);
+            }
           },
           child: Container(
               alignment: Alignment.center,
@@ -29,7 +38,7 @@ class ButtonNominal extends StatelessWidget {
               decoration: BoxDecoration(
                   color: whiteColor,
                   border: Border.all(
-                    color: isSelected ? Colors.blue : greyColor.withOpacity(
+                    color: isSelected.value ? Colors.blue : greyColor.withOpacity(
                         0.3),
                   ),
                   borderRadius: BorderRadius.circular(7)),
@@ -41,7 +50,7 @@ class ButtonNominal extends StatelessWidget {
                 ).format(nominal),
                 style: blackTextStyle,
               )),
-        );
+        ));
       });
   }
 }

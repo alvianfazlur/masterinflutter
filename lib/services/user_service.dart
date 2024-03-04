@@ -35,4 +35,14 @@ class userService {
     }
   }
 
+  Future<void> updateUser (String id, String name, String hobby) async {
+    try{
+      await _userReference.doc(id).update({
+        'name': name,
+        'hobby': hobby,
+      });
+    }catch(e){
+      throw e;
+    }
+  }
 }

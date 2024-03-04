@@ -1,6 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:http/http.dart' as http;
-import '../shared/api_url.dart';
 
 class BalanceService{
   CollectionReference _userReference =

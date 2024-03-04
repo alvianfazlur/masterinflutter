@@ -1,8 +1,10 @@
 import 'package:bwa_masteringflutter/shared/theme.dart';
 import 'package:bwa_masteringflutter/ui/pages/credit_page/credit_controller.dart';
 import 'package:bwa_masteringflutter/ui/pages/credit_page/widget/button_nominal.dart';
+import 'package:bwa_masteringflutter/ui/pages/credit_page/widget/input_saldo.dart';
 import 'package:bwa_masteringflutter/ui/pages/payment_page/payment_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -23,6 +25,7 @@ class DisplayTopUp extends StatelessWidget {
           child: Column(
             children: [
               Text("Nominal", style: blackTextStyle.copyWith(fontWeight: medium, fontSize: 18),),
+              InputSaldo(controller: controller),
               SizedBox(height: 10,),
               Container(
                 width: double.infinity,
@@ -56,7 +59,7 @@ class DisplayTopUp extends StatelessWidget {
                         decimalDigits: 0,
                       ).format(controller.selectedNominal[0]),style: blackTextStyle.copyWith(fontWeight: extraBold, fontSize: 16),),
                     Visibility(
-                      visible: controller.selectedNominal.isNotEmpty,
+                      visible: controller.selectedNominal.isNotEmpty && controller.selectedNominal[0] >= 10000,
                       child: Align(
                         alignment: Alignment.bottomRight,
                         child: Container(
