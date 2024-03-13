@@ -31,11 +31,11 @@ class OrderHistoryController extends GetxController{
   Future<void> fetchOrders(String uid) async {
     final String url = '$getOrderApi=$uid';
     final response = await http.get(Uri.parse(url));
-    print(response.statusCode);
       if(response.statusCode == 200){
-        print("Get Data");
         final List<dynamic> orders = json.decode(response.body);
         getDataFromDb(orders);
+      }else{
+        print(response.statusCode);
       }
   }
   void getDataFromDb(List<dynamic> orders) async {
@@ -46,8 +46,8 @@ class OrderHistoryController extends GetxController{
       }
       else {
         if(order.status == 'Paid'){
-          print('Order dengan id ${order.order_id}');
           OrderService().addOrder(order);
+          orderData.add(order);
           BalanceService().updateBalance(userController.user!.id, order.total_topup + userController.user!.balance);
         }
         else{

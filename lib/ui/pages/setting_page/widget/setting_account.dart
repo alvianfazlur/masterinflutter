@@ -93,7 +93,6 @@ class SettingAccount extends StatelessWidget {
                                       controller.user!.name ||
                                   controller.hobby.text !=
                                           controller.user!.hobby) {
-                                print(controller.name.text);
                                 Get.dialog(
                                   AlertDialog(
                                     backgroundColor: Colors.white,

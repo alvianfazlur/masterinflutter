@@ -17,7 +17,6 @@ class FilterItem extends StatelessWidget {
     return GetBuilder<HomePageController>(
       builder: (HomePageController controller) {
         return Obx(() => Container(
-          margin: EdgeInsets.only(top: 10),
           child: Row(
             children: [
               GestureDetector(
@@ -38,16 +37,17 @@ class FilterItem extends StatelessWidget {
                     width: 80,
                     height: 40,
                     decoration: BoxDecoration(
-                        color: whiteColor,
+                        color: isSelected.value?
+                        primaryColor : whiteColor,
                         border: Border.all(
                           color: isSelected.value
-                              ? Colors.blue
+                              ? backgroundColor
                               : greyColor.withOpacity(0.3),
                         ),
-                        borderRadius: BorderRadius.circular(7)),
+                        borderRadius: BorderRadius.circular(12)),
                     child: Text(
-                      category.toUpperCase(),
-                      style: blackTextStyle,
+                      category,
+                      style: isSelected.value? whiteTextStyle.copyWith(fontWeight: medium) : greyTextStyle,
                     )),
               )
             ],

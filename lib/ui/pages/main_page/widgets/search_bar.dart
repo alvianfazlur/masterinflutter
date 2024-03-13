@@ -13,8 +13,8 @@ class SearchBarWidget extends StatelessWidget {
       builder: (controller) => Container(
         padding: EdgeInsets.only(left: 10, right: 5),
         decoration: BoxDecoration(
+          color: whiteColor,
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: greyColor.withOpacity(0.3))
         ),
         child: TextFormField(
           style: blackTextStyle,
@@ -27,7 +27,8 @@ class SearchBarWidget extends StatelessWidget {
           textInputAction: TextInputAction.done,
           decoration: InputDecoration(
             border: InputBorder.none,
-            hintText: "Cari Wisata",
+            hintText: "Search...",
+            hintStyle: greyTextStyle.copyWith(fontWeight: light, color: greyHintTextColor, fontSize: 15),
             suffixIcon: controller.search.text.isNotEmpty
                 ? IconButton(
               onPressed: () {

@@ -12,65 +12,55 @@ class SignUpScreen extends GetView<SignUpController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: backgroundColor,
       body: SafeArea(
-          child: ListView(
-        padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+          child: Stack(
         children: [
-          Container(
-            child: Text(
-              "Join us and get\nyour next journey",
-              style:
-                  blackTextStyle.copyWith(fontWeight: semiBold, fontSize: 24),
-            ),
-          ),
-          InputSection(),
-          Container(
-            child: TextButton(
-              style: TextButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(17))),
-              onPressed: () {
-                Get.toNamed(LoginPage.routeName);
-              },
-              child: Text(
-                'Have an Account? Sign In',
-                style: greyTextStyle.copyWith(
-                    fontWeight: light, fontSize: 16),
-              ),
-            ),
-          ),
-          TextButton(
-            onPressed: () {
-              Get.dialog(
-                AlertDialog(
-                  backgroundColor: Colors.white,
-                  title: const Text("Terms and Conditions"),
-                  content: const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text("Your terms and conditions here..."),
-                    ],
-                  ),
-                  actions: [
-                    TextButton(
-                      onPressed: () {
-                        Get.back();
-                      },
-                      child: const Text('Close'),
-                    ),
-                  ],
+          ListView(
+            padding: EdgeInsets.symmetric(horizontal: 30),
+            children: [
+              Container(
+                margin: EdgeInsets.only(top: 30),
+                child: Text(
+                  "Sign Up",
+                  style: blackTextStyle.copyWith(
+                      fontWeight: semiBold, fontSize: 24),
                 ),
-              );
-            },
-            child: Text(
-              'Terms and Conditions',
-              style: greyTextStyle.copyWith(fontWeight: light, fontSize: 16),
-            ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 5),
+                child: Text(
+                  "Join us and get your next journey",
+                  style: greyTextStyle.copyWith(fontWeight: regular),
+                ),
+              ),
+              InputSection(),
+            ],
           ),
+          Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                  margin: EdgeInsets.only(bottom: 30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Already have an account?", style: blackTextStyle.copyWith(fontSize: 12),),
+                      GestureDetector(
+                        onTap: (){
+                          Get.offNamed(LoginPage.routeName);
+                        },
+                        child: Container(
+                          child: Text(" Sign In", style: purpleTextStyle.copyWith(fontSize: 12),),
+                        ),
+                      )
+                    ],
+                  ))
+          )
         ],
-      )),
+
+      )
+      ),
     );
   }
 }

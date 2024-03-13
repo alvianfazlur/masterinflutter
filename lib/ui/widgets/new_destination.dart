@@ -3,21 +3,22 @@ import 'package:bwa_masteringflutter/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:intl/intl.dart';
 
 import '../pages/detail_page/detail_page.dart';
 
 class NewDestination extends StatelessWidget {
-  const NewDestination(this.destinations,
+  const NewDestination(this.destination,
       {Key? key,
       })
       : super(key: key);
-  final DestinationModel destinations;
+  final DestinationModel destination;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(DetailPage.routeName, arguments: destinations);
+        Get.toNamed(DetailPage.routeName, arguments: destination);
       },
       child: Container(
         margin: EdgeInsets.only(top: 16),
@@ -29,30 +30,42 @@ class NewDestination extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              width: 70,
-              height: 70,
+              width: 112,
+              height: 100,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(18),
                   image: DecorationImage(
-                      fit: BoxFit.cover, image: NetworkImage(destinations.imageurl))),
+                      fit: BoxFit.cover, image: NetworkImage(destination.imageurl))),
             ),
             Expanded(
               child: Container(
-                width: 138,
-                height: 53,
                 margin: EdgeInsets.only(left: 16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      destinations.name,
-                      style: blackTextStyle.copyWith(
-                          fontSize: 18, fontWeight: medium),
+                      destination.city,
+                      style:
+                      greyTextStyle.copyWith(fontSize: 12),
                     ),
+                    SizedBox(height: 6,),
                     Text(
-                      destinations.city,
-                      style: greyTextStyle.copyWith(fontWeight: light),
-                    )
+                      destination.name,
+                      style:
+                      blackTextStyle.copyWith(fontWeight: semiBold, fontSize: 16),
+                    ),
+                    SizedBox(height: 6,),
+                    Text(NumberFormat.currency(
+                      locale: 'id',
+                      symbol: 'Rp ',
+                      decimalDigits: 0,
+                    ).format(destination.price),
+                      style:
+                      purpleTextStyle.copyWith(fontWeight: semiBold),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
                   ],
                 ),
               ),

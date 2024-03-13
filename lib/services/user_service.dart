@@ -9,7 +9,7 @@ class userService {
 
   Future<void> setUser(userData user) async {
     try {
-      await DataUserService().storeUser(user.name, user.id, 280000000, user.hobby, user.email);
+      // await DataUserService().storeUser(user.name, user.id, 280000000, user.hobby, user.email);
       _userReference.doc(user.id).set({
         'email': user.email,
         'name': user.name,
