@@ -5,11 +5,7 @@ import 'package:bwa_masteringflutter/ui/pages/transaction_page/transaction_contr
 import 'package:bwa_masteringflutter/ui/widgets/bottom_navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../models/transaction.dart';
 import '../../../shared/theme.dart';
-import '../../widgets/custom_navigation_item.dart';
-import '../setting_page/setting_page.dart';
 
 class TransactionPage extends GetView<TransactionController> {
   static const routeName = '/transaction';
@@ -29,7 +25,7 @@ class TransactionPage extends GetView<TransactionController> {
                     children: [
                       ListView(
                         padding: EdgeInsets.only(
-                            left: defaultMargin, top: 30, right: 24),
+                            left: 30, top: 30, right: 24),
                         children: [
                           ShowTransaction(transactions: controller.transactions),
                         ],

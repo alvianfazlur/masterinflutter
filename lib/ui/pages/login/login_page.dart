@@ -21,7 +21,7 @@ class LoginPage extends GetView<LoginController> {
             width: double.infinity,
             margin: EdgeInsets.only(top: 60, left: 30, right: 30),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(18), color: whiteColor),
+                borderRadius: BorderRadius.circular(18)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

@@ -1,4 +1,5 @@
 import 'package:bwa_masteringflutter/models/transaction.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -11,28 +12,35 @@ class TransactionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DateTime selectedDate = transaction.date;
     return Container(
         margin: EdgeInsets.only(top: 16),
         padding: EdgeInsets.all(15),
         decoration: BoxDecoration(
-          color: whiteColor,
-          borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: blackColor.withOpacity(0.2))
-        ),
+            color: whiteColor,
+            borderRadius: BorderRadius.circular(18),
+            border: Border.all(color: blackColor.withOpacity(0.2))),
         child: Column(
           children: [
-            Align(
-              alignment: Alignment.topRight,
-              child: Container(
-                  margin: EdgeInsets.only(bottom: 10),
-                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-                  decoration: BoxDecoration(
-                      color: Colors.greenAccent,
-                      borderRadius: BorderRadius.circular(12)),
+            Row(
+              children: [
+                Expanded(
                   child: Text(
-                    "Lunas",
-                    style: greenTextStyle.copyWith(fontWeight: light),
-                  )),
+                    "${selectedDate.day} ${DateFormat.MMMM().format(selectedDate!)} ${selectedDate.year}",
+                    style: blackTextStyle.copyWith(fontWeight: semiBold),
+                  ),
+                ),
+                Container(
+                    margin: EdgeInsets.only(bottom: 10),
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                    decoration: BoxDecoration(
+                        color: Colors.greenAccent,
+                        borderRadius: BorderRadius.circular(12)),
+                    child: Text(
+                      "Lunas",
+                      style: greenTextStyle.copyWith(fontWeight: light),
+                    )),
+              ],
             ),
             Container(
               padding: EdgeInsets.all(15),

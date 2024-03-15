@@ -1,6 +1,3 @@
-
-import 'package:intl/intl.dart';
-
 class NewsModel{
   final String title;
   final String Content;

@@ -6,6 +6,7 @@ import 'package:bwa_masteringflutter/ui/pages/checkout_page/success_checkout.dar
 import 'package:bwa_masteringflutter/ui/pages/choose_seat_page/seat_binding.dart';
 import 'package:bwa_masteringflutter/ui/pages/credit_page/credit_binding.dart';
 import 'package:bwa_masteringflutter/ui/pages/credit_page/credit_page.dart';
+import 'package:bwa_masteringflutter/ui/pages/credit_page/widget/display_topup.dart';
 import 'package:bwa_masteringflutter/ui/pages/detail_page/detail_binding.dart';
 import 'package:bwa_masteringflutter/ui/pages/detail_page/detail_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/get_started.dart';
@@ -159,6 +160,13 @@ var appPages = [
     name: DetailNewsPage.routeName,
     page: () => DetailNewsPage(),
     binding: DetailNewsBinding(),
+    transition: Transition.cupertino,
+    curve: Curves.easeInOut,
+    transitionDuration: const Duration(milliseconds: 250),
+  ),
+  GetPage(
+    name: DisplayTopUp.routeName,
+    page: () => DisplayTopUp(),
     transition: Transition.cupertino,
     curve: Curves.easeInOut,
     transitionDuration: const Duration(milliseconds: 250),

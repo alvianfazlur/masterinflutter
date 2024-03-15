@@ -13,12 +13,23 @@ class LoginController extends GetxController{
   userData? user;
   String? error;
 
-  Future<void> signIn({required String email, required String password}) async{
-    try{
+  Future<void> signIn({required String email, required String password}) async {
+    try {
       user = await AuthService().signIn(email: email, password: password);
       status = AuthStatus.success.obs;
       update();
-    }catch(e){
+    } catch (e) {
+      status = AuthStatus.failed.obs;
+      error = e.toString();
+      update();
+    }
+  }
+  Future<void> signInWithGoogle() async {
+    try {
+      user = await AuthService().signInWithGoogle();
+      status = AuthStatus.success.obs;
+      update();
+    } catch (e) {
       status = AuthStatus.failed.obs;
       error = e.toString();
       update();

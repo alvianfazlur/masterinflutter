@@ -1,10 +1,11 @@
 import 'package:bwa_masteringflutter/models/destination.dart';
 import 'package:bwa_masteringflutter/ui/pages/detail_page/detail_page.dart';
+import 'package:bwa_masteringflutter/ui/pages/main_page/widgets/show_star.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-import '../../shared/theme.dart';
+import '../../../../shared/theme.dart';
 
 class DestinationCard extends StatelessWidget {
   const DestinationCard(this.destination,
@@ -22,7 +23,6 @@ class DestinationCard extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.only(right: 20),
         width: 215,
-        height: 310,
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
           border: Border.all(color: greyHintTextColor.withOpacity(0.3)),
@@ -48,6 +48,16 @@ class DestinationCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Row(
+                    children: [
+                      ShowStar(),
+                      ShowStar(),
+                      ShowStar(),
+                      ShowStar(),
+                      ShowStar(),
+                    ],
+                  ),
+                  SizedBox(height: 6,),
                   Text(
                     destination.city,
                     style:

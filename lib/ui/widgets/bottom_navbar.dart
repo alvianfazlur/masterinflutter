@@ -31,12 +31,12 @@ class BottomNavbar extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
-        margin: EdgeInsets.only(bottom: 30, left: 24, right: 24),
         width: double.infinity,
-        height: 60,
+        height: 75,
         decoration: BoxDecoration(
             color: whiteColor,
-            borderRadius: BorderRadius.circular(defaultRadius)),
+          border: Border(top: BorderSide(color: greyColor.withOpacity(0.2), width: 2))
+            ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

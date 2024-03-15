@@ -16,7 +16,8 @@ class TransactionService {
         'vat': transaction.vat,
         'price':transaction.price,
         'grandTotal':transaction.grandTotal,
-        'uid':transaction.uid
+        'uid':transaction.uid,
+        'date':transaction.date
       });
     } catch (e) {
       throw e;

@@ -1,5 +1,8 @@
 import 'package:bwa_masteringflutter/ui/pages/credit_page/widget/topup_button.dart';
+import 'package:bwa_masteringflutter/ui/pages/main_page/destination_controller/homepage_controller.dart';
+import 'package:bwa_masteringflutter/ui/pages/main_page/widgets/user_card.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../shared/theme.dart';
@@ -11,33 +14,15 @@ class CreditContent extends StatelessWidget {
   final CreditController controller;
   @override
   Widget build(BuildContext context) {
+    var userCardController = Get.find<HomePageController>();
     return Container(
-      height: 200,
-      margin: EdgeInsets.only(
-          left: defaultMargin, top: 100, right: defaultMargin),
-      padding: EdgeInsets.only(left: 20, top: 10, right: 24),
-      decoration: BoxDecoration(
-          color: whiteColor,
-          border: Border.all(color: blackColor.withOpacity(0.1)),
-          borderRadius: BorderRadius.circular(18)),
       width: double.infinity,
+      height: 180,
+      margin: const EdgeInsets.only(left: 30, right: 30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Saldo Rekening Utama", style: greyTextStyle.copyWith(fontWeight: medium),),
-          SizedBox(height: 10,),
-          Text(NumberFormat.currency(
-            locale: 'id',
-            symbol: 'Rp ',
-            decimalDigits: 0,
-          ).format(controller.user!.balance),
-            style: blackTextStyle.copyWith(fontWeight: bold, fontSize: 20),),
-          Container(
-            margin: EdgeInsets.only(top: 20),
-            color: greyColor.withOpacity(0.3),
-            padding: EdgeInsets.all(1),
-          ),
-          TopUpButton(),
+          UserCard(controller: userCardController),
         ],
       ),
     );

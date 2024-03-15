@@ -4,6 +4,7 @@ import 'package:bwa_masteringflutter/ui/pages/credit_page/widget/credit_content.
 import 'package:bwa_masteringflutter/ui/pages/credit_page/widget/display_topup.dart';
 import 'package:bwa_masteringflutter/ui/pages/credit_page/widget/header.dart';
 import 'package:bwa_masteringflutter/ui/widgets/bottom_navbar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -28,11 +29,29 @@ class CreditPage extends GetView<CreditController> {
                     children: [
                       ListView(
                         children: [
+                          Header(),
                           CreditContent(controller: controller),
-                          DisplayTopUp()
+                          Container(
+                            margin: EdgeInsets.only(left: 30, right: 30),
+                            width: double.infinity,
+                            height: 50,
+                            child: TextButton(
+                              style: TextButton.styleFrom(
+                                  backgroundColor: primaryColor,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12))),
+                              onPressed: () {
+                                Get.toNamed(DisplayTopUp.routeName);
+                              },
+                              child: Text(
+                                'Top Up Now',
+                                style: whiteTextStyle.copyWith(
+                                    fontWeight: medium, fontSize: 18),
+                              ),
+                            ),
+                          )
                         ],
                       ),
-                      Header(),
                       BottomNavbar(
                         isSelectedSaldo: true,
                       )

@@ -40,6 +40,18 @@ class SignUpController extends GetxController with EquatableMixin {
     }
   }
 
+  Future<void> signInWithGoogle() async {
+    try {
+      user = await AuthService().signInWithGoogle();
+      status = AuthStatus.success.obs;
+      update();
+    } catch (e) {
+      status = AuthStatus.failed.obs;
+      error = e.toString();
+      update();
+    }
+  }
+
   @override
   List<Object?> get props => [status, user, error];
 }

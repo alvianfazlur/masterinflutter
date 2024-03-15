@@ -51,6 +51,7 @@ class CreditController extends GetxController{
       selectedNominal.clear();
     }
     selectedNominal.add(nominal);
+    search.text = selectedNominal[0].toString();
     update();
   }
 

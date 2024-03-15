@@ -33,15 +33,15 @@ class ButtonNominal extends StatelessWidget {
           child: Container(
               alignment: Alignment.center,
               margin: EdgeInsets.only(bottom: 20, right: 10),
-              width: 120,
-              height: 40,
+              width: 151,
+              height: 105,
               decoration: BoxDecoration(
-                  color: whiteColor,
+                  color: isSelected.value ? primaryColor.withOpacity(0.1) : whiteColor,
                   border: Border.all(
-                    color: isSelected.value ? Colors.blue : greyColor.withOpacity(
+                    color: isSelected.value ? primaryColor : greyColor.withOpacity(
                         0.3),
                   ),
-                  borderRadius: BorderRadius.circular(7)),
+                  borderRadius: BorderRadius.circular(12)),
               child: Text(
                 NumberFormat.currency(
                   locale: 'id',

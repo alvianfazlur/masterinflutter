@@ -2,6 +2,8 @@ import 'package:bwa_masteringflutter/services/data_user_service.dart';
 import 'package:bwa_masteringflutter/services/user_service.dart';
 import 'package:bwa_masteringflutter/shared/api_url.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../models/user.dart';
 
@@ -32,6 +34,8 @@ class AuthService {
   Future<void> signOut() async {
     try {
       await _auth.signOut();
+      final googleSignIn = GoogleSignIn();
+      googleSignIn.disconnect();
     } catch (e) {
       throw e;
     }
@@ -46,6 +50,33 @@ class AuthService {
       return user;
     } catch (e) {
       throw e;
+    }
+  }
+
+  Future<dynamic> signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+      final GoogleSignInAuthentication? googleAuth =
+      await googleUser?.authentication;
+
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+      UserCredential userCredential = await _auth.signInWithCredential(credential);
+      userData registUser = userData(
+          id: userCredential.user!.uid,
+          email: googleUser!.email,
+          name: googleUser.displayName!,
+          hobby: "",
+          balance: 0);
+      await userService().setUser(registUser);
+      userData user = await userService().getUserById(userCredential.user!.uid);
+      print(userCredential.user!.uid);
+      return user;
+    } on Exception catch (e) {
+      print('exception->$e');
     }
   }
 }

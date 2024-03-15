@@ -11,42 +11,22 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
       padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        border: Border(
-          bottom: BorderSide(
-            color: greyColor.withOpacity(0.2)
-          )
-        )
-      ),
+      margin: EdgeInsets.only(left: 30, top: 20),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            height: 50,
-            width: 80,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/images/logo_punggawa_travel.png'))),
-          ),
-          SizedBox(
-            width: 6,
-          ),
           Expanded(
             child: Container(
-              height: 50,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Hai,",
-                    style: blackTextStyle.copyWith(fontWeight: light),
+                    "Top Up",
+                    style: blackTextStyle.copyWith(fontWeight: semiBold, fontSize: 24),
                   ),
-                  Text(
-                    "${controller.user!.name.toUpperCase()}",
-                    style: blackTextStyle.copyWith(fontWeight: bold),
-                  ),
+                  SizedBox(height: 6,),
+                  Text("Join us and get your next journey", style: greyTextStyle,)
                 ],
               ),
             ),
@@ -63,7 +43,6 @@ class Header extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 6),
                     width: 24,
                     height: 24,
                     decoration: BoxDecoration(
@@ -76,6 +55,6 @@ class Header extends StatelessWidget {
           )
         ],
       ),
-    );;
+    );
   }
 }

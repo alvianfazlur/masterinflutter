@@ -11,25 +11,28 @@ class ShowTransaction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (transactions.isEmpty) {
-      return Center(
-        child: Column(
-          children: [
-            Text(
-              "Kamu Belum Membuat Jadwal Booking",
-              style: blackTextStyle.copyWith(fontSize: 28),
-              textAlign: TextAlign.center,
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("My Tickets", style: blackTextStyle.copyWith(fontSize: 24, fontWeight: semiBold),),
+          Center(
+            child: Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: 50),
+                  width: 300,
+                  height: 300,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/transaction_background.png'))),
+                ),
+                Text("No Tickets Saved", style: blackTextStyle.copyWith(fontWeight: semiBold, fontSize: 24),),
+                SizedBox(height: 10,),
+                Text("You haven't made a booking schedule", style: greyTextStyle,)
+              ],
             ),
-            Container(
-              margin: EdgeInsets.only(top: 50),
-              width: 300,
-              height: 300,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                    opacity: 0.5,
-                      image: AssetImage('assets/images/calendar.png'))),
-            )
-          ],
-        ),
+          ),
+        ],
       );
     } else {
       return Container(

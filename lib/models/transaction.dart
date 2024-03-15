@@ -10,10 +10,12 @@ class TransactionModel {
   double vat;
   int price;
   int grandTotal;
+  DateTime date;
 
   TransactionModel(
       {required this.destination,
         required this.uid,
+        required this.date,
       this.amountOfTraveler = 0,
       this.insurance = true,
       this.refundable = false,
@@ -32,5 +34,6 @@ class TransactionModel {
           refundable: json['refundable'],
           vat: json['vat'],
           price: json['price'],
+          date: DateTime.fromMillisecondsSinceEpoch(json['date'].millisecondsSinceEpoch),
           grandTotal: json['grandTotal']);
 }

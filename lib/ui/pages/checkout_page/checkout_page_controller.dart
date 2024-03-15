@@ -13,7 +13,7 @@ enum TransactionStatus { loading, success, failed }
 class CheckOutPageController extends GetxController{
   late final DestinationModel destination;
   Rx<TransactionStatus> status = TransactionStatus.loading.obs;
-  late TransactionModel transactions = TransactionModel(destination: destination, uid: userController.user!.id);
+  late TransactionModel transactions = TransactionModel(destination: destination, uid: userController.user!.id, date: DateTime.now());
   TextEditingController personController = TextEditingController();
   var userController = Get.find<HomePageController>();
   String? error;

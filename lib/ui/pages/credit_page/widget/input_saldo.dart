@@ -11,9 +11,10 @@ class InputSaldo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 10),
+      margin: EdgeInsets.only(top: 30),
       padding: EdgeInsets.only(left: 10, right: 5),
       decoration: BoxDecoration(
+        color: whiteColor,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: greyColor.withOpacity(0.3))
       ),
@@ -31,7 +32,7 @@ class InputSaldo extends StatelessWidget {
         textInputAction: TextInputAction.done,
         decoration: InputDecoration(
           border: InputBorder.none,
-          hintText: "Masukkan Saldo",
+          hintText: "Total Amount",
         ),
       ),
     );

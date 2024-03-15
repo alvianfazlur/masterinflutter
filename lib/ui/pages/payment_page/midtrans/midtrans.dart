@@ -1,3 +1,8 @@
+import 'package:bwa_masteringflutter/ui/pages/credit_page/credit_page.dart';
+import 'package:bwa_masteringflutter/ui/pages/order_history/order_history_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
+
 enum MIDTRANS_PAYMENT_TYPE {
   credit_card,
   bca_klikpay,
@@ -100,7 +105,8 @@ class Midtrans {
     String title = '', desc = '';
     switch (statusCode) {
       case MIDTRANS_STATUS_CODE.MIDTRANS_STATUS_CODE_200:
-        title = 'Purchase successfully!';
+        title = 'Top Up successfull!';
+        Get.offNamed(CreditPage.routeName);
         break;
 
       case MIDTRANS_STATUS_CODE.MIDTRANS_STATUS_CODE_201:

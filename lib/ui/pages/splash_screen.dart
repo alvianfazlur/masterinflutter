@@ -54,7 +54,7 @@ class _SplashPageState extends State<SplashPage> {
               height: 150,
               decoration: const BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage('assets/images/logo_punggawa_travel.png'))),
+                      image: AssetImage('assets/images/logo_punggawa_travel_splash.png'))),
             ),
             const SizedBox(
               height: 50,

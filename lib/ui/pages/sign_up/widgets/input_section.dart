@@ -5,6 +5,8 @@ import 'package:bwa_masteringflutter/ui/pages/sign_up/widgets/textfield_widgets.
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../main_page/main_page.dart';
+
 class InputSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -59,6 +61,41 @@ class InputSection extends StatelessWidget {
                   'Sign Up',
                   style: whiteTextStyle.copyWith(
                       fontWeight: medium, fontSize: 16),
+                ),
+              ),
+            ),
+            SizedBox(height: 10,),
+            Text("Or", style: blackTextStyle.copyWith(fontWeight: medium, fontSize: 16),),
+            SizedBox(height: 10,),
+            GestureDetector(
+              onTap: () async{
+                await controller.signInWithGoogle();
+                if (controller.status == AuthStatus.success) {
+                  Get.offNamedUntil(
+                      MainPage.routeName, (route) => false,
+                      arguments: controller.user);
+                }
+              },
+              child: Container(
+                width: double.infinity,
+                height: 50,
+                decoration: BoxDecoration(
+                    border: Border.all(color: greyColor.withOpacity(0.3), width: 2),
+                    borderRadius: BorderRadius.circular(12)
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(right: 15),
+                      width: 25,
+                      height: 25,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(image: AssetImage("assets/images/google_icon.png"))
+                      ),
+                    ),
+                    Text("Continue With Google", style: blackTextStyle.copyWith(fontSize: 16, fontWeight: medium),)
+                  ],
                 ),
               ),
             )
