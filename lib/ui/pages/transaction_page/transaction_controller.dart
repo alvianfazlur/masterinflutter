@@ -1,9 +1,9 @@
 import 'package:bwa_masteringflutter/models/transaction.dart';
 import 'package:bwa_masteringflutter/services/transaction_service.dart';
-import 'package:bwa_masteringflutter/ui/pages/main_page/destination_controller/homepage_controller.dart';
 import 'package:get/get.dart';
 import '../../../models/user.dart';
 import '../../../services/balance_service.dart';
+import '../main_page/controller/homepage_controller.dart';
 
 enum TransactionStatus { loading, success, failed }
 class TransactionController extends GetxController{

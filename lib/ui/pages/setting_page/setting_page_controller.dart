@@ -1,10 +1,9 @@
 import 'package:bwa_masteringflutter/services/auth_service.dart';
 import 'package:bwa_masteringflutter/ui/pages/login/login_page.dart';
-import 'package:bwa_masteringflutter/ui/pages/sign_up/sign_up_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../../../models/user.dart';
-import '../main_page/destination_controller/homepage_controller.dart';
+import '../main_page/controller/homepage_controller.dart';
 
 class SettingPageController extends GetxController {
   var userController = Get.find<HomePageController>();

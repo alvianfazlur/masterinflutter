@@ -1,7 +1,7 @@
 import 'package:bwa_masteringflutter/shared/theme.dart';
-import 'package:bwa_masteringflutter/ui/pages/main_page/destination_controller/homepage_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../controller/homepage_controller.dart';
 
 class FilterItem extends StatelessWidget {
   FilterItem({Key? key, required this.controller, required this.category})
@@ -35,19 +35,17 @@ class FilterItem extends StatelessWidget {
                     alignment: Alignment.center,
                     margin: EdgeInsets.only(bottom: 20, right: 10),
                     width: 80,
-                    height: 40,
+                    height: 50,
                     decoration: BoxDecoration(
                         color: isSelected.value?
-                        primaryColor : whiteColor,
+                        selectedFilterColor : Colors.transparent,
                         border: Border.all(
-                          color: isSelected.value
-                              ? backgroundColor
-                              : greyColor.withOpacity(0.3),
+                          color: selectedFilterColor,
                         ),
                         borderRadius: BorderRadius.circular(12)),
                     child: Text(
                       category,
-                      style: isSelected.value? whiteTextStyle.copyWith(fontWeight: medium) : greyTextStyle,
+                      style: isSelected.value? whiteTextStyle.copyWith(fontWeight: medium) : greyTextStyle.copyWith(color: Color(0xffA098D0)),
                     )),
               )
             ],

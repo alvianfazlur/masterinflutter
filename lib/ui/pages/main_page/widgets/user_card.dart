@@ -1,7 +1,8 @@
 import 'package:bwa_masteringflutter/shared/theme.dart';
-import 'package:bwa_masteringflutter/ui/pages/main_page/destination_controller/homepage_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
+import '../controller/homepage_controller.dart';
 
 class UserCard extends StatelessWidget {
   const UserCard({Key? key, required this.controller}) : super(key: key);

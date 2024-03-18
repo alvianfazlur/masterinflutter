@@ -1,10 +1,10 @@
 import 'package:bwa_masteringflutter/models/user.dart';
 import 'package:bwa_masteringflutter/services/midtrans_service.dart';
-import 'package:bwa_masteringflutter/ui/pages/main_page/destination_controller/homepage_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../../services/balance_service.dart';
+import '../main_page/controller/homepage_controller.dart';
 
 class CreditController extends GetxController{
   var userController = Get.find<HomePageController>();

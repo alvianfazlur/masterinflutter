@@ -4,9 +4,7 @@ import 'package:bwa_masteringflutter/services/balance_service.dart';
 import 'package:bwa_masteringflutter/services/transaction_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-
-import '../choose_seat_page/seat_controller.dart';
-import '../main_page/destination_controller/homepage_controller.dart';
+import '../main_page/controller/homepage_controller.dart';
 
 enum TransactionStatus { loading, success, failed }
 
