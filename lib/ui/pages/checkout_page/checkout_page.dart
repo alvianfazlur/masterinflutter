@@ -103,17 +103,6 @@ class CheckoutPage extends GetView<CheckOutPageController> {
                     ],
                   ),
                 ),
-                Row(
-                  children: [
-                    Container(
-                      width: 24,
-                      height: 24,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage('assets/images/Star.png'))),
-                    ),
-                  ],
-                )
               ],
             ),
             SizedBox(
@@ -129,13 +118,18 @@ class CheckoutPage extends GetView<CheckOutPageController> {
             ),
             AddTraveller(),
             BookingItem(
+              title: "Date Ordered",
+              text: "${controller.selectedDate.value.day} ${DateFormat.MMMM().format(controller.selectedDate.value)} ${controller.selectedDate.value.year}",
+              valueColor: blackColor,
+            ),
+            BookingItem(
               title: "Insurance",
               text: "YES",
               valueColor: greenColor,
             ),
             BookingItem(
               title: "Refundable",
-              text: controller.personController.text.isEmpty? "0 Person" : '${controller.personController.text} Person',
+              text: 'No',
               valueColor: redColor,
             ),
             BookingItem(

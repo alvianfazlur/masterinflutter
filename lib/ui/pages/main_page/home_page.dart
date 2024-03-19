@@ -1,4 +1,5 @@
 import 'package:bwa_masteringflutter/shared/theme.dart';
+import 'package:bwa_masteringflutter/ui/pages/main_page/widgets/amount_traveller.dart';
 import 'package:bwa_masteringflutter/ui/pages/main_page/widgets/date_picker.dart';
 import 'package:bwa_masteringflutter/ui/pages/main_page/widgets/filter_item.dart';
 import 'package:bwa_masteringflutter/ui/pages/main_page/widgets/header.dart';
@@ -83,6 +84,7 @@ class HomePage extends GetView<HomePageController> {
                       children: [
                         SearchBarWidget(),
                         DatePickerBar(),
+                        AmountTravellerInput(),
                         Container(
                           margin: EdgeInsets.only(top: 20),
                           width: double.infinity,

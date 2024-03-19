@@ -30,30 +30,7 @@ class AddTraveller extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              width: 35,
-              height: 30,
-              margin: EdgeInsets.only(left: 6, right: 6),
-              decoration: BoxDecoration(
-                border: Border.all()
-              ),
-              child: TextFormField(
-                controller: controller.personController,
-                style: blackTextStyle,
-                textAlign: TextAlign.center,
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                ),
-                onChanged: (value) {
-                  controller.updatePrice(value);
-                },
-                keyboardType: TextInputType.number,
-                inputFormatters: <TextInputFormatter>[
-                  FilteringTextInputFormatter.digitsOnly,
-                  LengthLimitingTextInputFormatter(2),
-                ],
-              )
-            ),
+            Text("${controller.traveller} Person", style: blackTextStyle.copyWith(fontWeight: semiBold))
           ],
         ),
       ),

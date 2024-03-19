@@ -15,7 +15,7 @@ class TransactionPage extends GetView<TransactionController> {
 
     return GetBuilder<TransactionController>(
         builder: (controller) => Scaffold(
-              backgroundColor: backgroundColor,
+              backgroundColor: primaryColor,
               body: SafeArea(
                 child: RefreshIndicator(
                   onRefresh: () async {
@@ -25,7 +25,7 @@ class TransactionPage extends GetView<TransactionController> {
                     children: [
                       ListView(
                         padding: EdgeInsets.only(
-                            left: 30, top: 30, right: 24),
+                            top: 30),
                         children: [
                           ShowTransaction(transactions: controller.transactions),
                         ],

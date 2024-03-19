@@ -14,6 +14,17 @@ class DetailPage extends GetView<DetailPageController> {
 
     return GetBuilder<DetailPageController>(
       builder: (controller) => Scaffold(
+        appBar: AppBar(
+          backgroundColor: primaryColor,
+          centerTitle: true,
+          leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: Image.asset('assets/images/back_button.png', color: whiteColor,),
+          ),
+          title: Text("Destination Details", style: whiteTextStyle.copyWith(fontSize: 16, fontWeight: semiBold),),
+        ),
         backgroundColor: backgroundColor,
         body: SingleChildScrollView(
           child: Stack(

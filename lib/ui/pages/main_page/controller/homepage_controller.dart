@@ -16,6 +16,36 @@ class HomePageController extends GetxController {
   userData? user;
   String? error;
   bool isFilter = true;
+  RxInt traveller = 1.obs;
+  Rx<DateTime> selectedDate = DateTime.now().obs;
+
+  void setDate(DateTime date) {
+    selectedDate.value = date;
+  }
+
+  Future<void> selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate.value,
+      firstDate: DateTime.now(),
+      lastDate: DateTime(2101),
+    );
+    if (picked != null && picked != selectedDate.value) {
+      setDate(picked);
+    }
+    update();
+  }
+  void addTraveller(){
+    traveller.value++;
+    update();
+  }
+
+  void subtractTraveller() {
+    if (traveller.value > 1) {
+      traveller.value--;
+    }
+    update();
+  }
 
   @override
   void onInit() async {

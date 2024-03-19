@@ -1,7 +1,5 @@
-import 'dart:ffi';
-
 import 'package:bwa_masteringflutter/shared/theme.dart';
-import 'package:bwa_masteringflutter/ui/pages/main_page/controller/date_controller.dart';
+import 'package:bwa_masteringflutter/ui/pages/main_page/controller/homepage_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -11,8 +9,8 @@ class DatePickerBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<DatePickerController>(
-      builder: (DatePickerController controller) => GestureDetector(
+    return GetBuilder<HomePageController>(
+      builder: (controller) => GestureDetector(
         onTap: (){
           controller.selectDate(context);
         },

@@ -9,6 +9,7 @@ import 'package:bwa_masteringflutter/ui/pages/credit_page/credit_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/credit_page/widget/display_topup.dart';
 import 'package:bwa_masteringflutter/ui/pages/detail_page/detail_binding.dart';
 import 'package:bwa_masteringflutter/ui/pages/detail_page/detail_page.dart';
+import 'package:bwa_masteringflutter/ui/pages/detail_page/widgets/map_view.dart';
 import 'package:bwa_masteringflutter/ui/pages/get_started.dart';
 import 'package:bwa_masteringflutter/ui/pages/login/login_binding.dart';
 import 'package:bwa_masteringflutter/ui/pages/login/login_page.dart';
@@ -167,6 +168,13 @@ var appPages = [
   GetPage(
     name: DisplayTopUp.routeName,
     page: () => DisplayTopUp(),
+    transition: Transition.cupertino,
+    curve: Curves.easeInOut,
+    transitionDuration: const Duration(milliseconds: 250),
+  ),
+  GetPage(
+    name: MapViewPage.routeName,
+    page: () => MapViewPage(),
     transition: Transition.cupertino,
     curve: Curves.easeInOut,
     transitionDuration: const Duration(milliseconds: 250),

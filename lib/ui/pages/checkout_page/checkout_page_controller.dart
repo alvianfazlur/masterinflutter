@@ -15,10 +15,17 @@ class CheckOutPageController extends GetxController{
   TextEditingController personController = TextEditingController();
   var userController = Get.find<HomePageController>();
   String? error;
+  late final RxInt traveller;
+  late final Rx<DateTime> selectedDate;
 
   @override
   void onInit() {
-    destination = Get.arguments as DestinationModel;
+    final arguments = Get.arguments;
+    destination = arguments['destination'];
+    traveller = arguments['traveller'];
+    selectedDate = arguments['date'];
+    transactions.date = selectedDate.value;
+    updatePrice();
     super.onInit();
   }
 
@@ -53,10 +60,9 @@ class CheckOutPageController extends GetxController{
     BalanceService().updateBalance(userController.user!.id, newBalance);
   }
 
-  void updatePrice(String amount){
-    int totalPerson = int.tryParse(amount) ?? 0;
-    transactions.amountOfTraveler = totalPerson;
-    transactions.price = totalPerson * destination.price;
+  void updatePrice(){
+    transactions.amountOfTraveler = traveller.value;
+    transactions.price = traveller.value * transactions.destination.price;
     transactions.grandTotal = transactions.price + (transactions.price * 0.45).toInt();
     update();
   }
