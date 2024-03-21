@@ -17,24 +17,33 @@ class DisplayTopUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var clearController = Get.find<CreditController>();
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
+        backgroundColor: primaryColor,
         centerTitle: true,
         leading: IconButton(
           onPressed: () {
+            clearController.clearSearch();
+            clearController.selectedNominal.clear();
             Get.back();
           },
-          icon: Image.asset('assets/images/back_button.png'),
+          icon: Image.asset('assets/images/back_button.png', color: whiteColor,),
         ),
-        title: Text("Top Up", style: blackTextStyle.copyWith(fontSize: 16, fontWeight: semiBold),),
+        title: Text("Top Up Details", style: whiteTextStyle.copyWith(fontSize: 16, fontWeight: semiBold),),
       ),
-      backgroundColor: backgroundColor,
+      backgroundColor: primaryColor,
       body: GetBuilder(
         builder: (CreditController controller) => Container(
+          decoration: BoxDecoration(
+              color: whiteColor,
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))
+          ),
+          margin: EdgeInsets.only(top: 50),
           padding: EdgeInsets.all(10),
-          margin: EdgeInsets.only(
-              left: defaultMargin, right: defaultMargin, top: 30),
           child: ListView(
+            physics: ScrollPhysics(),
             children: [
               Column(
                 children: [
@@ -57,6 +66,7 @@ class DisplayTopUp extends StatelessWidget {
                     height: 10,
                   ),
                   Container(
+                    margin: EdgeInsets.symmetric(horizontal: 25),
                     width: double.infinity,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

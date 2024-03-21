@@ -14,6 +14,7 @@ Color backgroundColor = Color(0xffF5F5F5);
 Color inactiveColor = Color(0xffFAFAFA);
 Color availableColor = Color(0xffE0D9FF);
 Color unavailableColor = Color(0xffEBECF1);
+Color backgroundIntro = Color(0xffAD88C6);
 
 TextStyle blackTextStyle = GoogleFonts.poppins(
   color: blackColor

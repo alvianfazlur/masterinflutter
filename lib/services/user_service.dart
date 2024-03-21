@@ -14,7 +14,6 @@ class userService {
         return;
       }
 
-      // Jika tidak, tambahkan pengguna baru ke database
       await _userReference.doc(user.id).set({
         'email': user.email,
         'name': user.name,

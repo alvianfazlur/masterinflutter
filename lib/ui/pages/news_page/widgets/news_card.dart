@@ -4,6 +4,7 @@ import 'package:bwa_masteringflutter/ui/pages/news_page/news_page_controller.dar
 import 'package:bwa_masteringflutter/ui/pages/news_page_detail/detail_news.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class NewsCard extends StatelessWidget {
   const NewsCard(this.news, {Key? key}) : super(key: key);
@@ -63,7 +64,7 @@ class NewsCard extends StatelessWidget {
               Align(
                   alignment: Alignment.bottomRight,
                   child: Text(
-                    news.date.toString(),
+                    "${news.date.day} ${DateFormat.MMMM().format(news.date)} ${news.date.year}",
                     style: greyTextStyle,
                   )),
               SizedBox(height: 10,)

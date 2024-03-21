@@ -11,6 +11,8 @@ import 'package:bwa_masteringflutter/ui/pages/detail_page/detail_binding.dart';
 import 'package:bwa_masteringflutter/ui/pages/detail_page/detail_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/detail_page/widgets/map_view.dart';
 import 'package:bwa_masteringflutter/ui/pages/get_started.dart';
+import 'package:bwa_masteringflutter/ui/pages/intro_screen/intro_bindings.dart';
+import 'package:bwa_masteringflutter/ui/pages/intro_screen/intro_screen.dart';
 import 'package:bwa_masteringflutter/ui/pages/login/login_binding.dart';
 import 'package:bwa_masteringflutter/ui/pages/login/login_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/main_page/main_page.dart';
@@ -175,6 +177,14 @@ var appPages = [
   GetPage(
     name: MapViewPage.routeName,
     page: () => MapViewPage(),
+    transition: Transition.cupertino,
+    curve: Curves.easeInOut,
+    transitionDuration: const Duration(milliseconds: 250),
+  ),
+  GetPage(
+    name: IntroScreen.routeName,
+    page: () => IntroScreen(),
+    binding: IntroBindings(),
     transition: Transition.cupertino,
     curve: Curves.easeInOut,
     transitionDuration: const Duration(milliseconds: 250),

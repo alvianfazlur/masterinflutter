@@ -49,19 +49,43 @@ class ShowTransaction extends StatelessWidget {
         ],
       );
     } else {
-      return Container(
-        margin: EdgeInsets.only(bottom: 120),
-        child: Column(
-          children: [
-            Text("Riwayat Booking", style: blackTextStyle.copyWith(fontWeight: semiBold, fontSize: 28),),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: transactions.map((TransactionModel transaction) {
-                return TransactionCard(transaction);
-              }).toList(),
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+              margin: EdgeInsets.only(left: 25),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("My Tickets", style: whiteTextStyle.copyWith(fontSize: 24, fontWeight: semiBold),),
+                  Text("Join us and get your next journey", style: greyTextStyle.copyWith(),),
+                ],
+              )),
+          Container(
+            margin: EdgeInsets.only(top: 50),
+            padding: EdgeInsets.only(bottom: 200),
+            constraints: BoxConstraints(
+              minHeight: MediaQuery.of(context).size.height - 175,
             ),
-          ],
-        ),
+            decoration: BoxDecoration(
+                color: whiteColor,
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30),)
+            ),
+            child: Container(
+              margin: EdgeInsets.only(left: 25, right: 25),
+              child: Column(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: transactions.map((TransactionModel transaction) {
+                      return TransactionCard(transaction);
+                    }).toList(),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       );
     }
   }

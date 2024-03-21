@@ -4,6 +4,7 @@ import 'package:bwa_masteringflutter/models/user.dart';
 import 'package:bwa_masteringflutter/shared/theme.dart';
 import 'package:bwa_masteringflutter/ui/pages/bonus_page/bonus_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/get_started.dart';
+import 'package:bwa_masteringflutter/ui/pages/intro_screen/intro_screen.dart';
 import 'package:bwa_masteringflutter/ui/pages/login/login_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/main_page/get_user.dart';
 import 'package:bwa_masteringflutter/ui/pages/main_page/home_page.dart';
@@ -23,21 +24,12 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  final getUser = Get.put(GetUser());
+
 
   @override
   void initState() {
-    Timer(Duration(seconds: 3), () {
-      User? user = FirebaseAuth.instance.currentUser;
-
-      if (user == null) {
-        Get.offNamedUntil(LoginPage.routeName, (route) => false);
-      } else {
-        getUser.getCurrentUser(user.uid).then((userData user) {
-          Get.offNamedUntil(MainPage.routeName, (route) => false,
-              arguments: user);
-        });
-      }
+    Timer(Duration(seconds: 5), () {
+      Get.offNamed(IntroScreen.routeName);
     });
     super.initState();
   }

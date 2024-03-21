@@ -27,7 +27,7 @@ class SettingPageController extends GetxController {
     super.onInit();
   }
 
-  void signOut() async {
+  Future<void> signOut() async {
     try {
       await AuthService().signOut();
       Get.offAllNamed(LoginPage.routeName);

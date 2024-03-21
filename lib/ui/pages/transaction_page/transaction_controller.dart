@@ -1,6 +1,7 @@
 import 'package:bwa_masteringflutter/models/transaction.dart';
 import 'package:bwa_masteringflutter/services/transaction_service.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import '../../../models/user.dart';
 import '../../../services/balance_service.dart';
 import '../main_page/controller/homepage_controller.dart';
@@ -13,6 +14,8 @@ class TransactionController extends GetxController{
   String? error;
   userData? user;
   var userController = Get.find<HomePageController>();
+  final Set<String> displayedDates = Set();
+
   @override
   void onInit() {
     fetchTransactions();
@@ -37,5 +40,16 @@ class TransactionController extends GetxController{
     var newBalance = await BalanceService().fetchBalance(userController.user!.id);
     user!.balance = newBalance;
     update();
+  }
+
+  bool shouldDisplayDate(DateTime date) {
+    String formattedDate = "${date.day} ${DateFormat.MMMM().format(date)} ${date.year}";
+
+    if (displayedDates.contains(formattedDate)) {
+      return false;
+    } else {
+      displayedDates.add(formattedDate);
+      return true;
+    }
   }
 }

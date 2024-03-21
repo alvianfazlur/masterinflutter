@@ -2,6 +2,10 @@ import 'package:bwa_masteringflutter/shared/theme.dart';
 import 'package:bwa_masteringflutter/ui/pages/checkout_page/checkout_page_controller.dart';
 import 'package:bwa_masteringflutter/ui/pages/checkout_page/success_checkout.dart';
 import 'package:bwa_masteringflutter/ui/pages/checkout_page/widget/add_traveler.dart';
+import 'package:bwa_masteringflutter/ui/pages/checkout_page/widget/details_ticket.dart';
+import 'package:bwa_masteringflutter/ui/pages/checkout_page/widget/payment_details.dart';
+import 'package:bwa_masteringflutter/ui/pages/checkout_page/widget/payment_summary.dart';
+import 'package:bwa_masteringflutter/ui/pages/checkout_page/widget/voucher_discount.dart';
 import 'package:bwa_masteringflutter/ui/widgets/booking_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,225 +18,10 @@ class CheckoutPage extends GetView<CheckOutPageController> {
 
   @override
   Widget build(BuildContext context) {
-    Widget route() {
-      return Container(
-        margin: EdgeInsets.only(top: 50),
-        child: Column(
-          children: [
-            Container(
-              margin: EdgeInsets.only(bottom: 10),
-              width: 291,
-              height: 65,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('assets/images/plane_checkout.png'))),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "CGK",
-                      style: blackTextStyle.copyWith(
-                          fontSize: 24, fontWeight: semiBold),
-                    ),
-                    Text(
-                      "Tangerang",
-                      style: greyTextStyle.copyWith(fontWeight: light),
-                    )
-                  ],
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      "TLC",
-                      style: blackTextStyle.copyWith(
-                          fontSize: 24, fontWeight: semiBold),
-                    ),
-                    Text(
-                      "Ciliwung",
-                      style: greyTextStyle.copyWith(fontWeight: light),
-                    )
-                  ],
-                ),
-              ],
-            )
-          ],
-        ),
-      );
-    }
 
-    Widget checkoutTile() {
+    Widget buttonPay() {
       return Container(
-        margin: EdgeInsets.only(top: 30),
-        width: double.infinity,
-        padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(18), color: whiteColor),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Container(
-                  width: 70,
-                  height: 70,
-                  margin: EdgeInsets.only(right: 16),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18),
-                      image: DecorationImage(
-                          image: NetworkImage(controller.transactions.destination.imageurl),
-                          fit: BoxFit.cover)),
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        controller.transactions.destination.name,
-                        style: blackTextStyle.copyWith(
-                            fontWeight: medium, fontSize: 18),
-                      ),
-                      Text(
-                        controller.transactions.destination.city,
-                        style: greyTextStyle.copyWith(fontWeight: light),
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              "Booking Details",
-              style:
-                  blackTextStyle.copyWith(fontWeight: semiBold, fontSize: 18),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            AddTraveller(),
-            BookingItem(
-              title: "Date Ordered",
-              text: "${controller.selectedDate.value.day} ${DateFormat.MMMM().format(controller.selectedDate.value)} ${controller.selectedDate.value.year}",
-              valueColor: blackColor,
-            ),
-            BookingItem(
-              title: "Insurance",
-              text: "YES",
-              valueColor: greenColor,
-            ),
-            BookingItem(
-              title: "Refundable",
-              text: 'No',
-              valueColor: redColor,
-            ),
-            BookingItem(
-              title: "VAT",
-              text: "45%",
-              valueColor: blackColor,
-            ),
-            BookingItem(
-              title: "Price",
-              text:  NumberFormat.currency(
-                locale: 'id',
-                symbol: 'IDR ',
-                decimalDigits: 0,
-              ).format(controller.transactions.price),
-              valueColor: blackColor,
-            ),
-            BookingItem(
-              title: "Grand Total",
-              text: NumberFormat.currency(
-                locale: 'id',
-                symbol: 'IDR ',
-                decimalDigits: 0,
-              ).format(controller.transactions.grandTotal),
-              valueColor: primaryColor,
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget paymentDetails() {
-      return Container(
-        margin: EdgeInsets.symmetric(vertical: 30),
-        padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(18), color: whiteColor),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Payment Details",
-              style:
-                  blackTextStyle.copyWith(fontWeight: semiBold, fontSize: 16),
-            ),
-            SizedBox(
-              height: 16,
-            ),
-            Row(
-              children: [
-                Container(
-                  margin: EdgeInsets.only(right: 16),
-                  width: 100,
-                  height: 70,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage('assets/images/plane_pay.png'))),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(right: 6),
-                        width: 24,
-                        height: 24,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage('assets/images/plane.png'))),
-                      ),
-                      Text(
-                        "Pay",
-                        style: whiteTextStyle.copyWith(
-                            fontWeight: medium, fontSize: 16),
-                      )
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(NumberFormat.currency(
-                        locale: 'id',
-                        symbol: 'Rp ',
-                        decimalDigits: 0,
-                      ).format(controller.userController.user!.balance),
-                        style: blackTextStyle.copyWith(fontWeight: medium, fontSize: 18),),
-                      Text(
-                        "Current Balance",
-                        style: greyTextStyle.copyWith(fontWeight: light),
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget buttonPay(){
-      return Container(
-        margin: EdgeInsets.only(bottom: 30),
+        margin: EdgeInsets.only(bottom: 10, left: 25, right: 25),
         width: 327,
         height: 55,
         child: TextButton(
@@ -241,49 +30,89 @@ class CheckoutPage extends GetView<CheckOutPageController> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(17))),
           onPressed: () async {
-            if(controller.isSufficient() == "Gas"){
-              await controller.createTransaction(controller.transactions);
-              if (controller.status == TransactionStatus.loading) {
-                print("Loading");
-              } else if (controller.status == TransactionStatus.success) {
-                print("Success");
-                Get.offNamed(SuccessCheckout.routeName);
-              } else if (controller.status == TransactionStatus.failed) {
-                print("Failed");
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content:
-                    Text(controller.error ?? 'Unknown error')));
-              }
-            }
-            else if(controller.isSufficient() == "Kosong"){
-              Get.snackbar(
-                'Penumpang Kosong',
-                'Pilih Jumlah Penumpang Terlebih Dahulu!',
-                backgroundColor: Colors.red,
-                colorText: Colors.white,
-                snackPosition: SnackPosition.TOP,
-                duration: const Duration(seconds: 3),
-              );
-            } else{
-              Get.snackbar(
-                'Saldo Tidak Cukup',
-                'Silahkan Mengisi Saldo Terlebih Dahulu!',
-                backgroundColor: Colors.red,
-                colorText: Colors.white,
-                snackPosition: SnackPosition.TOP,
-                duration: const Duration(seconds: 3),
-              );
-            }
+            Get.dialog(
+              AlertDialog(
+                backgroundColor: Colors.white,
+                titlePadding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                title: Text(
+                  "Book to ${controller.transactions.destination.name}",
+                  style: blackTextStyle.copyWith(
+                      fontWeight: extraBold, fontSize: 20),
+                ),
+                content: Column(
+                  crossAxisAlignment:
+                  CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      "Get Ready For Your Exciting Journey",
+                      style: blackTextStyle.copyWith(fontSize: 16),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    child: Text(
+                      'Close',
+                      style: blackTextStyle,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () async{
+                      if (controller.isSufficient() == "Gas") {
+                        await controller.createTransaction(controller.transactions);
+                        if (controller.status == TransactionStatus.loading) {
+                          print("Loading");
+                        } else if (controller.status == TransactionStatus.success) {
+                          print("Success");
+                          Get.offNamed(SuccessCheckout.routeName);
+                        } else if (controller.status == TransactionStatus.failed) {
+                          print("Failed");
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text(controller.error ?? 'Unknown error')));
+                        }
+                      } else if (controller.isSufficient() == "Kosong") {
+                        Get.snackbar(
+                          'Penumpang Kosong',
+                          'Pilih Jumlah Penumpang Terlebih Dahulu!',
+                          backgroundColor: Colors.red,
+                          colorText: Colors.white,
+                          snackPosition: SnackPosition.TOP,
+                          duration: const Duration(seconds: 3),
+                        );
+                      } else {
+                        Get.snackbar(
+                          'Saldo Tidak Cukup',
+                          'Silahkan Mengisi Saldo Terlebih Dahulu!',
+                          backgroundColor: Colors.red,
+                          colorText: Colors.white,
+                          snackPosition: SnackPosition.TOP,
+                          duration: const Duration(seconds: 3),
+                        );
+                      }
+                    },
+                    child: Text(
+                      'Book',
+                      style: purpleTextStyle.copyWith(fontSize: 16),
+                    ),
+                  ),
+                ],
+              ),
+            );
           },
           child: Text(
-            'Pay Now',
-            style: whiteTextStyle.copyWith(
-                fontWeight: medium, fontSize: 18),
+            'Book a Ticket Now',
+            style: whiteTextStyle.copyWith(fontWeight: medium, fontSize: 18),
           ),
         ),
       );
     }
-    Widget terms(){
+
+    Widget terms() {
       return Container(
         margin: EdgeInsets.only(bottom: 30),
         child: TextButton(
@@ -317,12 +146,37 @@ class CheckoutPage extends GetView<CheckOutPageController> {
         ),
       );
     }
+
     return GetBuilder<CheckOutPageController>(
       builder: (CheckOutPageController controller) => Scaffold(
-        backgroundColor: backgroundColor,
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(
+            "Ticket Checkout",
+            style: blackTextStyle.copyWith(fontSize: 16, fontWeight: bold),
+          ),
+          leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: Image.asset("assets/images/back_button.png")),
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(4),
+            child: Container(
+              color: blackColor.withOpacity(0.1),
+              height: 1,
+            ),
+          ),
+        ),
         body: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 24),
-          children: [route(), checkoutTile(), paymentDetails(), buttonPay(),terms()],
+          children: [
+            DetailTicket(controller: controller),
+            PaymentDetails(controller: controller),
+            DiscountVoucher(controller: controller),
+            PaymentSummary(controller: controller),
+            buttonPay(),
+            terms()
+          ],
         ),
       ),
     );

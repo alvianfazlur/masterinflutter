@@ -18,11 +18,12 @@ class SuccessCheckout extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              margin: EdgeInsets.only(bottom: 80),
-              width: 300,
-              height: 150,
+              margin: EdgeInsets.only(bottom: 20),
+              width: 304,
+              height: 230,
               decoration: BoxDecoration(
                   image: DecorationImage(
+                    fit: BoxFit.cover,
                       image: AssetImage('assets/images/scheduling.png'))),
             ),
             Text(
@@ -40,7 +41,7 @@ class SuccessCheckout extends StatelessWidget {
             ),
             Container(
               margin: EdgeInsets.only(top: 50),
-              width: 220,
+              width: 315,
               height: 55,
               child: TextButton(
                 style: TextButton.styleFrom(
@@ -53,6 +54,28 @@ class SuccessCheckout extends StatelessWidget {
                 child: Text(
                   'My Bookings',
                   style: whiteTextStyle.copyWith(
+                      fontWeight: medium, fontSize: 18),
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 10),
+              width: 315,
+              height: 55,
+              decoration: BoxDecoration(
+                border: Border.all(color: blackColor.withOpacity(0.4)),
+                borderRadius: BorderRadius.circular(17)
+              ),
+              child: TextButton(
+                style: TextButton.styleFrom(
+                    backgroundColor: whiteColor,
+                ),
+                onPressed: () {
+                  Get.offNamedUntil(MainPage.routeName, ModalRoute.withName(MainPage.routeName));
+                },
+                child: Text(
+                  'Go To Home',
+                  style: blackTextStyle.copyWith(
                       fontWeight: medium, fontSize: 18),
                 ),
               ),

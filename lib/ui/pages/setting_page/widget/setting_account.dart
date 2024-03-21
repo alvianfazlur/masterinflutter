@@ -1,6 +1,10 @@
 import 'package:bwa_masteringflutter/services/user_service.dart';
+import 'package:bwa_masteringflutter/ui/pages/main_page/controller/homepage_controller.dart';
+import 'package:bwa_masteringflutter/ui/pages/main_page/widgets/header.dart';
 import 'package:bwa_masteringflutter/ui/pages/setting_page/setting_page_controller.dart';
+import 'package:bwa_masteringflutter/ui/pages/setting_page/widget/content_widget.dart';
 import 'package:bwa_masteringflutter/ui/pages/setting_page/widget/input_section.dart';
+import 'package:bwa_masteringflutter/ui/pages/transaction_page/trannsaction_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,92 +16,76 @@ class SettingAccount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var homeController = Get.find<HomePageController>();
     return GetBuilder<SettingPageController>(
       builder: (SettingPageController controller) => SafeArea(
         child: ListView(
+          physics: ScrollPhysics(),
           children: [
             Container(
-              margin: EdgeInsets.only(right: 20, left: 20),
               width: double.infinity,
               child: Column(
                 children: [
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      alignment: Alignment.center,
-                      margin: EdgeInsets.only(top: 10),
-                      width: 100,
-                      height: 30,
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: CupertinoColors.activeBlue, width: 2),
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.lightBlue),
-                      child: Text(
-                        "Personal",
-                        style: whiteTextStyle.copyWith(
-                            fontSize: 12, fontWeight: medium),
-                      ),
-                    ),
-                  ),
+                  HomePageHeader(controller: homeController),
                   Container(
-                    padding: EdgeInsets.all(20),
+                    padding: EdgeInsets.all(30),
+                    margin: EdgeInsets.only(top: 30),
                     width: double.infinity,
-                    margin: EdgeInsets.only(top: 100),
+                    height: MediaQuery.sizeOf(context).height - 200,
                     decoration: BoxDecoration(
-                        border: Border.all(color: blackColor.withOpacity(0.2)),
-                        borderRadius: BorderRadius.circular(10),
-                        color: whiteColor),
+                        color: whiteColor,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20))),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        InputSection(
-                          textController: controller.name,
-                          title: "Nama Pengguna",
-                          hintText: "Masukkan nama",
-                          style: blackTextStyle,
+                        Text(
+                          "Account",
+                          style: blackTextStyle.copyWith(
+                              fontSize: 16, fontWeight: semiBold),
                         ),
-                        InputSection(
-                          textController: controller.id,
-                          title: "ID Pengguna",
-                          hintText: "",
-                          readOnly: true,
-                          style: greyTextStyle,
+                        ContentWidget(
+                            title: "Edit Profile",
+                            onTap: () {
+                              print("object");
+                            }),
+                        ContentWidget(
+                            title: "Your Orders",
+                            onTap: () {
+                              Get.toNamed(TransactionPage.routeName);
+                            }),
+                        ContentWidget(
+                            title: "Help",
+                            onTap: () {
+                              print("help");
+                            }),
+                        SizedBox(
+                          height: 30,
                         ),
-                        InputSection(
-                          textController: controller.hobby,
-                          title: "Hobby",
-                          hintText: "Masukkan Hobby",
-                          style: blackTextStyle,
+                        Text(
+                          "General",
+                          style: blackTextStyle.copyWith(
+                              fontSize: 16, fontWeight: semiBold),
                         ),
-                        Container(
-                          margin: EdgeInsets.only(top: 50),
-                          width: double.infinity,
-                          height: 40,
-                          child: TextButton(
-                            style: TextButton.styleFrom(
-                                backgroundColor: greenColor,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10))),
-                            onPressed: () {
-                              if(controller.name.text.isEmpty || controller.hobby.text.isEmpty){
-                                Get.snackbar(
-                                  'Nama / Hobby Kosong',
-                                  'Silahkan Mengisi Nama / Hobby Kamu Terlebih Dahulu',
-                                  backgroundColor: Colors.red,
-                                  colorText: Colors.white,
-                                  snackPosition: SnackPosition.TOP,
-                                  duration: const Duration(seconds: 3),
-                                );
-                              }
-                              else if (controller.name.text !=
-                                      controller.user!.name ||
-                                  controller.hobby.text !=
-                                          controller.user!.hobby) {
+                        ContentWidget(
+                            title: "Privacy & Policy",
+                            onTap: () {
+                              print("help");
+                            }),
+                        ContentWidget(
+                            title: "Terms of Service",
+                            onTap: () {
+                              print("help");
+                            }),
+                        ContentWidget(
+                            title: "Sign Out",
+                            onTap: () {
                                 Get.dialog(
                                   AlertDialog(
                                     backgroundColor: Colors.white,
                                     title: Text(
-                                      "Update Your Current Data?",
+                                      "Ready to Logout?",
                                       style: blackTextStyle.copyWith(
                                           fontWeight: extraBold),
                                     ),
@@ -105,6 +93,12 @@ class SettingAccount extends StatelessWidget {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Text(
+                                          "We'll Miss You 👋",
+                                          style: blackTextStyle,
+                                        ),
+                                      ],
                                     ),
                                     actions: [
                                       TextButton(
@@ -117,107 +111,19 @@ class SettingAccount extends StatelessWidget {
                                         ),
                                       ),
                                       TextButton(
-                                        onPressed: () async {
-                                          await userService().updateUser(
-                                              controller.id.text,
-                                              controller.name.text,
-                                              controller.hobby.text);
-                                          Get.back();
-                                          Get.snackbar(
-                                            'Restart Application!',
-                                            'Silahkan Restart Aplikasi untuk Melihat Perubahan',
-                                            backgroundColor: Colors.green,
-                                            colorText: Colors.white,
-                                            snackPosition: SnackPosition.TOP,
-                                            duration:
-                                                const Duration(seconds: 3),
-                                          );
+                                        onPressed: () async{
+                                          await controller.signOut();
                                         },
                                         child: Text(
-                                          'Update',
+                                          'Sign Out',
                                           style: redTextStyle,
                                         ),
                                       ),
                                     ],
                                   ),
                                 );
-                              } else {
-                                Get.snackbar(
-                                  'Tidak Ada Perubahan Data',
-                                  'Ubah Data Terlebih Dahulu',
-                                  backgroundColor: Colors.red,
-                                  colorText: Colors.white,
-                                  snackPosition: SnackPosition.TOP,
-                                  duration: const Duration(seconds: 3),
-                                );
-                              }
-                            },
-                            child: Text(
-                              'Update Account',
-                              style: whiteTextStyle.copyWith(
-                                  fontWeight: medium, fontSize: 18),
-                            ),
-                          ),
-                        )
+                            }),
                       ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: 50),
-                    width: double.infinity,
-                    height: 40,
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                          backgroundColor: Colors.red,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10))),
-                      onPressed: () {
-                        Get.dialog(
-                          AlertDialog(
-                            backgroundColor: Colors.white,
-                            title: Text(
-                              "Ready to Logout?",
-                              style: blackTextStyle.copyWith(
-                                  fontWeight: extraBold),
-                            ),
-                            content: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  "We'll Miss You 👋",
-                                  style: blackTextStyle,
-                                ),
-                              ],
-                            ),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  Get.back();
-                                },
-                                child: Text(
-                                  'Close',
-                                  style: blackTextStyle,
-                                ),
-                              ),
-                              TextButton(
-                                onPressed: () {
-                                  controller.signOut();
-                                },
-                                child: Text(
-                                  'Sign Out',
-                                  style: redTextStyle,
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                      child: Text(
-                        'Peace Out',
-                        style: whiteTextStyle.copyWith(
-                            fontWeight: medium, fontSize: 18),
-                      ),
                     ),
                   )
                 ],

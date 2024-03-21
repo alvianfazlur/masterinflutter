@@ -14,51 +14,66 @@ class CreditPage extends GetView<CreditController> {
 
   @override
   Widget build(BuildContext context) {
-
     return GetBuilder<CreditController>(
-      builder: (controller) =>
-          Scaffold(
-            resizeToAvoidBottomInset: false,
-            backgroundColor: backgroundColor,
-            body: SafeArea(
-                child: RefreshIndicator(
-                  onRefresh: () async {
-                   await controller.fetchBalance();
-                  },
-                  child: Stack(
+      builder: (controller) => Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: primaryColor,
+        body: SafeArea(
+          child: RefreshIndicator(
+            onRefresh: () async {
+              await controller.fetchBalance();
+            },
+            child: Stack(
+              children: [
+                Header(),
+                Container(
+                  margin: EdgeInsets.only(top: 100),
+                  decoration: BoxDecoration(
+                    color: whiteColor,
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))
+                  ),
+                  padding: EdgeInsets.only(bottom: 150),
+                  child: ListView(
                     children: [
-                      ListView(
-                        children: [
-                          Header(),
-                          CreditContent(controller: controller),
-                          Container(
-                            margin: EdgeInsets.only(left: 30, right: 30),
-                            width: double.infinity,
-                            height: 50,
-                            child: TextButton(
-                              style: TextButton.styleFrom(
-                                  backgroundColor: primaryColor,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12))),
-                              onPressed: () {
-                                Get.toNamed(DisplayTopUp.routeName);
-                              },
-                              child: Text(
-                                'Top Up Now',
-                                style: whiteTextStyle.copyWith(
-                                    fontWeight: medium, fontSize: 18),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                      BottomNavbar(
-                        isSelectedSaldo: true,
-                      )
+                      CreditContent(controller: controller),
                     ],
                   ),
-                )),
+                ),
+                Positioned(
+                  left: 30,
+                  right: 30,
+                  bottom: 100,
+                  child: Container(
+                    width: double.infinity,
+                    height: 50,
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        backgroundColor: primaryColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      onPressed: () {
+                        Get.toNamed(DisplayTopUp.routeName);
+                      },
+                      child: Text(
+                        'Top Up Now',
+                        style: whiteTextStyle.copyWith(
+                          fontWeight: medium,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                BottomNavbar(
+                  isSelectedSaldo: true,
+                )
+              ],
+            ),
           ),
+        ),
+      ),
     );
   }
 }

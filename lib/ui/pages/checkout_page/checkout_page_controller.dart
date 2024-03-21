@@ -11,7 +11,7 @@ enum TransactionStatus { loading, success, failed }
 class CheckOutPageController extends GetxController{
   late final DestinationModel destination;
   Rx<TransactionStatus> status = TransactionStatus.loading.obs;
-  late TransactionModel transactions = TransactionModel(destination: destination, uid: userController.user!.id, date: DateTime.now());
+  late TransactionModel transactions = TransactionModel(destination: destination, uid: userController.user!.id, date: DateTime.now(), dateCreated: DateTime.now());
   TextEditingController personController = TextEditingController();
   var userController = Get.find<HomePageController>();
   String? error;
@@ -63,7 +63,7 @@ class CheckOutPageController extends GetxController{
   void updatePrice(){
     transactions.amountOfTraveler = traveller.value;
     transactions.price = traveller.value * transactions.destination.price;
-    transactions.grandTotal = transactions.price + (transactions.price * 0.45).toInt();
+    transactions.grandTotal = transactions.price + (transactions.price * 0.20).toInt();
     update();
   }
 }

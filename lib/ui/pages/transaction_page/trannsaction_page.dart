@@ -17,22 +17,17 @@ class TransactionPage extends GetView<TransactionController> {
         builder: (controller) => Scaffold(
               backgroundColor: primaryColor,
               body: SafeArea(
-                child: RefreshIndicator(
-                  onRefresh: () async {
-                    controller.fetchTransactions();
-                  },
-                  child: Stack(
-                    children: [
-                      ListView(
-                        padding: EdgeInsets.only(
-                            top: 30),
-                        children: [
-                          ShowTransaction(transactions: controller.transactions),
-                        ],
-                      ),
-                      BottomNavbar(isSelectedTransaction: true),
-                    ],
-                  ),
+                child: Stack(
+                  children: [
+                    ListView(
+                      padding: EdgeInsets.only(
+                          top: 30),
+                      children: [
+                        ShowTransaction(transactions: controller.transactions),
+                      ],
+                    ),
+                    BottomNavbar(isSelectedTransaction: true),
+                  ],
                 ),
               ),
             ));

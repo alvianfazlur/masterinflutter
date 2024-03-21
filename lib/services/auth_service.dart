@@ -73,7 +73,6 @@ class AuthService {
           balance: 0);
       await userService().setUser(registUser);
       userData user = await userService().getUserById(userCredential.user!.uid);
-      print(userCredential.user!.uid);
       return user;
     } on Exception catch (e) {
       print('exception->$e');

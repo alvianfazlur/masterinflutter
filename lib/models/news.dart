@@ -3,7 +3,7 @@ class NewsModel{
   final String Content;
   final String imageUrl;
   final String source;
-  final String date;
+  final DateTime date;
 
   NewsModel(
       {required this.title,
@@ -17,6 +17,6 @@ class NewsModel{
     Content: json['Content'],
    imageUrl: json['imageUrl'],
     source: json['source'],
-    date: json['date'].toDate().toString()
+    date: DateTime.fromMillisecondsSinceEpoch(json['date'].millisecondsSinceEpoch),
   );
 }

@@ -1,6 +1,4 @@
 import 'package:bwa_masteringflutter/ui/pages/credit_page/credit_page.dart';
-import 'package:bwa_masteringflutter/ui/pages/order_history/order_history_page.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
 enum MIDTRANS_PAYMENT_TYPE {
@@ -113,6 +111,7 @@ class Midtrans {
         title = 'Purchase successfully!';
 
         if (paymentType == MIDTRANS_PAYMENT_TYPE.bank_transfer) {
+          title = 'Purchase successfully!';
           desc = 'You have 24 hours to send money.';
         }
         break;
@@ -141,7 +140,6 @@ class Midtrans {
       case MIDTRANS_STATUS_CODE.MIDTRANS_STATUS_CODE_503:
       case MIDTRANS_STATUS_CODE.MIDTRANS_STATUS_CODE_504:
       case null:
-      // TODO: Handle this case.
     }
     return [title, desc];
   }

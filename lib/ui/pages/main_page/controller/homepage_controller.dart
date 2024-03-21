@@ -25,10 +25,12 @@ class HomePageController extends GetxController {
 
   Future<void> selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
+      helpText: "You Can Booked Only 7 days From Now On!",
+      confirmText: "Select Date",
       context: context,
       initialDate: selectedDate.value,
       firstDate: DateTime.now(),
-      lastDate: DateTime(2101),
+      lastDate: DateTime.now().add(Duration(days: 7)),
     );
     if (picked != null && picked != selectedDate.value) {
       setDate(picked);
@@ -72,7 +74,7 @@ class HomePageController extends GetxController {
     if (selectedFilter.isNotEmpty) {
       displayDestinations = destinations
           .where((element) =>
-              element.name.toLowerCase().contains(value.toLowerCase()) &&
+              element.city.toLowerCase().contains(value.toLowerCase()) &&
               element.category
                   .toLowerCase()
                   .contains(selectedFilter.first.toLowerCase()))
@@ -80,7 +82,7 @@ class HomePageController extends GetxController {
     } else {
       displayDestinations = destinations
           .where((element) =>
-              element.name.toLowerCase().contains(value.toLowerCase()))
+              element.city.toLowerCase().contains(value.toLowerCase()))
           .toList();
     }
     update();

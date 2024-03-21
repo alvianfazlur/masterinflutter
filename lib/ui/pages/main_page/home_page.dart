@@ -12,7 +12,7 @@ import 'package:get/get.dart';
 import 'controller/homepage_controller.dart';
 
 class HomePage extends GetView<HomePageController> {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class HomePage extends GetView<HomePageController> {
           HomePageHeader(
             controller: controller,
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           SingleChildScrollView(
@@ -54,7 +54,7 @@ class HomePage extends GetView<HomePageController> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Container(

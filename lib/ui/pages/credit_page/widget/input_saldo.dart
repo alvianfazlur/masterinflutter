@@ -11,7 +11,7 @@ class InputSaldo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 30),
+      margin: EdgeInsets.only(top: 30, left: 25, right: 30),
       padding: EdgeInsets.only(left: 10, right: 5),
       decoration: BoxDecoration(
         color: whiteColor,

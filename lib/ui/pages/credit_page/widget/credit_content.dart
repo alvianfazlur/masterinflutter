@@ -17,7 +17,7 @@ class CreditContent extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 180,
-      margin: const EdgeInsets.only(left: 30, right: 30),
+      margin: const EdgeInsets.only(left: 30, right: 30, top: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
