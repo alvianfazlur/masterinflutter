@@ -1,3 +1,5 @@
+import 'package:bwa_masteringflutter/ui/pages/boarding_pass/boarding_pass.dart';
+import 'package:bwa_masteringflutter/ui/pages/boarding_pass/boarding_pass_binding.dart';
 import 'package:bwa_masteringflutter/ui/pages/bonus_page/bonus_binding.dart';
 import 'package:bwa_masteringflutter/ui/pages/bonus_page/bonus_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/checkout_page/checkout_page.dart';
@@ -185,6 +187,14 @@ var appPages = [
     name: IntroScreen.routeName,
     page: () => IntroScreen(),
     binding: IntroBindings(),
+    transition: Transition.cupertino,
+    curve: Curves.easeInOut,
+    transitionDuration: const Duration(milliseconds: 250),
+  ),
+  GetPage(
+    name: BoardingPass.routeName,
+    page: () => BoardingPass(),
+    binding: BoardingPassBinding(),
     transition: Transition.cupertino,
     curve: Curves.easeInOut,
     transitionDuration: const Duration(milliseconds: 250),

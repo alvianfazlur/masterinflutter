@@ -6,9 +6,9 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
+import 'package:maps_launcher/maps_launcher.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import '../../../widgets/interests_item.dart';
 import '../../checkout_page/checkout_page.dart';
 import '../detail_page_controller.dart';
 
@@ -197,7 +197,9 @@ class DetailPageContent extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () async {
-                        Get.toNamed(MapViewPage.routeName);
+                        // await controller.launchUrl(Uri.parse('https://maps.app.goo.gl/XdmczbzuJyzBxkn39'));
+                        MapsLauncher.launchQuery("${controller.destination.name}");
+                        // Get.toNamed(MapViewPage.routeName);
                       },
                       child: Container(
                         height: 179,

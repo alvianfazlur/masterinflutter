@@ -1,16 +1,13 @@
 import 'package:bwa_masteringflutter/shared/theme.dart';
 import 'package:bwa_masteringflutter/ui/pages/checkout_page/checkout_page_controller.dart';
 import 'package:bwa_masteringflutter/ui/pages/checkout_page/success_checkout.dart';
-import 'package:bwa_masteringflutter/ui/pages/checkout_page/widget/add_traveler.dart';
 import 'package:bwa_masteringflutter/ui/pages/checkout_page/widget/details_ticket.dart';
 import 'package:bwa_masteringflutter/ui/pages/checkout_page/widget/payment_details.dart';
 import 'package:bwa_masteringflutter/ui/pages/checkout_page/widget/payment_summary.dart';
 import 'package:bwa_masteringflutter/ui/pages/checkout_page/widget/voucher_discount.dart';
-import 'package:bwa_masteringflutter/ui/widgets/booking_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:intl/intl.dart';
 
 class CheckoutPage extends GetView<CheckOutPageController> {
   CheckoutPage({Key? key}) : super(key: key);
@@ -38,6 +35,7 @@ class CheckoutPage extends GetView<CheckOutPageController> {
                   "Book to ${controller.transactions.destination.name}",
                   style: blackTextStyle.copyWith(
                       fontWeight: extraBold, fontSize: 20),
+                  textAlign: TextAlign.center,
                 ),
                 content: Column(
                   crossAxisAlignment:
