@@ -26,6 +26,7 @@ class LoginController extends GetxController{
   }
   Future<void> signInWithGoogle() async {
     try {
+      status = AuthStatus.loading.obs;
       user = await AuthService().signInWithGoogle();
       status = AuthStatus.success.obs;
       update();

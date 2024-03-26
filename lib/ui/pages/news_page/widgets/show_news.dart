@@ -15,7 +15,7 @@ class ShowNews extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder(
       builder: (NewsController controller) => Container(
-        margin: EdgeInsets.only(bottom: 120,  top: 50),
+        width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: news.map((NewsModel article) {
