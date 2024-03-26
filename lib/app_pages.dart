@@ -5,6 +5,7 @@ import 'package:bwa_masteringflutter/ui/pages/bonus_page/bonus_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/checkout_page/checkout_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/checkout_page/checkout_page_binding.dart';
 import 'package:bwa_masteringflutter/ui/pages/checkout_page/success_checkout.dart';
+import 'package:bwa_masteringflutter/ui/pages/checkout_page/widget/details_ticket.dart';
 import 'package:bwa_masteringflutter/ui/pages/choose_seat_page/seat_binding.dart';
 import 'package:bwa_masteringflutter/ui/pages/credit_page/credit_binding.dart';
 import 'package:bwa_masteringflutter/ui/pages/credit_page/credit_page.dart';
@@ -12,6 +13,8 @@ import 'package:bwa_masteringflutter/ui/pages/credit_page/widget/display_topup.d
 import 'package:bwa_masteringflutter/ui/pages/detail_page/detail_binding.dart';
 import 'package:bwa_masteringflutter/ui/pages/detail_page/detail_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/detail_page/widgets/map_view.dart';
+import 'package:bwa_masteringflutter/ui/pages/detail_ticket/detail_ticket.dart';
+import 'package:bwa_masteringflutter/ui/pages/detail_ticket/detail_ticket_binding.dart';
 import 'package:bwa_masteringflutter/ui/pages/get_started.dart';
 import 'package:bwa_masteringflutter/ui/pages/intro_screen/intro_bindings.dart';
 import 'package:bwa_masteringflutter/ui/pages/intro_screen/intro_screen.dart';
@@ -35,6 +38,8 @@ import 'package:bwa_masteringflutter/ui/pages/sign_up/sign_up_screen.dart';
 import 'package:bwa_masteringflutter/ui/pages/splash_screen.dart';
 import 'package:bwa_masteringflutter/ui/pages/transaction_page/trannsaction_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/transaction_page/transaction_binding.dart';
+import 'package:bwa_masteringflutter/ui/pages/transaction_page/transaction_history/transaction_history.dart';
+import 'package:bwa_masteringflutter/ui/pages/transaction_page/transaction_history/transaction_history_binding.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/animation.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
@@ -195,6 +200,22 @@ var appPages = [
     name: BoardingPass.routeName,
     page: () => BoardingPass(),
     binding: BoardingPassBinding(),
+    transition: Transition.cupertino,
+    curve: Curves.easeInOut,
+    transitionDuration: const Duration(milliseconds: 250),
+  ),
+  GetPage(
+    name: TransactionHistory.routeName,
+    page: () => TransactionHistory(),
+    binding: TransactionHistoryBinding(),
+    transition: Transition.cupertino,
+    curve: Curves.easeInOut,
+    transitionDuration: const Duration(milliseconds: 250),
+  ),
+  GetPage(
+    name: DetailTicketPage.routeName,
+    page: () => DetailTicketPage(),
+    binding: DetailTicketBinding(),
     transition: Transition.cupertino,
     curve: Curves.easeInOut,
     transitionDuration: const Duration(milliseconds: 250),

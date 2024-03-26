@@ -1,5 +1,6 @@
 import 'package:bwa_masteringflutter/models/transaction.dart';
 import 'package:bwa_masteringflutter/ui/pages/boarding_pass/boarding_pass.dart';
+import 'package:bwa_masteringflutter/ui/pages/detail_ticket/detail_ticket.dart';
 import 'package:bwa_masteringflutter/ui/pages/transaction_page/transaction_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,10 +20,7 @@ class TransactionCard extends StatelessWidget {
     return GetBuilder(
       builder: (TransactionController controller) => GestureDetector(
         onTap: () {
-          transaction.date.isAfter(DateTime.now().subtract(Duration(days: 1)))
-              ? Get.toNamed(BoardingPass.routeName, arguments: transaction)
-              : print("Expired");
-          ;
+          Get.toNamed(DetailTicketPage.routeName, arguments: transaction);
         },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -160,7 +158,6 @@ class TransactionCard extends StatelessWidget {
                 )),
           ],
         ),
-      ),
-    );
+      ));
   }
 }

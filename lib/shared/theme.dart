@@ -15,6 +15,7 @@ Color inactiveColor = Color(0xffFAFAFA);
 Color availableColor = Color(0xffE0D9FF);
 Color unavailableColor = Color(0xffEBECF1);
 Color backgroundIntro = Color(0xffAD88C6);
+Color yellowColor = Color(0xffCB9A06);
 
 TextStyle blackTextStyle = GoogleFonts.poppins(
   color: blackColor
@@ -24,6 +25,9 @@ TextStyle whiteTextStyle = GoogleFonts.poppins(
 );
 TextStyle greyTextStyle = GoogleFonts.poppins(
     color: greyColor
+);
+TextStyle yellowTextStyle = GoogleFonts.poppins(
+    color: yellowColor
 );
 TextStyle greenTextStyle = GoogleFonts.poppins(
     color: greenColor
