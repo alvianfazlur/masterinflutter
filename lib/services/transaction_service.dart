@@ -1,6 +1,5 @@
 import 'package:bwa_masteringflutter/models/transaction.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:get/get.dart';
 
 class TransactionService {
   CollectionReference _transactionReference =

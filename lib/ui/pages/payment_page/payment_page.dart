@@ -86,7 +86,7 @@ class MidtransPaymentPage extends GetView<PaymentController> {
         if (title.length == 0 && desc.length == 0)
           Get.snackbar(
             'Error',
-            'Please Select ini',
+            'Error Occured',
             backgroundColor: Colors.red,
             colorText: Colors.white,
             snackPosition: SnackPosition.TOP,
@@ -96,8 +96,8 @@ class MidtransPaymentPage extends GetView<PaymentController> {
           showConfirmDialog(title, desc, message);
       } catch (e) {
         Get.snackbar(
-          'Empty Seat',
-          'Please Select itu',
+          'Error',
+          'Error Occured',
           backgroundColor: Colors.red,
           colorText: Colors.white,
           snackPosition: SnackPosition.TOP,
