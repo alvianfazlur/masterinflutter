@@ -6,7 +6,6 @@ import '../../../models/user.dart';
 import '../main_page/controller/homepage_controller.dart';
 
 class SettingPageController extends GetxController {
-  var userController = Get.find<HomePageController>();
   userData? user;
   late String censoredPart;
   late String censoredText;
@@ -17,7 +16,7 @@ class SettingPageController extends GetxController {
 
   @override
   void onInit() {
-    user = userController.user;
+    user = Get.arguments;
     userId = user!.id;
     censoredPart = userId.substring(3, 10);
     censoredText = userId.replaceRange(3, 10, '*******');

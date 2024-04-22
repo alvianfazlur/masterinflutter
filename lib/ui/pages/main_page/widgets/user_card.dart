@@ -1,13 +1,12 @@
+import 'package:bwa_masteringflutter/models/user.dart';
 import 'package:bwa_masteringflutter/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../controller/homepage_controller.dart';
-
 class UserCard extends StatelessWidget {
-  const UserCard({Key? key, required this.controller}) : super(key: key);
+  const UserCard({Key? key, required this.user}) : super(key: key);
 
-  final HomePageController controller;
+  final userData? user;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +36,7 @@ class UserCard extends StatelessWidget {
                     locale: 'id',
                     symbol: 'Rp ',
                     decimalDigits: 0,
-                  ).format(controller.user!.balance),
+                  ).format(user!.balance),
                   style:
                       whiteTextStyle.copyWith(fontWeight: bold, fontSize: 18),
                 )
@@ -58,7 +57,7 @@ class UserCard extends StatelessWidget {
                   height: 5,
                 ),
                 Text(
-                  controller.user!.name,
+                  user!.name,
                   style:
                       whiteTextStyle.copyWith(fontSize: 15, fontWeight: bold),
                 )

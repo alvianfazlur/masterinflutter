@@ -33,7 +33,7 @@ class Header extends StatelessWidget {
           ),
           GestureDetector(
             onTap: (){
-              Get.toNamed(OrderHistoryPage.routeName);
+              Get.toNamed(OrderHistoryPage.routeName, arguments: controller.user);
             },
             child: Container(
               padding: EdgeInsets.all(10),

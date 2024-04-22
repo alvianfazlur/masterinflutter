@@ -14,7 +14,8 @@ class AuthService {
       {required String email,
       required String password,
       required String name,
-      String hobby = '', required balance}) async {
+      String hobby = '',
+      required balance}) async {
     try {
       UserCredential userCredential = await _auth
           .createUserWithEmailAndPassword(email: email, password: password);
@@ -23,7 +24,7 @@ class AuthService {
           email: email,
           name: name,
           hobby: hobby,
-      balance: balance);
+          balance: balance);
       await userService().setUser(user);
       return user;
     } catch (e) {
@@ -56,15 +57,19 @@ class AuthService {
   Future<dynamic> signInWithGoogle() async {
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      if (googleUser == null) {
+        throw Exception('Sign in with Google was canceled or failed.');
+      }
 
       final GoogleSignInAuthentication? googleAuth =
-      await googleUser?.authentication;
+          await googleUser?.authentication;
 
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
       );
-      UserCredential userCredential = await _auth.signInWithCredential(credential);
+      UserCredential userCredential =
+          await _auth.signInWithCredential(credential);
       userData registUser = userData(
           id: userCredential.user!.uid,
           email: googleUser!.email,
@@ -73,9 +78,11 @@ class AuthService {
           balance: 0);
       await userService().setUser(registUser);
       userData user = await userService().getUserById(userCredential.user!.uid);
+      print(user.name);
       return user;
-    } on Exception catch (e) {
-      print('exception->$e');
+    } catch (e) {
+      print('Error signing in with Google: $e');
+      rethrow;
     }
   }
 }

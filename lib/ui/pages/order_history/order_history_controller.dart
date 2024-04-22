@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:bwa_masteringflutter/models/user.dart';
 import 'package:bwa_masteringflutter/services/balance_service.dart';
 import 'package:bwa_masteringflutter/services/order_service.dart';
 import 'package:get/get.dart';
@@ -10,12 +11,13 @@ import '../main_page/controller/homepage_controller.dart';
 class OrderHistoryController extends GetxController{
 
   List<OrderModel> orderData = [];
-  var userController = Get.find<HomePageController>();
+  userData? user;
 
   @override
   void onInit() async {
-    await getOrderFromFirebase(userController.user!.id);
-    fetchOrders(userController.user!.id);
+    user = Get.arguments;
+    await getOrderFromFirebase(user!.id);
+    fetchOrders(user!.id);
     super.onInit();
   }
 
@@ -48,7 +50,7 @@ class OrderHistoryController extends GetxController{
         if(order.status == 'Paid'){
           OrderService().addOrder(order);
           orderData.add(order);
-          BalanceService().updateBalance(userController.user!.id, order.total_topup + userController.user!.balance);
+          BalanceService().updateBalance(user!.id, order.total_topup + user!.balance);
         }
         else{
           print('Else Order dengan id ${order.order_id}');

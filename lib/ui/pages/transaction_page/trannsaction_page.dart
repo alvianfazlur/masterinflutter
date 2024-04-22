@@ -1,6 +1,5 @@
 import 'package:bwa_masteringflutter/ui/pages/main_page/main_page.dart';
 import 'package:bwa_masteringflutter/ui/pages/transaction_page/widgets/show_transaction.dart';
-import 'package:bwa_masteringflutter/ui/pages/transaction_page/widgets/transaction_card.dart';
 import 'package:bwa_masteringflutter/ui/pages/transaction_page/transaction_controller.dart';
 import 'package:bwa_masteringflutter/ui/widgets/bottom_navbar.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +25,7 @@ class TransactionPage extends GetView<TransactionController> {
                         ShowTransaction(transactions: controller.transactions),
                       ],
                     ),
-                    BottomNavbar(isSelectedTransaction: true),
+                    BottomNavbar(isSelectedTransaction: true, user: controller.user,),
                   ],
                 ),
               ),

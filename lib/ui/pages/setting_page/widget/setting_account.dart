@@ -16,7 +16,6 @@ class SettingAccount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var homeController = Get.find<HomePageController>();
     return GetBuilder<SettingPageController>(
       builder: (SettingPageController controller) => SafeArea(
         child: ListView(
@@ -26,7 +25,7 @@ class SettingAccount extends StatelessWidget {
               width: double.infinity,
               child: Column(
                 children: [
-                  HomePageHeader(controller: homeController),
+                  HomePageHeader(user: controller?.user,),
                   Container(
                     padding: EdgeInsets.all(30),
                     margin: EdgeInsets.only(top: 30),

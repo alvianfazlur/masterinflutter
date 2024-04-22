@@ -5,6 +5,7 @@ import 'package:bwa_masteringflutter/ui/pages/checkout_page/widget/details_ticke
 import 'package:bwa_masteringflutter/ui/pages/checkout_page/widget/payment_details.dart';
 import 'package:bwa_masteringflutter/ui/pages/checkout_page/widget/payment_summary.dart';
 import 'package:bwa_masteringflutter/ui/pages/checkout_page/widget/voucher_discount.dart';
+import 'package:bwa_masteringflutter/ui/pages/main_page/controller/homepage_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -66,8 +67,9 @@ class CheckoutPage extends GetView<CheckOutPageController> {
                         if (controller.status == TransactionStatus.loading) {
                           print("Loading");
                         } else if (controller.status == TransactionStatus.success) {
+                          var userController = Get.find<HomePageController>();
                           print("Success");
-                          Get.offNamed(SuccessCheckout.routeName);
+                          Get.offAllNamed(SuccessCheckout.routeName, arguments: userController.user);
                         } else if (controller.status == TransactionStatus.failed) {
                           print("Failed");
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(

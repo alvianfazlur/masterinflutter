@@ -35,7 +35,7 @@ class CreditPage extends GetView<CreditController> {
                   padding: EdgeInsets.only(bottom: 150),
                   child: ListView(
                     children: [
-                      CreditContent(controller: controller),
+                      CreditContent(user: controller.user,),
                     ],
                   ),
                 ),
@@ -67,7 +67,7 @@ class CreditPage extends GetView<CreditController> {
                   ),
                 ),
                 BottomNavbar(
-                  isSelectedSaldo: true,
+                  isSelectedSaldo: true, user: controller.user,
                 )
               ],
             ),

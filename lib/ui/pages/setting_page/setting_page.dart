@@ -20,7 +20,7 @@ class SettingPage extends GetView<SettingPageController> {
           children: [
             Background(),
             SettingAccount(),
-            BottomNavbar(isSelectedSetting: true),
+            BottomNavbar(isSelectedSetting: true, user: controller.user,),
           ],
         ),
       ),

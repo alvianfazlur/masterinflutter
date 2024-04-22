@@ -83,7 +83,7 @@ class DetailTicketPage extends GetView<DetailTicketController> {
             Expanded(
               child: SizedBox(),
             ),
-            controller.transaction.date.day == DateTime.now().day
+            controller.transaction.date.day == DateTime.now().day && controller.transaction.date.month == DateTime.now().month && controller.transaction.date.year == DateTime.now().year
                 ? Container(
                     width: double.infinity,
                     height: 50,

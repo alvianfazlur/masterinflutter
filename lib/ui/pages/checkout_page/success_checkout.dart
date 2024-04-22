@@ -1,16 +1,18 @@
 import 'package:bwa_masteringflutter/shared/theme.dart';
+import 'package:bwa_masteringflutter/ui/pages/checkout_page/checkout_page_controller.dart';
 import 'package:bwa_masteringflutter/ui/pages/transaction_page/trannsaction_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../main_page/main_page.dart';
 
-class SuccessCheckout extends StatelessWidget {
+class SuccessCheckout extends GetView<CheckOutPageController> {
   const SuccessCheckout({Key? key}) : super(key: key);
   static const routeName = "/success";
 
   @override
   Widget build(BuildContext context) {
+    var user = Get.arguments;
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Center(
@@ -49,7 +51,7 @@ class SuccessCheckout extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(17))),
                 onPressed: () {
-                  Get.offNamedUntil(TransactionPage.routeName, ModalRoute.withName(MainPage.routeName));
+                  Get.offAllNamed(TransactionPage.routeName, arguments: user);
                 },
                 child: Text(
                   'My Bookings',

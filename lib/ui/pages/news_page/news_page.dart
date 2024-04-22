@@ -85,7 +85,7 @@ class NewsPage extends GetView<NewsController> {
                 ],
               ),
               BottomNavbar(
-                isSelectedNews: true,
+                isSelectedNews: true, user: controller.user,
               )
             ],
           ),

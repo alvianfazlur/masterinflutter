@@ -13,11 +13,11 @@ class TransactionController extends GetxController{
   Rx<TransactionStatus> status = TransactionStatus.loading.obs;
   String? error;
   userData? user;
-  var userController = Get.find<HomePageController>();
   final Set<String> displayedDates = Set();
 
   @override
   void onInit() {
+    user = Get.arguments;
     fetchTransactions();
     fetchBalance();
     super.onInit();
@@ -25,7 +25,7 @@ class TransactionController extends GetxController{
 
   Future<void> fetchTransactions() async {
     try{
-      transactions = await TransactionService().fetchTransaction(userController.user!.id);
+      transactions = await TransactionService().fetchTransaction(user!.id);
       status = TransactionStatus.success.obs;
       update();
     }catch(e){
@@ -36,8 +36,7 @@ class TransactionController extends GetxController{
   }
 
   Future<void> fetchBalance()async {
-    user = userController.user;
-    var newBalance = await BalanceService().fetchBalance(userController.user!.id);
+    var newBalance = await BalanceService().fetchBalance(user!.id);
     user!.balance = newBalance;
     update();
   }

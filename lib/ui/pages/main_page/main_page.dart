@@ -18,7 +18,7 @@ class MainPage extends StatelessWidget {
         body: Stack(
           children: [
             HomePage(),
-            BottomNavbar(isSelectedHome: true,),
+            BottomNavbar(isSelectedHome: true, user: controller.user,),
           ],
         ),
       ),

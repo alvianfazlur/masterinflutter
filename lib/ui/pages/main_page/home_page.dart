@@ -21,7 +21,7 @@ class HomePage extends GetView<HomePageController> {
         padding: EdgeInsets.only(top: 10, bottom: 20),
         children: [
           HomePageHeader(
-            controller: controller,
+            user: controller.user,
           ),
           const SizedBox(
             height: 30,

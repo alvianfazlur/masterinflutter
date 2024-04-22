@@ -16,11 +16,10 @@ class ShowTransaction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DateTime today = DateTime.now();
+    DateTime yesterday = DateTime.now().subtract(Duration(days: 1));
     List<TransactionModel> filteredTransactions = transactions
         .where((transaction) =>
-            transaction.date.isAfter(today) ||
-            transaction.date.day == today.day)
+            transaction.date.isAfter(yesterday))
         .toList();
 
     return GetBuilder<TransactionController>(

@@ -1,11 +1,11 @@
+import 'package:bwa_masteringflutter/models/user.dart';
 import 'package:flutter/material.dart';
 import '../../../../shared/theme.dart';
-import '../controller/homepage_controller.dart';
 
 class HomePageHeader extends StatelessWidget {
-  const HomePageHeader({Key? key, required this.controller}) : super(key: key);
+  const HomePageHeader({Key? key, required this.user}) : super(key: key);
 
-  final HomePageController controller;
+  final userData? user;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class HomePageHeader extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  controller.user!.name,
+                  user!.name,
                   style: whiteTextStyle.copyWith(
                       fontWeight: semiBold, fontSize: 18),
                 ),

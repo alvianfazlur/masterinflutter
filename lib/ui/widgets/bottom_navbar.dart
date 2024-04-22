@@ -4,6 +4,7 @@ import 'package:bwa_masteringflutter/ui/pages/news_page/news_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import '../../models/user.dart';
 import '../../shared/theme.dart';
 import '../pages/main_page/main_page.dart';
 import '../pages/setting_page/setting_page.dart';
@@ -17,7 +18,7 @@ class BottomNavbar extends StatelessWidget {
       this.isSelectedSaldo = false,
       this.isSelectedSetting = false,
       this.isSelectedNews = false,
-      this.isSelectedTransaction = false,})
+      this.isSelectedTransaction = false, required this.user,})
       : super(key: key);
 
   final bool isSelectedHome;
@@ -25,6 +26,7 @@ class BottomNavbar extends StatelessWidget {
   final bool isSelectedSaldo;
   final bool isSelectedSetting;
   final bool isSelectedNews;
+  final userData? user;
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +49,7 @@ class BottomNavbar extends StatelessWidget {
                   if (isSelectedHome == true) {
                     print("active");
                   } else {
-                    Get.offNamedUntil(MainPage.routeName,
-                        ModalRoute.withName(MainPage.routeName));
+                    Get.offAllNamed(MainPage.routeName, arguments: user);
                   }
                 }),
             CustomBottomNavbar(
@@ -58,8 +59,7 @@ class BottomNavbar extends StatelessWidget {
                   if (isSelectedTransaction == true) {
                     print("active");
                   } else {
-                    Get.offNamedUntil(TransactionPage.routeName,
-                        ModalRoute.withName(MainPage.routeName));
+                    Get.offAllNamed(TransactionPage.routeName, arguments: user);
                   }
                 }),
             CustomBottomNavbar(
@@ -69,8 +69,7 @@ class BottomNavbar extends StatelessWidget {
                   if (isSelectedNews == true) {
                     print("active");
                   } else {
-                    Get.offNamedUntil(NewsPage.routeName,
-                        ModalRoute.withName(MainPage.routeName));
+                    Get.offAllNamed(NewsPage.routeName, arguments: user);
                   }
                 }
             ),
@@ -81,8 +80,7 @@ class BottomNavbar extends StatelessWidget {
                   if (isSelectedSaldo == true) {
                     print("active");
                   } else {
-                    Get.offNamedUntil(CreditPage.routeName,
-                        ModalRoute.withName(MainPage.routeName));
+                    Get.offAllNamed(CreditPage.routeName, arguments: user);
                   }
                 }),
             CustomBottomNavbar(
@@ -92,8 +90,7 @@ class BottomNavbar extends StatelessWidget {
                   if (isSelectedSetting == true) {
                     print("active");
                   } else {
-                    Get.offNamedUntil(SettingPage.routeName,
-                        ModalRoute.withName(MainPage.routeName));
+                    Get.offAllNamed(SettingPage.routeName, arguments: user);
                   }
                 }
             ),

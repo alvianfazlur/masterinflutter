@@ -7,7 +7,6 @@ import '../../../services/balance_service.dart';
 import '../main_page/controller/homepage_controller.dart';
 
 class CreditController extends GetxController{
-  var userController = Get.find<HomePageController>();
   userData? user;
   String? snapToken;
   final List<int> selectedNominal = [];
@@ -16,7 +15,7 @@ class CreditController extends GetxController{
 
   @override
   void onInit() {
-    user = userController.user;
+    user = Get.arguments;
     fetchBalance();
     super.onInit();
   }
@@ -28,7 +27,6 @@ class CreditController extends GetxController{
 
 
   Future<void> topUp({required String id, required int balance, required String name}) async {
-    user = userController.user;
     try {
       snapToken = await MidtransService().createTopUpOrder(id, balance, name);
       update();
@@ -56,8 +54,7 @@ class CreditController extends GetxController{
   }
 
   Future<void> fetchBalance()async {
-    user = userController.user;
-    var newBalance = await BalanceService().fetchBalance(userController.user!.id);
+    var newBalance = await BalanceService().fetchBalance(user!.id);
     user!.balance = newBalance;
     update();
   }
